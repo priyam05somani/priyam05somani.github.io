@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Priyam Somani • Portfolio</title>
-    <meta name="description" content="Portfolio of Priyam Somani – Marketing & Business Analytics" />
+    <meta name="description" content="Portfolio of Priyam Somani – Marketing & Business Analytics, Strategy, Data Centers & Sustainability" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -12,299 +12,311 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
+        darkMode: 'class',
         theme: {
           extend: {
-            fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
-            boxShadow: { glow: '0 0 0 3px rgba(59,130,246,0.3)' },
-          },
-        },
-        darkMode: 'class',
+            fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'] },
+            boxShadow: { glow: '0 0 0 3px rgba(59,130,246,0.35)' },
+            colors: {
+              brand: {
+                50: '#eff6ff', 100: '#dbeafe', 600: '#2563eb', 700: '#1d4ed8', 900: '#0b1a3a'
+              }
+            }
+          }
+        }
       }
     </script>
     <style>
-      html { scroll-behavior: smooth; }
-      .container-tight { max-width: 1000px; }
-      /* Anchor offset for sticky header */
-      section { scroll-margin-top: 96px; }
+      html{scroll-behavior:smooth}
+      .container-tight{max-width:1100px}
+      section{scroll-margin-top:96px}
     </style>
   </head>
   <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
-    <!-- Header / Nav -->
-    <header class="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-slate-900/70 border-b border-slate-200/60 dark:border-slate-800/60">
-      <div class="mx-auto container-tight px-4 py-4 flex items-center justify-between">
-        <a href="#home" class="font-extrabold text-xl tracking-tight">Priyam <span class="text-blue-600">Somani</span></a>
-        <nav class="hidden md:flex items-center gap-6 text-sm">
-          <a href="#about" class="hover:text-blue-600">About</a>
-          <a href="#experience" class="hover:text-blue-600">Experience</a>
-          <a href="#education" class="hover:text-blue-600">Education</a>
-          <a href="#projects" class="hover:text-blue-600">Projects</a>
-          <a href="#documents" class="hover:text-blue-600">Documents</a>
-          <a href="#contact" class="hover:text-blue-600">Contact</a>
-        </nav>
-        <div class="flex items-center gap-2">
-          <button id="themeToggle" class="rounded-xl border border-slate-300/70 dark:border-slate-700/70 px-3 py-2 text-xs font-medium hover:shadow-glow">Toggle theme</button>
-          <button id="menuBtn" class="md:hidden rounded-xl border border-slate-300/70 dark:border-slate-700/70 px-3 py-2 text-xs font-medium">Menu</button>
-        </div>
-      </div>
-      <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200/60 dark:border-slate-800/60">
-        <nav class="mx-auto container-tight px-4 py-3 grid gap-2 text-sm">
-          <a class="py-1" href="#about">About</a>
-          <a class="py-1" href="#experience">Experience</a>
-          <a class="py-1" href="#education">Education</a>
-          <a class="py-1" href="#projects">Projects</a>
-          <a class="py-1" href="#documents">Documents</a>
-          <a class="py-1" href="#contact">Contact</a>
-        </nav>
-      </div>
-    </header>
-
-    <!-- Hero -->
-    <section id="home" class="relative">
-      <div class="mx-auto container-tight px-4 py-16 md:py-24">
-        <div class="grid md:grid-cols-5 gap-10 items-center">
-          <div class="md:col-span-3">
-            <span class="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-blue-700/80 bg-blue-50 dark:bg-blue-950/40 dark:text-blue-300 px-2.5 py-1 rounded-full">Marketing • Business Analytics</span>
-            <h1 class="mt-4 text-4xl md:text-5xl font-extrabold leading-tight">Turning data into insight—and insight into action.</h1>
-            <p class="mt-4 text-slate-600 dark:text-slate-300 max-w-2xl">Graduate of the University of Pittsburgh (Katz). I build analytical models, dashboards, and go‑to‑market strategies that drive measurable outcomes across energy, manufacturing, and consumer brands.</p>
-            <div class="mt-6 flex flex-wrap gap-3">
-              <!-- Update this link to your hosted PDF path in /assets -->
-              <a href="assets/Priyam-Resume.pdf" class="inline-flex items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm font-semibold">
-                <span>Download Resume</span>
-              </a>
-              <a href="#contact" class="inline-flex items-center gap-2 rounded-xl border border-slate-300 dark:border-slate-700 px-4 py-2 text-sm font-semibold">Contact</a>
-              <a href="https://www.linkedin.com/in/priyam-somani/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-xl border border-slate-300 dark:border-slate-700 px-4 py-2 text-sm font-semibold">LinkedIn</a>
+    <!-- ===== Shell: Sidebar + Main ===== -->
+    <div class="mx-auto container-tight px-4 md:px-6 flex gap-6 md:gap-10">
+      <!-- Sidebar -->
+      <aside class="hidden lg:block sticky top-6 h-[calc(100dvh-48px)] w-72 shrink-0">
+        <div class="h-full rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 flex flex-col">
+          <div class="flex items-center gap-4">
+            <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-brand-100 to-brand-50 dark:from-slate-800 dark:to-slate-900 border border-slate-200 dark:border-slate-800 grid place-items-center text-brand-700 font-extrabold">PS</div>
+            <div>
+              <h1 class="text-xl font-extrabold leading-tight">Priyam Somani</h1>
+              <p class="text-xs text-slate-500">Marketing & Business Analytics</p>
             </div>
           </div>
-          <div class="md:col-span-2">
-            <div class="rounded-3xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-              <h3 class="font-semibold">Quick facts</h3>
-              <ul class="mt-3 grid gap-2 text-sm">
-                <li><span class="font-medium">Location:</span> Cambridge, MA (USA)</li>
-                <li><span class="font-medium">Email:</span> priyam05somani@gmail.com</li>
-                <li><span class="font-medium">Phone:</span> +1 (412) 430‑2670</li>
-                <li><span class="font-medium">Interests:</span> Energy, Data Centers, ESG, GTM Analytics</li>
+          <nav class="mt-6 grid gap-2 text-sm">
+            <a class="py-2 px-3 rounded-xl hover:bg-slate-100/80 dark:hover:bg-slate-800/60" href="#about">About</a>
+            <a class="py-2 px-3 rounded-xl hover:bg-slate-100/80 dark:hover:bg-slate-800/60" href="#skills">Skills</a>
+            <a class="py-2 px-3 rounded-xl hover:bg-slate-100/80 dark:hover:bg-slate-800/60" href="#experience">Experience</a>
+            <a class="py-2 px-3 rounded-xl hover:bg-slate-100/80 dark:hover:bg-slate-800/60" href="#projects">Projects</a>
+            <a class="py-2 px-3 rounded-xl hover:bg-slate-100/80 dark:hover:bg-slate-800/60" href="#awards">Awards</a>
+            <a class="py-2 px-3 rounded-xl hover:bg-slate-100/80 dark:hover:bg-slate-800/60" href="#documents">Documents</a>
+            <a class="py-2 px-3 rounded-xl hover:bg-slate-100/80 dark:hover:bg-slate-800/60" href="#contact">Contact</a>
+          </nav>
+          <div class="mt-auto pt-6 grid gap-2 text-sm">
+            <a class="inline-flex items-center justify-center rounded-xl bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 font-semibold" href="assets/Priyam-Resume.pdf">Download Resume</a>
+            <div class="flex items-center justify-between">
+              <a class="text-blue-600" target="_blank" rel="noopener" href="https://www.linkedin.com/in/priyam-somani/">LinkedIn</a>
+              <button id="themeToggle" class="rounded-lg border border-slate-300 dark:border-slate-700 px-3 py-1 text-xs">Theme</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main -->
+      <main class="flex-1 py-10">
+        <!-- Top bar for mobile -->
+        <div class="lg:hidden sticky top-0 z-40 backdrop-blur bg-white/70 dark:bg-slate-950/70 border-b border-slate-200/60 dark:border-slate-800/60">
+          <div class="py-3 flex items-center justify-between">
+            <a href="#home" class="font-extrabold">Priyam <span class="text-brand-600">Somani</span></a>
+            <div class="flex items-center gap-2">
+              <a class="text-blue-600 text-sm" href="assets/Priyam-Resume.pdf">Resume</a>
+              <button id="menuBtn" class="rounded-lg border border-slate-300 dark:border-slate-700 px-3 py-1 text-xs">Menu</button>
+              <button id="themeToggle2" class="rounded-lg border border-slate-300 dark:border-slate-700 px-3 py-1 text-xs">Theme</button>
+            </div>
+          </div>
+          <div id="mobileMenu" class="hidden border-t border-slate-200/60 dark:border-slate-800/60">
+            <nav class="py-2 grid gap-1 text-sm">
+              <a class="px-4 py-2" href="#about">About</a>
+              <a class="px-4 py-2" href="#skills">Skills</a>
+              <a class="px-4 py-2" href="#experience">Experience</a>
+              <a class="px-4 py-2" href="#projects">Projects</a>
+              <a class="px-4 py-2" href="#awards">Awards</a>
+              <a class="px-4 py-2" href="#documents">Documents</a>
+              <a class="px-4 py-2" href="#contact">Contact</a>
+            </nav>
+          </div>
+        </div>
+
+        <!-- Hero -->
+        <section id="home" class="mt-6">
+          <div class="rounded-3xl p-8 md:p-10 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+              <div>
+                <span class="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-brand-700 bg-brand-50 dark:bg-slate-800/70 dark:text-brand-100 px-2.5 py-1 rounded-full">Marketing • Analytics • Strategy</span>
+                <h2 class="mt-3 text-3xl md:text-4xl font-extrabold leading-tight">Turning data into decisions for energy & growth.</h2>
+                <p class="mt-3 text-slate-600 dark:text-slate-300 max-w-2xl">MS candidate at the University of Pittsburgh (Katz). I blend modeling, market research, and clear storytelling—recently on hydrogen blending and data‑center go‑to‑market for Peoples Natural Gas.</p>
+                <div class="mt-5 flex flex-wrap gap-3">
+                  <a href="#projects" class="rounded-xl bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 text-sm font-semibold">See Projects</a>
+                  <a href="#contact" class="rounded-xl border border-slate-300 dark:border-slate-700 px-4 py-2 text-sm font-semibold">Contact</a>
+                </div>
+              </div>
+              <ul class="grid grid-cols-3 gap-3 text-center">
+                <li class="rounded-2xl border border-slate-200 dark:border-slate-800 p-4 bg-slate-50 dark:bg-slate-950">
+                  <div class="text-2xl font-extrabold">$250M</div>
+                  <div class="text-xs text-slate-500">Market modeled</div>
+                </li>
+                <li class="rounded-2xl border border-slate-200 dark:border-slate-800 p-4 bg-slate-50 dark:bg-slate-950">
+                  <div class="text-2xl font-extrabold">35%</div>
+                  <div class="text-xs text-slate-500">Growth delivered</div>
+                </li>
+                <li class="rounded-2xl border border-slate-200 dark:border-slate-800 p-4 bg-slate-50 dark:bg-slate-950">
+                  <div class="text-2xl font-extrabold">5+ yrs</div>
+                  <div class="text-xs text-slate-500">Marketing/Analytics</div>
+                </li>
               </ul>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- About -->
-    <section id="about" class="relative">
-      <div class="mx-auto container-tight px-4 py-12">
-        <h2 class="text-2xl font-bold">About</h2>
-        <p class="mt-3 text-slate-600 dark:text-slate-300">I specialize in combining quantitative analysis with practical marketing strategy. Recent work includes rate‑structure modeling and market entry strategy for hyperscale data centers at Peoples Natural Gas, customer‑centric product research at DMI Companies, and full‑funnel performance improvements for Jai Udit Suitings.</p>
-      </div>
-    </section>
+        <!-- Skills -->
+        <section id="skills" class="mt-10">
+          <h3 class="text-xl font-bold mb-4">Core Skills</h3>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4">
+              <h4 class="font-semibold">Analytics & Modeling</h4>
+              <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Excel/Power BI, SQL, Python, optimization, forecasting, simulation (SIMIO).</p>
+            </div>
+            <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4">
+              <h4 class="font-semibold">Marketing & GTM</h4>
+              <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">VOC, segmentation, A/B testing, funnel analytics, campaign ops.</p>
+            </div>
+            <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4">
+              <h4 class="font-semibold">Domains</h4>
+              <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Energy & utilities, data centers, manufacturing, apparel.</p>
+            </div>
+          </div>
+        </section>
 
-    <!-- Experience -->
-    <section id="experience" class="relative">
-      <div class="mx-auto container-tight px-4 py-12">
-        <h2 class="text-2xl font-bold">Experience</h2>
-        <div class="mt-6 grid gap-4">
-          <!-- Peoples Natural Gas -->
-          <article class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
-            <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <h3 class="font-semibold">Business Analyst – Sustainability & Strategy · Peoples Natural Gas</h3>
-              <span class="text-sm text-slate-500">Sep 2024 – Jun 2025 · Pittsburgh, PA</span>
-            </div>
-            <ul class="mt-3 list-disc pl-5 text-slate-700 dark:text-slate-300 text-sm space-y-2">
-              <li>Built optimization models benchmarking industrial tariffs; identified pricing realignment with $12M+ annual upside.</li>
-              <li>Produced executive‑ready insights for data center market entry with ~$250M potential growth.</li>
-              <li>Developed KPI dashboards (Excel/Power BI) for capital allocation and infrastructure ROI tracking.</li>
-              <li>Analyzed hydrogen blending feasibility across engineering, economics, and regulatory dimensions.</li>
-            </ul>
-          </article>
-          <!-- Ductmate / DMI -->
-          <article class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
-            <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <h3 class="font-semibold">Marketing & Research Analyst (Fellowship) · DMI Companies</h3>
-              <span class="text-sm text-slate-500">Sep 2024 – Nov 2024 · Pittsburgh, PA</span>
-            </div>
-            <ul class="mt-3 list-disc pl-5 text-slate-700 dark:text-slate-300 text-sm space-y-2">
-              <li>Led VOC and market analysis to validate a configurator concept for HVAC sealants/adhesives.</li>
-              <li>Improved UX and led data‑informed enhancements, contributing to +15% product inquiries.</li>
-              <li>Automated reporting with SQL + dashboards, saving 10+ hours/month across teams.</li>
-            </ul>
-          </article>
-          <!-- GuardAI -->
-          <article class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
-            <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <h3 class="font-semibold">Market Research Analyst Intern · GuardAI</h3>
-              <span class="text-sm text-slate-500">May 2024 – Aug 2024 · Pittsburgh, PA</span>
-            </div>
-            <ul class="mt-3 list-disc pl-5 text-slate-700 dark:text-slate-300 text-sm space-y-2">
-              <li>Segmented B2B cybersecurity markets; identified high‑impact verticals and GTM opportunities.</li>
-              <li>Supported LinkedIn campaign briefs; contributed to +18% inbound engagement.</li>
-            </ul>
-          </article>
-          <!-- Jai Udit -->
-          <article class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
-            <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <h3 class="font-semibold">Marketing & Operations Analyst · Jai Udit Suitings</h3>
-              <span class="text-sm text-slate-500">Aug 2020 – Jul 2023 · Rajasthan, India</span>
-            </div>
-            <ul class="mt-3 list-disc pl-5 text-slate-700 dark:text-slate-300 text-sm space-y-2">
-              <li>Ran paid + organic campaigns; +35% online interactions and $150K+ incremental sales.</li>
-              <li>Built KPI dashboards (Excel/Tableau) to optimize pricing and digital efficiency (+15%).</li>
-              <li>Led regional research to inform expansion and merchandising (+20% regional growth).</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
+        <!-- Experience -->
+        <section id="experience" class="mt-10">
+          <h3 class="text-xl font-bold mb-4">Experience</h3>
+          <ol class="relative border-slate-200 dark:border-slate-800">
+            <li class="mb-6">
+              <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5">
+                <div class="flex flex-wrap items-baseline justify-between gap-2">
+                  <h4 class="font-semibold">Business Analyst – Sustainability & Strategy · Peoples Natural Gas</h4>
+                  <span class="text-sm text-slate-500">Sep 2024 – Jun 2025 · Pittsburgh, PA</span>
+                </div>
+                <ul class="mt-2 text-sm list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+                  <li>Benchmarked utility tariffs and modeled scenarios for hyperscale data centers (~$250M opportunity).</li>
+                  <li>Built pricing and rate‑structure models; identified multi‑million dollar optimization levers.</li>
+                  <li>Led cross‑functional synthesis on hydrogen blending feasibility and regulatory pathways.</li>
+                </ul>
+              </div>
+            </li>
+            <li class="mb-6">
+              <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5">
+                <div class="flex flex-wrap items-baseline justify-between gap-2">
+                  <h4 class="font-semibold">Marketing & Research Analyst (Fellowship) · DMI Companies</h4>
+                  <span class="text-sm text-slate-500">Sep 2024 – Nov 2024 · Pittsburgh, PA</span>
+                </div>
+                <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">Validated configurator demand via VOC; streamlined reporting with SQL + dashboards.</p>
+              </div>
+            </li>
+            <li class="mb-6">
+              <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5">
+                <div class="flex flex-wrap items-baseline justify-between gap-2">
+                  <h4 class="font-semibold">Market Research Analyst Intern · GuardAI</h4>
+                  <span class="text-sm text-slate-500">May 2024 – Aug 2024 · Pittsburgh, PA</span>
+                </div>
+                <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">Segmented B2B cybersecurity markets and supported high‑impact campaigns.</p>
+              </div>
+            </li>
+            <li>
+              <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5">
+                <div class="flex flex-wrap items-baseline justify-between gap-2">
+                  <h4 class="font-semibold">Marketing & Operations Analyst · Jai Udit Suitings</h4>
+                  <span class="text-sm text-slate-500">Aug 2020 – Jul 2023 · Rajasthan, India</span>
+                </div>
+                <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">Scaled performance marketing and analytics; +35% interactions, $150K+ incremental sales.</p>
+              </div>
+            </li>
+          </ol>
+        </section>
 
-    <!-- Education -->
-    <section id="education" class="relative">
-      <div class="mx-auto container-tight px-4 py-12">
-        <h2 class="text-2xl font-bold">Education</h2>
-        <div class="mt-6 grid gap-4">
-          <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
-            <div class="flex items-baseline justify-between">
-              <h3 class="font-semibold">University of Pittsburgh – Katz Graduate School of Business</h3>
-              <span class="text-sm text-slate-500">MS, Marketing & Business Analytics · 2025</span>
-            </div>
-            <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">GPA 3.78/4.0. Coursework: Business Analytics, Applied Simulation, DBMS, Market Research, Data Visualization, Marketing Management.</p>
+        <!-- Projects -->
+        <section id="projects" class="mt-10">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-bold">Projects</h3>
+            <a class="text-sm text-blue-600" href="assets/Portfolio-Slides.pdf">See slides →</a>
           </div>
-          <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
-            <div class="flex items-baseline justify-between">
-              <h3 class="font-semibold">Christ University (Deemed)</h3>
-              <span class="text-sm text-slate-500">BBA, Business Analytics · 2020</span>
-            </div>
-            <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">Coursework: SQL, R, Python, Tableau, Excel, SPSS, Power BI, Predictive Modeling, Consumer Behavior, Strategy.</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <article class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5">
+              <h4 class="font-semibold">Data Center Strategy – Peoples Natural Gas</h4>
+              <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">Modeled tariff scenarios, site criteria, and GTM recommendations to position Pittsburgh for hyperscale growth.</p>
+              <ul class="mt-3 text-xs text-slate-500 flex flex-wrap gap-2">
+                <li class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-800">Pricing model</li>
+                <li class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-800">Benchmarking</li>
+                <li class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-800">Executive deck</li>
+              </ul>
+            </article>
+            <article class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5">
+              <h4 class="font-semibold">Performance Marketing – Jai Udit Suitings</h4>
+              <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">Built dashboards and experiments across channels to lift ROI and regional growth.</p>
+              <ul class="mt-3 text-xs text-slate-500 flex flex-wrap gap-2">
+                <li class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-800">Attribution</li>
+                <li class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-800">A/B testing</li>
+                <li class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-800">Dashboards</li>
+              </ul>
+            </article>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- Projects / Highlights -->
-    <section id="projects" class="relative">
-      <div class="mx-auto container-tight px-4 py-12">
-        <h2 class="text-2xl font-bold">Highlights & Projects</h2>
-        <div class="mt-6 grid md:grid-cols-2 gap-4">
-          <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
-            <h3 class="font-semibold">Data Center Strategy – Peoples Natural Gas</h3>
-            <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">Benchmarked utility tariffs, modeled scenarios, and informed a go‑to‑market strategy for data center opportunities (~$250M potential growth).</p>
-          </div>
-          <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
-            <h3 class="font-semibold">Customer‑Centric Product Research – DMI</h3>
-            <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">Led VOC studies, validated configurator demand, and delivered insights to guide AI‑enabled product tooling and field engagement.</p>
-          </div>
-          <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
-            <h3 class="font-semibold">Performance Marketing – Jai Udit Suitings</h3>
-            <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">Scaled full‑funnel campaigns, built dashboards, and improved ROI, driving $150K+ in incremental sales.</p>
-          </div>
-          <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
-            <h3 class="font-semibold">Competitions</h3>
-            <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">BTC Data Visualization (1st Runner Up, 2025); TL Saaty Decision‑Making Hackathon (2025).</p>
-          </div>
-        </div>
-      </div>
-    </section>
+        <!-- Awards / Recognition -->
+        <section id="awards" class="mt-10">
+          <h3 class="text-xl font-bold mb-4">Awards & Highlights</h3>
+          <ul class="grid sm:grid-cols-2 gap-3">
+            <li class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4">
+              <span class="font-semibold">BTC Data Visualization</span> – 1st Runner Up (2025)
+            </li>
+            <li class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4">
+              <span class="font-semibold">TL Saaty Decision‑Making Hackathon</span> – Participant (2025)
+            </li>
+          </ul>
+        </section>
 
-    <!-- Documents / Proof -->
-    <section id="documents" class="relative">
-      <div class="mx-auto container-tight px-4 py-12">
-        <h2 class="text-2xl font-bold">Documents</h2>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Download verified materials. Place files inside <code>/assets</code> in this repo and keep the same filenames (or update the links).</p>
-        <div class="mt-6 grid md:grid-cols-2 gap-4">
-          <a class="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 block hover:shadow">
-            <div class="flex items-center justify-between">
-              <h3 class="font-semibold">Resume</h3>
-              <span class="text-xs px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800">PDF</span>
-            </div>
-            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Latest CV with experience, skills, and achievements.</p>
-            <p class="mt-3 text-blue-600 font-medium">assets/Priyam-Resume.pdf</p>
-          </a>
-          <a href="assets/Recommendation-PeoplesGas-Douglas-Bush.pdf" class="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 block hover:shadow">
-            <div class="flex items-center justify-between">
-              <h3 class="font-semibold">Letter of Recommendation – Peoples Natural Gas</h3>
-              <span class="text-xs px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800">PDF</span>
-            </div>
-            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">From Douglas Bush, Director Strategy & Corporate Development.</p>
-            <p class="mt-3 text-blue-600 font-medium">assets/Recommendation-PeoplesGas-Douglas-Bush.pdf</p>
-          </a>
-          <a href="assets/Recommendation-DMI-David-Glunt.pdf" class="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 block hover:shadow">
-            <div class="flex items-center justify-between">
-              <h3 class="font-semibold">Letter of Recommendation – DMI Companies</h3>
-              <span class="text-xs px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800">PDF</span>
-            </div>
-            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">From David Glunt, Engineering & NPD Manager.</p>
-            <p class="mt-3 text-blue-600 font-medium">assets/Recommendation-DMI-David-Glunt.pdf</p>
-          </a>
-          <a href="assets/Transcript-Pitt-Spring-2025.pdf" class="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 block hover:shadow">
-            <div class="flex items-center justify-between">
-              <h3 class="font-semibold">Academic Transcript – University of Pittsburgh</h3>
-              <span class="text-xs px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800">PDF</span>
-            </div>
-            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Graduate academic record (through Spring 2025).</p>
-            <p class="mt-3 text-blue-600 font-medium">assets/Transcript-Pitt-Spring-2025.pdf</p>
-          </a>
-          <a href="assets/Portfolio-Slides.pdf" class="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 block hover:shadow md:col-span-2">
-            <div class="flex items-center justify-between">
-              <h3 class="font-semibold">Portfolio Slides</h3>
-              <span class="text-xs px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800">PDF</span>
-            </div>
-            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Selected work samples and a quick visual overview.</p>
-            <p class="mt-3 text-blue-600 font-medium">assets/Portfolio-Slides.pdf</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="relative">
-      <div class="mx-auto container-tight px-4 py-12">
-        <h2 class="text-2xl font-bold">Contact</h2>
-        <div class="mt-6 grid md:grid-cols-2 gap-6">
-          <form action="https://formspree.io/f/xaylpnrg" method="POST" class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6">
-            <div class="grid gap-4">
-              <input required name="name" placeholder="Your name" class="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-3 py-2" />
-              <input required name="email" type="email" placeholder="Email address" class="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-3 py-2" />
-              <textarea required name="message" placeholder="Message" rows="4" class="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-3 py-2"></textarea>
-              <button class="rounded-xl bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm font-semibold">Send</button>
-              <p class="text-xs text-slate-500">This demo uses Formspree. Replace the action URL with your own endpoint or email service.</p>
-            </div>
-          </form>
-          <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6">
-            <ul class="grid gap-3 text-sm">
-              <li><span class="font-medium">Email:</span> <a class="text-blue-600" href="mailto:priyam05somani@gmail.com">priyam05somani@gmail.com</a></li>
-              <li><span class="font-medium">Phone:</span> <a class="text-blue-600" href="tel:+14124302670">+1 (412) 430‑2670</a></li>
-              <li><span class="font-medium">LinkedIn:</span> <a class="text-blue-600" target="_blank" rel="noopener" href="https://www.linkedin.com/in/priyam-somani/">/in/priyam-somani</a></li>
-              <li><span class="font-medium">Location:</span> Cambridge, MA, USA</li>
-            </ul>
+        <!-- Documents -->
+        <section id="documents" class="mt-10">
+          <h3 class="text-xl font-bold mb-4">Documents</h3>
+          <div class="grid md:grid-cols-2 gap-4">
+            <a href="assets/Priyam-Resume.pdf" class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 hover:shadow">
+              <div class="flex items-center justify-between"><h4 class="font-semibold">Resume</h4><span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">PDF</span></div>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Current CV with skills & experience.</p>
+            </a>
+            <a href="assets/Transcript-Pitt-Spring-2025.pdf" class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 hover:shadow">
+              <div class="flex items-center justify-between"><h4 class="font-semibold">Academic Transcript – Pitt</h4><span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">PDF</span></div>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Graduate academic record through Spring 2025.</p>
+            </a>
+            <a href="assets/Recommendation-PeoplesGas-Douglas-Bush.pdf" class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 hover:shadow">
+              <div class="flex items-center justify-between"><h4 class="font-semibold">Letter of Recommendation – Peoples Natural Gas</h4><span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">PDF</span></div>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Douglas Bush, Director Strategy & Corp Dev.</p>
+            </a>
+            <a href="assets/Recommendation-DMI-David-Glunt.pdf" class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 hover:shadow">
+              <div class="flex items-center justify-between"><h4 class="font-semibold">Letter of Recommendation – DMI Companies</h4><span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">PDF</span></div>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">David Glunt, Engineering & NPD Manager.</p>
+            </a>
+            <a href="assets/Portfolio-Slides.pdf" class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 hover:shadow md:col-span-2">
+              <div class="flex items-center justify-between"><h4 class="font-semibold">Portfolio Slides</h4><span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">PDF</span></div>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Selected work samples and visual overview.</p>
+            </a>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <footer class="border-t border-slate-200 dark:border-slate-800">
-      <div class="mx-auto container-tight px-4 py-8 text-sm text-slate-500 flex flex-wrap items-center justify-between gap-3">
-        <p>© <span id="year"></span> Priyam Somani. All rights reserved.</p>
-        <a href="#home" class="hover:text-blue-600">Back to top ↑</a>
-      </div>
-    </footer>
+        <!-- Contact -->
+        <section id="contact" class="mt-10">
+          <h3 class="text-xl font-bold mb-4">Contact</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <form action="https://formspree.io/f/xaylpnrg" method="POST" class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
+              <div class="grid gap-3">
+                <input required name="name" placeholder="Your name" class="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-3 py-2" />
+                <input required name="email" type="email" placeholder="Email address" class="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-3 py-2" />
+                <textarea required name="message" placeholder="Message" rows="4" class="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-3 py-2"></textarea>
+                <button class="rounded-xl bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 text-sm font-semibold">Send</button>
+                <p class="text-xs text-slate-500">Replace with your own endpoint if needed.</p>
+              </div>
+            </form>
+            <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
+              <ul class="grid gap-2 text-sm">
+                <li><span class="font-medium">Email:</span> <a class="text-blue-600" href="mailto:priyam05somani@gmail.com">priyam05somani@gmail.com</a></li>
+                <li><span class="font-medium">Phone:</span> <a class="text-blue-600" href="tel:+14124302670">+1 (412) 430‑2670</a></li>
+                <li><span class="font-medium">LinkedIn:</span> <a class="text-blue-600" target="_blank" rel="noopener" href="https://www.linkedin.com/in/priyam-somani/">/in/priyam-somani</a></li>
+                <li><span class="font-medium">Location:</span> Cambridge, MA, USA</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <footer class="mt-12 text-sm text-slate-500 flex items-center justify-between">
+          <p>© <span id="year"></span> Priyam Somani.</p>
+          <a href="#home" class="hover:text-blue-600">Back to top ↑</a>
+        </footer>
+      </main>
+    </div>
 
     <script>
-      // Theme toggle
-      const themeToggle = document.getElementById('themeToggle');
+      // theme
       const root = document.documentElement;
-      function setTheme(dark) {
-        if (dark) root.classList.add('dark'); else root.classList.remove('dark');
-        localStorage.setItem('theme', dark ? 'dark' : 'light');
+      function setTheme(dark){
+        dark ? root.classList.add('dark') : root.classList.remove('dark');
+        localStorage.setItem('theme', dark ? 'dark':'light')
       }
-      themeToggle?.addEventListener('click', () => setTheme(!root.classList.contains('dark')));
-      // Initialize theme
-      setTheme(localStorage.getItem('theme') === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches);
+      function initTheme(){ setTheme(localStorage.getItem('theme')==='dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) }
+      initTheme();
+      document.getElementById('themeToggle')?.addEventListener('click',()=>setTheme(!root.classList.contains('dark')))
+      document.getElementById('themeToggle2')?.addEventListener('click',()=>setTheme(!root.classList.contains('dark')))
 
-      // Mobile menu
+      // mobile menu
       const menuBtn = document.getElementById('menuBtn');
       const mobileMenu = document.getElementById('mobileMenu');
-      menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+      menuBtn?.addEventListener('click',()=> mobileMenu.classList.toggle('hidden'))
 
-      // Year
+      // year
       document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Priyam Somani",
+      "jobTitle": "Marketing & Business Analytics",
+      "email": "mailto:priyam05somani@gmail.com",
+      "url": "https://priyam05somani.github.io",
+      "sameAs": ["https://www.linkedin.com/in/priyam-somani/"]
+    }
     </script>
   </body>
 </html>
