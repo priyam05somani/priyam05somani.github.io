@@ -4,12 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Priyam Somani • Portfolio</title>
-    <meta name="description" content="Priyam Somani – Marketing & Business Analytics. Market research, strategy, and data-driven growth." />
+    <meta name="description" content="Priyam Somani – Marketing & Business Analytics. Market research, pricing & GTM strategy, and data-driven growth." />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Tailwind via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,41 +19,20 @@
         theme: {
           extend: {
             fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'], display:['Poppins','Inter','ui-sans-serif'] },
-            colors: { 
-              night: {
-                900: '#0e1325', // deep navy
-                800: '#151a30',
-                700: '#1c2140'
-              },
-              accent: {
-                300:'#fb7185', 400:'#f43f5e', 500:'#e11d48'
-              }
+            colors: {
+              night: { 900: '#0e1325', 800: '#151a30' },
+              accent: { 300:'#fb7185', 400:'#f43f5e', 500:'#e11d48' }
             },
             boxShadow: {
               card: '0 16px 40px -20px rgba(0,0,0,0.45)',
               soft: '0 8px 20px -10px rgba(0,0,0,0.35)'
             },
             keyframes: {
-              floaty: {
-                '0%,100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-6px)' }
-              },
-              orbit: {
-                to: { transform: 'rotate(360deg)' }
-              },
-              glow: {
-                '0%,100%': { boxShadow: '0 0 0 0 rgba(244,63,94,0.4)' },
-                '50%': { boxShadow: '0 0 0 12px rgba(244,63,94,0)' }
-              },
-              revealUp: {
-                from: { opacity: 0, transform: 'translateY(16px)' },
-                to: { opacity: 1, transform: 'translateY(0)' }
-              }
+              orbit: { to: { transform: 'rotate(360deg)' } },
+              revealUp: { from: { opacity: 0, transform: 'translateY(16px)' }, to: { opacity: 1, transform: 'translateY(0)' } }
             },
             animation: {
-              floaty: 'floaty 6s ease-in-out infinite',
-              orbit: 'orbit 18s linear infinite',
-              glow: 'glow 2.2s ease-out infinite',
+              orbit: 'orbit 22s linear infinite',
               revealUp: 'revealUp .7s ease-out both'
             }
           }
@@ -66,12 +45,9 @@
       .container-tight{max-width:1150px}
       section{scroll-margin-top:92px}
       .heading-underline{position:relative;display:inline-block}
-      .heading-underline::after{content:"";position:absolute;left:0;bottom:-10px;width:60px;height:4px;border-radius:9999px;background:linear-gradient(90deg,#f43f5e,#fb7185)}
-      /* Simple progress bar */
+      .heading-underline::after{content:"";position:absolute;left:0;bottom:-10px;width:64px;height:4px;border-radius:9999px;background:linear-gradient(90deg,#f43f5e,#fb7185)}
+      .badge{padding:.25rem .5rem;border-radius:9999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-size:.75rem}
       .bar{height:8px;border-radius:9999px;background:linear-gradient(90deg,#fb7185,#f43f5e)}
-      /* Reveal on scroll */
-      .will-reveal{opacity:0;transform:translateY(16px)}
-      .revealed{opacity:1;transform:none;transition:all .6s ease}
     </style>
   </head>
 
@@ -79,7 +55,7 @@
     <!-- ===================== NAVBAR ===================== -->
     <header class="sticky top-0 z-50 backdrop-blur bg-night-900/80 border-b border-white/10">
       <div class="mx-auto container-tight px-4 py-4 flex items-center justify-between">
-        <a href="#home" class="font-display font-extrabold text-2xl tracking-tight text-slate-100">PS</a>
+        <a href="#home" class="font-display font-extrabold text-2xl tracking-tight">PS</a>
         <nav class="hidden md:flex items-center gap-7 text-sm">
           <a href="#about" class="hover:text-accent-300">About</a>
           <a href="#experience" class="hover:text-accent-300">Experience</a>
@@ -110,69 +86,32 @@
     <!-- ===================== HERO ===================== -->
     <section id="home" class="bg-gradient-to-b from-night-900 to-night-800">
       <div class="mx-auto container-tight px-4 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
-        <!-- Left: Text -->
-        <div class="will-reveal">
+        <!-- Left: Intro -->
+        <div class="animate-revealUp">
           <h1 class="font-display text-5xl md:text-6xl font-extrabold leading-tight text-accent-300">Priyam Somani</h1>
           <h2 class="mt-2 text-2xl md:text-3xl font-semibold">Marketing & Business Analytics • Strategy • Market Research</h2>
-          <p class="mt-5 text-slate-300 max-w-xl">I turn complex data into clear strategy. I’ve delivered pricing models, growth roadmaps, and executive insights across energy, data centers, manufacturing, and consumer brands—always with measurable outcomes.</p>
+          <p class="mt-5 text-slate-300 max-w-xl">I turn complex data into clear strategy. I deliver pricing models, growth roadmaps, and executive insights across energy, data centers, manufacturing, and consumer brands—always tied to measurable outcomes.</p>
           <div class="mt-7 flex flex-wrap gap-3">
             <a href="#about" class="rounded-full bg-accent-400 hover:bg-accent-500 text-white px-5 py-2.5 text-sm font-semibold shadow-soft">About me</a>
             <a href="#contact" class="rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold">Contact</a>
             <a href="assets/Priyam-Resume.pdf" class="rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold">Download Resume</a>
           </div>
         </div>
-        <!-- Right: Orbit graphic -->
-        <div class="relative w-full aspect-square will-reveal">
-          <!-- orbit ring -->
+
+        <!-- Right: Orbit accent (kept minimal) -->
+        <div class="relative w-full aspect-square">
           <div class="absolute inset-0 rounded-full border border-white/10"></div>
           <div class="absolute inset-3 rounded-full border border-white/10 animate-orbit origin-center"></div>
-          <!-- center icon -->
           <div class="absolute inset-0 grid place-items-center">
-            <div class="h-24 w-24 rounded-full bg-accent-400/15 border border-accent-400/40 grid place-items-center animate-glow">
-              <!-- astronaut-ish icon -->
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 9a5 5 0 0110 0v2H7V9z" stroke="#f43f5e" stroke-width="1.5"/>
-                <rect x="5" y="11" width="14" height="8" rx="2" stroke="#f43f5e" stroke-width="1.5"/>
-                <circle cx="12" cy="8" r="2.2" stroke="#f43f5e" stroke-width="1.5"/>
+            <div class="h-24 w-24 rounded-full bg-accent-400/15 border border-accent-400/40 grid place-items-center">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 7h16M4 12h16M4 17h16" stroke="#fb7185" stroke-width="2" stroke-linecap="round"/>
               </svg>
             </div>
           </div>
-          <!-- orbiting icons -->
-          <div class="absolute inset-0 animate-orbit" style="animation-duration: 22s;">
-            <div class="absolute left-1/2 -translate-x-1/2 -top-2">
-              <span class="inline-grid place-items-center h-10 w-10 rounded-full bg-white/10 border border-white/20">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="#fb7185" stroke-width="2" stroke-linecap="round"/></svg>
-              </span>
-            </div>
-            <div class="absolute right-2 top-1/2 -translate-y-1/2">
-              <span class="inline-grid place-items-center h-10 w-10 rounded-full bg-white/10 border border-white/20">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="#fb7185" stroke-width="2" stroke-linecap="round"/></svg>
-              </span>
-            </div>
-            <div class="absolute left-1/2 -translate-x-1/2 -bottom-2">
-              <span class="inline-grid place-items-center h-10 w-10 rounded-full bg-white/10 border border-white/20">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 1018 0A9 9 0 003 12z" stroke="#fb7185" stroke-width="2"/></svg>
-              </span>
-            </div>
-            <div class="absolute left-2 top-1/2 -translate-y-1/2">
-              <span class="inline-grid place-items-center h-10 w-10 rounded-full bg-white/10 border border-white/20">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 12l2 2 6-6" stroke="#fb7185" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-            </div>
-          </div>
         </div>
       </div>
-      <!-- fake chat bubble to mirror inspiration -->
-      <div class="mx-auto container-tight px-4 pb-10 will-reveal">
-        <div class="md:w-2/3 md:ml-auto flex flex-col gap-3">
-          <div class="ml-auto max-w-[520px] bg-white text-night-800 rounded-2xl px-4 py-3 shadow-card">
-            <span class="text-sm">👋 Hi! Ask me anything about Priyam—projects, tools, or experience.</span>
-          </div>
-          <div class="ml-auto max-w-[520px] bg-white text-night-800 rounded-2xl px-4 py-3 shadow-card">
-            <span class="text-sm">🚀 Focus areas: Market research, analytics, pricing strategy, and GTM.</span>
-          </div>
-        </div>
-      </div>
+      <!-- (Removed the two chat bubbles per your request) -->
     </section>
 
     <!-- ===================== ABOUT ===================== -->
@@ -180,83 +119,146 @@
       <div class="mx-auto container-tight px-4 py-16">
         <h3 class="heading-underline text-3xl font-display font-extrabold">About Me</h3>
         <div class="mt-10 grid lg:grid-cols-3 gap-8 items-start">
-          <!-- portrait -->
+          <!-- Portrait -->
           <div class="order-2 lg:order-1">
-            <div class="relative w-56 h-56 mx-auto rounded-full p-1 bg-gradient-to-br from-accent-400 to-accent-300">
-              <div class="rounded-full w-full h-full bg-night-900 grid place-items-center text-4xl font-display font-extrabold">PS</div>
+            <!-- Place your image at assets/Profile Picture.jpg OR change src below -->
+            <div class="relative w-60 h-60 mx-auto rounded-full p-1 bg-gradient-to-br from-accent-400 to-accent-300 shadow-soft">
+              <img src="assets/Profile%20Picture.jpg" alt="Priyam Somani portrait" class="rounded-full w-full h-full object-cover" />
             </div>
           </div>
-          <!-- summary -->
+
+          <!-- Summary + metrics -->
           <div class="lg:col-span-2 order-1 lg:order-2">
-            <p class="text-slate-300 leading-relaxed">I’m a data‑driven strategist with a marketer’s empathy. My work blends quantitative models with clear storytelling to help leaders make confident decisions. Recent highlights include <span class="text-accent-300 font-medium">rate‑structure benchmarking and go‑to‑market strategy for hyperscale data centers</span>, customer research and product validation for industrial manufacturers, and performance marketing at a fast‑growing apparel brand. I’m especially interested in roles in <span class="text-accent-300 font-medium">Market Research</span>, <span class="text-accent-300 font-medium">Business Analytics</span>, <span class="text-accent-300 font-medium">Strategy</span>, and <span class="text-accent-300 font-medium">Marketing</span>.</p>
-            <!-- metrics -->
-            <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <p class="text-slate-300 leading-relaxed">
+              I’m a data-driven strategist with a marketer’s empathy. I blend quantitative models with clear storytelling to help leaders make confident decisions.
+              Recent work spans <span class="text-accent-300 font-medium">rate-structure benchmarking & pricing for industrial customers</span>, 
+              <span class="text-accent-300 font-medium">market entry for hyperscale data centers</span>, 
+              <span class="text-accent-300 font-medium">VOC-led product validation</span>, and 
+              <span class="text-accent-300 font-medium">performance marketing</span>.
+              I’m targeting roles in <strong>Market Research</strong>, <strong>Business Analytics</strong>, <strong>Strategy</strong>, and <strong>Marketing</strong>.
+            </p>
+
+            <!-- Metrics -->
+            <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-4">
               <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-center">
-                <div class="text-2xl font-bold text-accent-300">6+</div>
+                <div class="text-2xl font-bold text-accent-300">3.5+</div>
                 <div class="text-xs text-slate-300">Years experience</div>
               </div>
               <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-center">
-                <div class="text-2xl font-bold text-accent-300">12</div>
-                <div class="text-xs text-slate-300">Research projects</div>
+                <div class="text-2xl font-bold text-accent-300">$200M+</div>
+                <div class="text-xs text-slate-300">Business impact modeled</div>
               </div>
               <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-center">
-                <div class="text-2xl font-bold text-accent-300">5</div>
-                <div class="text-xs text-slate-300">Publications/awards</div>
-              </div>
-              <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-center">
-                <div class="text-2xl font-bold text-accent-300">$170M+</div>
-                <div class="text-xs text-slate-300">Business impact*</div>
+                <div class="text-2xl font-bold text-accent-300">6+</div>
+                <div class="text-xs text-slate-300">Professional certificates</div>
               </div>
             </div>
-            <p class="mt-2 text-xs text-slate-400">*Illustrative metric showcasing scale of modeled opportunities.</p>
-            <!-- feature tiles -->
-            <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              <div class="rounded-2xl border border-white/10 bg-white/5 p-4"><h4 class="font-semibold">Analytics & Modeling</h4><p class="text-sm text-slate-300 mt-1">Excel/Power BI, SQL, Python, forecasting, optimization, SIMIO.</p></div>
-              <div class="rounded-2xl border border-white/10 bg-white/5 p-4"><h4 class="font-semibold">Market Research</h4><p class="text-sm text-slate-300 mt-1">Segmentation, VOC, pricing studies, A/B testing, storytelling.</p></div>
-              <div class="rounded-2xl border border-white/10 bg-white/5 p-4"><h4 class="font-semibold">Domains</h4><p class="text-sm text-slate-300 mt-1">Energy & data centers, manufacturing, consumer brands.</p></div>
+
+            <!-- Top expertise / qualities (replacing old tiles) -->
+            <div class="mt-7">
+              <h4 class="font-semibold mb-3">Top Expertise & Qualities</h4>
+              <div class="flex flex-wrap gap-2">
+                <span class="badge">Pricing & Tariff Modeling</span>
+                <span class="badge">Market Research (VOC, Segmentation)</span>
+                <span class="badge">GTM Strategy & Positioning</span>
+                <span class="badge">Dashboarding (Power BI, Excel, Tableau)</span>
+                <span class="badge">SQL & Python (pandas)</span>
+                <span class="badge">A/B Testing & Funnel Analytics</span>
+                <span class="badge">Forecasting & Optimization</span>
+                <span class="badge">Executive Storytelling</span>
+                <span class="badge">Cross-functional Collaboration</span>
+                <span class="badge">Stakeholder Management</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===================== EXPERIENCE ===================== -->
+    <!-- ===================== PROFESSIONAL EXPERIENCE ===================== -->
     <section id="experience" class="bg-night-900">
       <div class="mx-auto container-tight px-4 py-16">
         <h3 class="heading-underline text-3xl font-display font-extrabold">Professional Experience</h3>
+
         <div class="mt-10 grid gap-6">
-          <!-- Item -->
-          <article class="rounded-2xl border border-white/10 bg-white/5 p-6 will-reveal">
+          <!-- Peoples Natural Gas -->
+          <article class="rounded-2xl bg-white/5 border border-white/10 p-6 shadow-soft">
             <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <h4 class="font-semibold">Business Analyst – Sustainability & Strategy · Peoples Natural Gas</h4>
-              <span class="text-sm text-slate-300">Sep 2024 – Jun 2025 · Pittsburgh, PA</span>
+              <div>
+                <h4 class="font-semibold text-lg">Business Analyst – Sustainability & Strategy</h4>
+                <p class="text-sm text-slate-300">Peoples Natural Gas · Pittsburgh, PA</p>
+              </div>
+              <span class="text-sm text-slate-300">Sep 2024 – Jun 2025</span>
             </div>
-            <ul class="mt-2 text-sm list-disc pl-5 space-y-1 text-slate-300">
-              <li>Benchmarked industrial utility tariffs; built pricing models revealing multi‑million‑dollar optimization levers.</li>
-              <li>Modeled hyperscale data‑center scenarios (~$250M potential) and produced executive GTM recommendations.</li>
-              <li>Evaluated hydrogen blending across technical, economic, and regulatory dimensions.</li>
+            <ul class="mt-3 text-sm text-slate-200 space-y-2">
+              <li>Built <strong>pricing & rate-structure models</strong> benchmarking industrial tariffs across peer utilities; identified optimization levers with <strong>$200M+ potential market impact</strong> for hyperscale data centers.</li>
+              <li>Led <strong>data-center market entry analysis</strong>—developed site-selection criteria, modeled load profiles, and designed <strong>GTM playbooks</strong> aligning sales, finance, and regulatory stakeholders.</li>
+              <li>Produced <strong>executive dashboards</strong> (Excel / Power BI) tracking KPIs for capital allocation, pipeline health, and ROI; automated refreshes to cut manual reporting by 10+ hours/month.</li>
+              <li>Assessed <strong>hydrogen blending feasibility</strong> across engineering, economics, and policy; synthesized risks, retrofit costs, and materials constraints into board-ready recommendations.</li>
+              <li>Partnered with finance, engineering, and corporate development to translate insights into <strong>pricing scenarios</strong>, rate case narratives, and customer proposals.</li>
             </ul>
-          </article>
-          <article class="rounded-2xl border border-white/10 bg-white/5 p-6 will-reveal">
-            <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <h4 class="font-semibold">Marketing & Research Analyst (Fellowship) · DMI Companies</h4>
-              <span class="text-sm text-slate-300">Sep 2024 – Nov 2024 · Pittsburgh, PA</span>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="badge">Pricing</span><span class="badge">Market Sizing</span><span class="badge">Power BI</span><span class="badge">Excel Modeling</span><span class="badge">GTM</span><span class="badge">Hydrogen</span>
             </div>
-            <p class="mt-2 text-sm text-slate-300">Validated configurator demand via VOC; streamlined reporting with SQL + dashboards.</p>
           </article>
-          <article class="rounded-2xl border border-white/10 bg-white/5 p-6 will-reveal">
+
+          <!-- DMI Companies -->
+          <article class="rounded-2xl bg-white/5 border border-white/10 p-6 shadow-soft">
             <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <h4 class="font-semibold">Market Research Analyst Intern · GuardAI</h4>
-              <span class="text-sm text-slate-300">May 2024 – Aug 2024 · Pittsburgh, PA</span>
+              <div>
+                <h4 class="font-semibold text-lg">Marketing & Research Analyst (Fellowship)</h4>
+                <p class="text-sm text-slate-300">DMI Companies · Pittsburgh, PA</p>
+              </div>
+              <span class="text-sm text-slate-300">Sep 2024 – Nov 2024</span>
             </div>
-            <p class="mt-2 text-sm text-slate-300">Segmented B2B cybersecurity markets; supported campaigns driving +18% inbound engagement.</p>
+            <ul class="mt-3 text-sm text-slate-200 space-y-2">
+              <li>Led <strong>voice-of-customer (VOC) research</strong> and competitive analysis to validate a configurator concept for HVAC sealants & adhesives; translated findings into <strong>product requirements</strong> and roadmap.</li>
+              <li>Designed <strong>segmentation & persona frameworks</strong> that informed messaging, pricing, and channel priorities; contributed to +15% qualified inquiries.</li>
+              <li>Built <strong>SQL + dashboard</strong> reporting to unify CRM and campaign data; reduced manual effort across marketing & sales by 10+ hrs/month.</li>
+              <li>Drove <strong>UX improvements</strong> for key pages; instrumented analytics for funnel visibility and A/B testing.</li>
+            </ul>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="badge">VOC</span><span class="badge">Segmentation</span><span class="badge">SQL</span><span class="badge">Dashboards</span><span class="badge">Product Research</span>
+            </div>
           </article>
-          <article class="rounded-2xl border border-white/10 bg-white/5 p-6 will-reveal">
+
+          <!-- GuardAI -->
+          <article class="rounded-2xl bg-white/5 border border-white/10 p-6 shadow-soft">
             <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <h4 class="font-semibold">Marketing & Operations Analyst · Jai Udit Suitings</h4>
-              <span class="text-sm text-slate-300">Aug 2020 – Jul 2023 · Rajasthan, India</span>
+              <div>
+                <h4 class="font-semibold text-lg">Market Research Analyst Intern</h4>
+                <p class="text-sm text-slate-300">GuardAI · Pittsburgh, PA</p>
+              </div>
+              <span class="text-sm text-slate-300">May 2024 – Aug 2024</span>
             </div>
-            <p class="mt-2 text-sm text-slate-300">Built dashboards and full‑funnel experiments; +35% interactions and $150K+ incremental sales.</p>
+            <ul class="mt-3 text-sm text-slate-200 space-y-2">
+              <li>Performed <strong>B2B segmentation</strong> and TAM/SAM/SOM sizing for cybersecurity verticals; prioritized high-value niches for outreach.</li>
+              <li>Supported <strong>content & LinkedIn campaigns</strong> with briefs grounded in customer pain points; contributed to +18% inbound engagement.</li>
+              <li>Mapped <strong>buyer journeys</strong> and recommended conversion-focused landing page updates using analytics & heatmap insights.</li>
+            </ul>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="badge">Market Sizing</span><span class="badge">ICP/PBM</span><span class="badge">Content Strategy</span><span class="badge">Analytics</span>
+            </div>
+          </article>
+
+          <!-- Jai Udit Suitings -->
+          <article class="rounded-2xl bg-white/5 border border-white/10 p-6 shadow-soft">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <div>
+                <h4 class="font-semibold text-lg">Marketing & Operations Analyst</h4>
+                <p class="text-sm text-slate-300">Jai Udit Suitings · Rajasthan, India</p>
+              </div>
+              <span class="text-sm text-slate-300">Aug 2020 – Jul 2023</span>
+            </div>
+            <ul class="mt-3 text-sm text-slate-200 space-y-2">
+              <li>Ran full-funnel <strong>paid + organic</strong> campaigns; drove <strong>$150K+ incremental revenue</strong> and +35% online interactions.</li>
+              <li>Built <strong>pricing & merchandising dashboards</strong> (Excel/Tableau) to optimize inventory turns and margin.</li>
+              <li>Executed <strong>regional market research</strong> to identify expansion opportunities; informed assortment and channel mix decisions.</li>
+              <li>Collaborated with finance/ops on <strong>demand forecasting</strong> and vendor negotiations to reduce stock-outs.</li>
+            </ul>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="badge">Performance Marketing</span><span class="badge">Tableau</span><span class="badge">Pricing</span><span class="badge">Forecasting</span>
+            </div>
           </article>
         </div>
       </div>
@@ -266,25 +268,51 @@
     <section id="research" class="bg-night-800">
       <div class="mx-auto container-tight px-4 py-16">
         <h3 class="heading-underline text-3xl font-display font-extrabold">Research Projects</h3>
-        <p class="mt-4 text-slate-300">Add your projects below; duplicate the cards as needed.</p>
+
         <div class="mt-8 grid md:grid-cols-2 gap-5">
-          <article class="rounded-2xl border border-white/10 bg-white/5 p-6 will-reveal">
-            <h4 class="font-semibold">Hydrogen Blending Feasibility & Rate Strategy</h4>
-            <p class="mt-2 text-sm text-slate-300">Cross‑disciplinary analysis of materials, safety, economics, and regulatory pathways to enable low‑carbon gas distribution.</p>
-            <ul class="mt-3 text-xs text-slate-400 flex flex-wrap gap-2">
-              <li class="px-2 py-1 rounded bg-white/10">Benchmarking</li>
-              <li class="px-2 py-1 rounded bg-white/10">Modeling</li>
-              <li class="px-2 py-1 rounded bg-white/10">Executive deck</li>
-            </ul>
+          <!-- Project 1 -->
+          <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
+            <h4 class="font-semibold">Peoples Natural Gas – Hydrogen Blending & Data Centers</h4>
+            <p class="mt-2 text-sm text-slate-300">
+              Assessed hydrogen blending feasibility (materials, safety, cost) and built comparative tariff models for 
+              hyperscale data-center loads. Delivered an executive playbook covering pricing strategies, regulatory pathways,
+              and partnership models for utility-enterprise growth.
+            </p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="badge">Hydrogen</span><span class="badge">Pricing</span><span class="badge">Benchmarking</span><span class="badge">GTM</span>
+            </div>
+            <a class="inline-block mt-4 text-accent-300 hover:text-accent-400 text-sm font-semibold"
+               href="assets/Peoples-Natural-Gas-Hydrogen-Data-Centers.pdf">View document →</a>
           </article>
-          <article class="rounded-2xl border border-white/10 bg-white/5 p-6 will-reveal">
-            <h4 class="font-semibold">Data‑Center Market Entry for Pittsburgh</h4>
-            <p class="mt-2 text-sm text-slate-300">Comparative tariff modeling and site‑selection criteria; playbook for utility‑led partnerships and pricing.</p>
-            <ul class="mt-3 text-xs text-slate-400 flex flex-wrap gap-2">
-              <li class="px-2 py-1 rounded bg-white/10">Pricing</li>
-              <li class="px-2 py-1 rounded bg-white/10">Site criteria</li>
-              <li class="px-2 py-1 rounded bg-white/10">GTM</li>
-            </ul>
+
+          <!-- Project 2 -->
+          <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
+            <h4 class="font-semibold">Market Research & Strategy – DMI Companies</h4>
+            <p class="mt-2 text-sm text-slate-300">
+              Led VOC interviews, competitive tear-downs, and jobs-to-be-done mapping for an HVAC product line. 
+              Validated configurator demand, prioritized features, and defined ICPs/personas. Translated findings into 
+              positioning, messaging, and a channel strategy with dashboards for KPI tracking.
+            </p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="badge">VOC</span><span class="badge">Segmentation</span><span class="badge">JTBD</span><span class="badge">Dashboards</span>
+            </div>
+            <a class="inline-block mt-4 text-accent-300 hover:text-accent-400 text-sm font-semibold"
+               href="assets/DMI-Market-Research-Strategy.pdf">View document →</a>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft md:col-span-2">
+            <h4 class="font-semibold">Applied Simulation – Pizza Romano</h4>
+            <p class="mt-2 text-sm text-slate-300">
+              Built a SIMIO-based discrete-event simulation to optimize staffing, oven capacity, and order batching for 
+              a fast-casual restaurant concept. Ran sensitivity analyses and scenario testing to reduce wait times while 
+              improving throughput and labor utilization.
+            </p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="badge">Simulation</span><span class="badge">Optimization</span><span class="badge">Operations Research</span>
+            </div>
+            <a class="inline-block mt-4 text-accent-300 hover:text-accent-400 text-sm font-semibold"
+               href="assets/Applied-Simulation-Pizza-Romano.pdf">View document →</a>
           </article>
         </div>
       </div>
@@ -294,14 +322,30 @@
     <section id="education" class="bg-night-900">
       <div class="mx-auto container-tight px-4 py-16">
         <h3 class="heading-underline text-3xl font-display font-extrabold">Education</h3>
+
         <div class="mt-8 grid gap-5">
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-6 will-reveal">
-            <h4 class="font-semibold">University of Pittsburgh – Katz Graduate School of Business</h4>
-            <p class="text-sm text-slate-300 mt-1">MS, Marketing & Business Analytics · 2025 · GPA 3.78/4.0</p>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <h4 class="font-semibold">University of Pittsburgh – Joseph M. Katz Graduate School of Business</h4>
+                <p class="text-sm text-slate-300">MS, Marketing & Business Analytics · 2025</p>
+              </div>
+              <div class="text-right">
+                <span class="badge">GPA 3.78 / 4.00</span>
+              </div>
+            </div>
           </div>
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-6 will-reveal">
-            <h4 class="font-semibold">Christ University (Deemed)</h4>
-            <p class="text-sm text-slate-300 mt-1">BBA, Business Analytics · 2020</p>
+
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <h4 class="font-semibold">Christ University (Deemed)</h4>
+                <p class="text-sm text-slate-300">BBA, Business Analytics · 2020</p>
+              </div>
+              <div class="text-right">
+                <span class="badge">GPA 3.45 / 4.00</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -312,33 +356,33 @@
       <div class="mx-auto container-tight px-4 py-16">
         <h3 class="heading-underline text-3xl font-display font-extrabold">Professional Certificates</h3>
         <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          <!-- Update hrefs to match files in /assets -->
-          <a href="assets/Google-Analytics-Certification.pdf" class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card will-reveal">
+          <!-- Update hrefs to match your files in /assets -->
+          <a href="assets/Google-Analytics-Certification.pdf" class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card">
             <h4 class="font-semibold">Google Analytics Certification</h4>
             <p class="text-sm text-slate-300 mt-1">Google · 2023</p>
           </a>
-          <a href="assets/Facebook-Instagram-Advertising-Workshop.pdf" class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card will-reveal">
+          <a href="assets/Facebook-Instagram-Advertising-Workshop.pdf" class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card">
             <h4 class="font-semibold">Facebook & Instagram Advertising</h4>
             <p class="text-sm text-slate-300 mt-1">Workshop · 2023</p>
           </a>
-          <a href="assets/Generative-AI-for-Digital-Marketers.pdf" class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card will-reveal">
+          <a href="assets/Generative-AI-for-Digital-Marketers.pdf" class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card">
             <h4 class="font-semibold">Generative AI for Digital Marketers</h4>
             <p class="text-sm text-slate-300 mt-1">2025</p>
           </a>
-          <a href="assets/Excel-with-Copilot-AI-Driven-Data-Analysis.pdf" class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card will-reveal">
-            <h4 class="font-semibold">Excel with Copilot: AI‑Driven Data Analysis</h4>
+          <a href="assets/Excel-with-Copilot-AI-Driven-Data-Analysis.pdf" class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card">
+            <h4 class="font-semibold">Excel with Copilot: AI-Driven Data Analysis</h4>
             <p class="text-sm text-slate-300 mt-1">2025</p>
           </a>
-          <a href="assets/AI-for-Google-Analytics.pdf" class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card will-reveal">
+          <a href="assets/AI-for-Google-Analytics.pdf" class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card">
             <h4 class="font-semibold">AI for Google Analytics</h4>
             <p class="text-sm text-slate-300 mt-1">2025</p>
           </a>
-          <a href="assets/Scenario-Analysis-Certificate.pdf" class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card will-reveal">
+          <a href="assets/Scenario-Analysis-Certificate.pdf" class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card">
             <h4 class="font-semibold">Scenario Analysis</h4>
             <p class="text-sm text-slate-300 mt-1">Certificate</p>
           </a>
-          <a href="assets/TL-Saaty-Decision-Making-Hackathon.pdf" class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card will-reveal">
-            <h4 class="font-semibold">TL Saaty Decision‑Making Hackathon</h4>
+          <a href="assets/TL-Saaty-Decision-Making-Hackathon.pdf" class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card">
+            <h4 class="font-semibold">TL Saaty Decision-Making Hackathon</h4>
             <p class="text-sm text-slate-300 mt-1">Participation</p>
           </a>
         </div>
@@ -348,50 +392,30 @@
     <!-- ===================== SKILLS ===================== -->
     <section id="skills" class="bg-night-900">
       <div class="mx-auto container-tight px-4 py-16">
-        <h3 class="heading-underline text-3xl font-display font-extrabold">Skills & Expertise</h3>
+        <h3 class="heading-underline text-3xl font-display font-extrabold">Skills & Tools</h3>
         <div class="mt-8 grid lg:grid-cols-2 gap-6">
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-6 will-reveal">
-            <h4 class="font-semibold">Analytics & Tools</h4>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <h4 class="font-semibold">Analytics & Platforms</h4>
             <ul class="mt-3 grid gap-3 text-sm text-slate-300">
               <li>Excel / Power BI / Tableau</li>
-              <li>SQL (queries, joins, reporting) & Python (pandas, modeling)</li>
+              <li>SQL (joins, aggregation, reporting) & Python (pandas, modeling)</li>
               <li>Forecasting, optimization, Monte Carlo, simulation (SIMIO)</li>
             </ul>
             <div class="mt-4 space-y-3">
-              <div>
-                <div class="flex justify-between text-xs"><span>Excel / Power BI</span><span>Advanced</span></div>
-                <div class="w-full bg-white/10 rounded-full mt-1"><div class="bar w-[92%]"></div></div>
-              </div>
-              <div>
-                <div class="flex justify-between text-xs"><span>SQL</span><span>Advanced</span></div>
-                <div class="w-full bg-white/10 rounded-full mt-1"><div class="bar w-[88%]"></div></div>
-              </div>
-              <div>
-                <div class="flex justify-between text-xs"><span>Python</span><span>Intermediate</span></div>
-                <div class="w-full bg-white/10 rounded-full mt-1"><div class="bar w-[75%]"></div></div>
-              </div>
+              <div><div class="flex justify-between text-xs"><span>Excel / Power BI</span><span>Advanced</span></div><div class="w-full bg-white/10 rounded-full mt-1"><div class="bar w-[92%]"></div></div></div>
+              <div><div class="flex justify-between text-xs"><span>SQL</span><span>Advanced</span></div><div class="w-full bg-white/10 rounded-full mt-1"><div class="bar w-[88%]"></div></div></div>
+              <div><div class="flex justify-between text-xs"><span>Python</span><span>Intermediate</span></div><div class="w-full bg-white/10 rounded-full mt-1"><div class="bar w-[75%]"></div></div></div>
             </div>
           </div>
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-6 will-reveal">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
             <h4 class="font-semibold">Marketing & Strategy</h4>
             <ul class="mt-3 grid gap-3 text-sm text-slate-300">
-              <li>Customer research (VOC), segmentation & personas</li>
-              <li>Pricing, positioning, and go‑to‑market roadmaps</li>
-              <li>A/B testing and funnel analytics (paid + organic)</li>
+              <li>VOC research, ICPs & personas, JTBD</li>
+              <li>Pricing, positioning, and go-to-market strategy</li>
+              <li>A/B testing, funnel analytics, and performance marketing</li>
             </ul>
-            <div class="mt-4 space-y-3">
-              <div>
-                <div class="flex justify-between text-xs"><span>Market Research</span><span>Advanced</span></div>
-                <div class="w-full bg-white/10 rounded-full mt-1"><div class="bar w-[90%]"></div></div>
-              </div>
-              <div>
-                <div class="flex justify-between text-xs"><span>Pricing Strategy</span><span>Advanced</span></div>
-                <div class="w-full bg-white/10 rounded-full mt-1"><div class="bar w-[86%]"></div></div>
-              </div>
-              <div>
-                <div class="flex justify-between text-xs"><span>Digital Marketing</span><span>Advanced</span></div>
-                <div class="w-full bg-white/10 rounded-full mt-1"><div class="bar w-[85%]"></div></div>
-              </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="badge">Customer Insights</span><span class="badge">Competitive Analysis</span><span class="badge">Attribution</span><span class="badge">Storytelling</span>
             </div>
           </div>
         </div>
@@ -403,7 +427,7 @@
       <div class="mx-auto container-tight px-4 py-16">
         <h3 class="heading-underline text-3xl font-display font-extrabold">Contact</h3>
         <div class="mt-8 grid md:grid-cols-2 gap-8 items-start">
-          <form action="https://formspree.io/f/xaylpnrg" method="POST" class="rounded-2xl border border-white/10 bg-white/5 p-6 will-reveal">
+          <form action="https://formspree.io/f/xaylpnrg" method="POST" class="rounded-2xl border border-white/10 bg-white/5 p-6">
             <div class="grid gap-3">
               <input required name="name" placeholder="Your name" class="w-full rounded-xl border border-white/15 bg-transparent px-3 py-2" />
               <input required name="email" type="email" placeholder="Email address" class="w-full rounded-xl border border-white/15 bg-transparent px-3 py-2" />
@@ -411,10 +435,10 @@
               <button class="rounded-full bg-accent-400 hover:bg-accent-500 text-white px-5 py-2.5 text-sm font-semibold">Send</button>
             </div>
           </form>
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-6 will-reveal">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
             <ul class="grid gap-2 text-sm">
               <li><span class="font-medium">Email:</span> <a class="text-accent-300" href="mailto:priyam05somani@gmail.com">priyam05somani@gmail.com</a></li>
-              <li><span class="font-medium">Phone:</span> <a class="text-accent-300" href="tel:+14124302670">+1 (412) 430‑2670</a></li>
+              <li><span class="font-medium">Phone:</span> <a class="text-accent-300" href="tel:+14124302670">+1 (412) 430-2670</a></li>
               <li><span class="font-medium">LinkedIn:</span> <a class="text-accent-300" target="_blank" rel="noopener" href="https://www.linkedin.com/in/priyam-somani/">/in/priyam-somani</a></li>
               <li><span class="font-medium">Location:</span> Cambridge, MA, USA</li>
             </ul>
@@ -429,14 +453,7 @@
       // Mobile menu toggle
       const menuBtn = document.getElementById('menuBtn');
       const mobileMenu = document.getElementById('mobileMenu');
-      menuBtn?.addEventListener('click',()=> mobileMenu.classList.toggle('hidden'))
-
-      // Scroll reveal
-      const revealEls=[...document.querySelectorAll('.will-reveal')];
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target);} })
-      },{threshold:.15});
-      revealEls.forEach(el=>io.observe(el));
+      menuBtn?.addEventListener('click',()=> mobileMenu.classList.toggle('hidden'));
 
       // Year
       document.getElementById('year').textContent = new Date().getFullYear();
