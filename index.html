@@ -54,31 +54,44 @@
       background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='12' r='11' stroke='%23fb7185' stroke-width='2'/><path d='M7 12.5l3.2 3.2L17 9.8' stroke='%23fb7185' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/></svg>");
     }
 
-    /* HERO ORBIT — tuned to avoid overlaps */
+    /* --- HERO ORBIT (icons + tooltips) --- */
     .orbit-wrap{position:relative;width:100%;min-height:420px}
-    @media (min-width: 1024px){ .orbit-wrap{min-height:520px} }
+    @media (min-width:1024px){.orbit-wrap{min-height:520px}}
     .rings{position:absolute;inset:0;opacity:.5}
     .rings div{position:absolute;border-radius:9999px;border:1px solid rgba(255,255,255,.08)}
-    .rings .r1{inset:6%}
-    .rings .r2{inset:16%}
-    .rings .r3{inset:26%}
+    .rings .r1{inset:6%}.rings .r2{inset:16%}.rings .r3{inset:26%}
 
-    .core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:230px;height:230px;border-radius:9999px;display:grid;place-items:center;
-      border:2px solid rgba(244,63,94,.35);background:radial-gradient(ellipse at 50% 40%, rgba(244,63,94,.5), rgba(244,63,94,.08) 65%, transparent 72%);
+    .core{
+      position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+      width:230px;height:230px;border-radius:9999px;display:grid;place-items:center;
+      border:2px solid rgba(244,63,94,.35);
+      background:radial-gradient(ellipse at 50% 40%, rgba(244,63,94,.55), rgba(244,63,94,.08) 65%, transparent 72%);
+      box-shadow:0 0 60px 0 rgba(244,63,94,.25) inset;
     }
 
     .rail{position:absolute;left:50%;top:50%;width:0;height:0;transform-origin:0 0}
-    .chip{--angle:0deg;--radius:210px; position:absolute; left:0; top:0;
+
+    .chip{
+      --angle:0deg;--radius:210px;
+      position:absolute;left:0;top:0;
       transform:rotate(var(--angle)) translateX(var(--radius)) rotate(calc(-1*var(--angle)));
-      display:inline-grid; place-items:center; height:56px;width:56px; border-radius:9999px;
-      background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.16); backdrop-filter:blur(6px);
-      font-size:.78rem; text-align:center; color:#e2e8f0;
+      height:56px;width:56px;border-radius:9999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.16);
+      backdrop-filter:blur(6px);
+      display:grid;place-items:center;color:#e2e8f0;
     }
-    .chip small{display:block; font-size:.72rem; margin-top:4px; opacity:.9}
-    @media (max-width: 640px){
-      .chip{--radius:160px;height:48px;width:48px;font-size:.7rem}
-      .core{width:200px;height:200px}
+    @media (max-width:640px){ .chip{--radius:160px;height:50px;width:50px} .core{width:200px;height:200px} }
+
+    /* Accessible tooltips */
+    .chip[data-label]::after{
+      content:attr(data-label);
+      position:absolute;left:50%;top:-10px;transform:translate(-50%,-6px) scale(.92);
+      white-space:nowrap;font-size:.7rem;padding:.28rem .5rem;border-radius:.5rem;
+      background:rgba(14,19,37,.9);border:1px solid rgba(255,255,255,.14);color:#e5e7eb;
+      opacity:0;pointer-events:none;transition:opacity .18s ease, transform .18s ease;
     }
+    .chip:hover::after,.chip:focus-visible::after{opacity:1;transform:translate(-50%,-10px) scale(1)}
   </style>
 </head>
 
@@ -111,15 +124,15 @@
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- HERO (updated) -->
   <section id="home" class="bg-gradient-to-b from-night-900 to-night-800">
     <div class="mx-auto container-tight px-4 py-16 md:py-24 grid lg:grid-cols-2 gap-12 items-center">
       <div class="animate-revealUp">
         <h1 class="font-display text-5xl md:text-6xl font-extrabold leading-tight text-accent-300">Priyam Somani</h1>
         <h2 class="mt-2 text-2xl md:text-3xl font-semibold">Marketing & Business Analytics • Strategy • Market Research</h2>
         <p class="mt-5 text-slate-300 max-w-xl">
-          I turn complex data into clear strategy. I deliver pricing models, growth roadmaps, and executive insights across energy, data centers,
-          manufacturing, and consumer brands—always tied to measurable outcomes.
+          I turn complex data into clear strategy. I deliver pricing models, growth roadmaps, and executive insights across energy,
+          data centers, manufacturing, and consumer brands—always tied to measurable outcomes.
         </p>
         <div class="mt-7 flex flex-wrap gap-3">
           <a href="#about" class="rounded-full bg-accent-400 hover:bg-accent-500 text-white px-5 py-2.5 text-sm font-semibold shadow-soft">About me</a>
@@ -128,39 +141,80 @@
         </div>
       </div>
 
-      <!-- Orbit -->
+      <!-- Orbit with icon chips -->
       <div class="orbit-wrap">
-        <div class="rings">
-          <div class="r1"></div><div class="r2"></div><div class="r3"></div>
-        </div>
+        <div class="rings"><div class="r1"></div><div class="r2"></div><div class="r3"></div></div>
+
+        <!-- Center: astronaut bot -->
         <div class="core animate-pulse">
-          <!-- simple bot -->
-          <svg width="150" height="150" viewBox="0 0 256 256" fill="none">
+          <svg width="150" height="150" viewBox="0 0 256 256" aria-hidden="true">
             <defs>
-              <radialGradient id="g" cx="50%" cy="40%" r="60%">
-                <stop offset="0%" stop-color="#ff6b86" />
-                <stop offset="100%" stop-color="#e11d48" />
-              </radialGradient>
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="6" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
             </defs>
-            <circle cx="128" cy="128" r="74" fill="url(#g)" opacity=".45"/>
-            <rect x="76" y="114" width="104" height="60" rx="14" fill="#ff6b86" opacity=".95"/>
-            <rect x="88" y="92" width="80" height="46" rx="18" fill="#ffe4ea" opacity=".9"/>
-            <circle cx="120" cy="110" r="6" fill="#e11d48"/>
-            <circle cx="152" cy="110" r="6" fill="#e11d48"/>
+            <circle cx="128" cy="128" r="82" fill="#f43f5e" opacity=".18"/>
+            <g filter="url(#glow)" fill="#fff">
+              <path d="M128 60c-22 0-40 15-40 34v11h80v-11c0-19-18-34-40-34z"/>
+              <rect x="72" y="105" width="112" height="70" rx="18"/>
+              <rect x="92" y="88" width="72" height="40" rx="16"/>
+              <circle cx="116" cy="106" r="7" fill="#0e1325"/>
+              <circle cx="140" cy="106" r="7" fill="#0e1325"/>
+              <rect x="116" y="156" width="24" height="10" rx="3" fill="#0e1325"/>
+            </g>
           </svg>
         </div>
 
-        <!-- rail A (clockwise) -->
-        <div class="rail animate-orbit" style="--r:220px">
-          <div class="chip" style="--angle: 0deg;   --radius:220px">AI</div>
-          <div class="chip" style="--angle: 60deg;  --radius:220px">Sust.<small>ity</small></div>
-          <div class="chip" style="--angle: 120deg; --radius:220px">Market<small>Research</small></div>
+        <!-- Rail A (clockwise) -->
+        <div class="rail animate-orbit">
+          <!-- AI -->
+          <button class="chip" data-label="AI" aria-label="AI">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M8 12a4 4 0 018 0M6 12a6 6 0 0012 0" stroke="#e5e7eb" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="9" cy="12" r="1.2" fill="#e5e7eb"/><circle cx="15" cy="12" r="1.2" fill="#e5e7eb"/>
+            </svg>
+          </button>
+
+          <!-- Sustainability -->
+          <button class="chip" style="--angle:60deg" data-label="Sustainability" aria-label="Sustainability">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 13c4-8 10-8 14-6-2 6-6 10-12 11 0-2 1-4 3-5" stroke="#e5e7eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <!-- Market Research -->
+          <button class="chip" style="--angle:120deg" data-label="Market Research" aria-label="Market Research">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="6" stroke="#e5e7eb" stroke-width="2"/>
+              <path d="M14.5 14.5L20 20" stroke="#e5e7eb" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
         </div>
-        <!-- rail B (counter) -->
-        <div class="rail animate-orbitReverse" style="--r:220px">
-          <div class="chip" style="--angle: 180deg; --radius:220px">Business<small>Analytics</small></div>
-          <div class="chip" style="--angle: 240deg; --radius:220px">SQL</div>
-          <div class="chip" style="--angle: 300deg; --radius:220px">Tableau</div>
+
+        <!-- Rail B (counter-clockwise) -->
+        <div class="rail animate-orbitReverse">
+          <!-- Business Analytics -->
+          <button class="chip" style="--angle:180deg" data-label="Business Analytics" aria-label="Business Analytics">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 19h16M7 16v-6M12 16V8M17 16v-4" stroke="#e5e7eb" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+
+          <!-- SQL -->
+          <button class="chip" style="--angle:240deg" data-label="SQL" aria-label="SQL">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <ellipse cx="12" cy="6" rx="7" ry="3" stroke="#e5e7eb" stroke-width="2"/>
+              <path d="M5 6v8c0 1.66 3.13 3 7 3s7-1.34 7-3V6" stroke="#e5e7eb" stroke-width="2"/>
+            </svg>
+          </button>
+
+          <!-- Tableau -->
+          <button class="chip" style="--angle:300deg" data-label="Tableau" aria-label="Tableau">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3v6M12 15v6M3 12h6M15 12h6M7.5 7.5v3M16.5 13.5v3M7.5 13.5v3M16.5 7.5v3" stroke="#e5e7eb" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
         </div>
       </div>
     </div>
