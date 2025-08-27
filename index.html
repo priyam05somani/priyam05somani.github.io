@@ -53,6 +53,9 @@
     .tick-list li::before{content:"";position:absolute;left:0;top:.3rem;width:1rem;height:1rem;background-repeat:no-repeat;background-size:100% 100%;
       background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='12' r='11' stroke='%23fb7185' stroke-width='2'/><path d='M7 12.5l3.2 3.2L17 9.8' stroke='%23fb7185' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/></svg>");
     }
+    /* tiny action link style */
+    .mini-link{display:inline-flex;align-items:center;gap:.25rem}
+    .mini-link::after{content:"→"}
 
     /* --- HERO ORBIT (icons + tooltips) --- */
     .orbit-wrap{position:relative;width:100%;min-height:420px}
@@ -124,7 +127,7 @@
     </div>
   </header>
 
-  <!-- HERO (updated) -->
+  <!-- HERO -->
   <section id="home" class="bg-gradient-to-b from-night-900 to-night-800">
     <div class="mx-auto container-tight px-4 py-16 md:py-24 grid lg:grid-cols-2 gap-12 items-center">
       <div class="animate-revealUp">
@@ -226,7 +229,7 @@
       <h3 class="heading-underline text-3xl font-display font-extrabold">About Me</h3>
 
       <div class="mt-8 grid lg:grid-cols-3 gap-10 items-start">
-        <!-- Profile image like reference -->
+        <!-- Profile image -->
         <div class="order-1 lg:order-none">
           <div class="relative w-64 h-64 rounded-full p-2 bg-gradient-to-b from-accent-400/70 to-transparent mx-auto">
             <img src="assets/Profile%20Picture.jpg" alt="Priyam Somani" class="w-full h-full object-cover rounded-full border-4 border-night-900 shadow-card">
@@ -244,7 +247,7 @@
 
           <div class="mt-6 grid grid-cols-3 gap-4">
             <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-center">
-              <div class="text-2xl font-bold text-accent-300">3.5+</div><div class="text-xs text-slate-300">Years experience</div>
+              <div class="text-2xl font-bold text-accent-300">4+</div><div class="text-xs text-slate-300">Years experience</div>
             </div>
             <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-center">
               <div class="text-2xl font-bold text-accent-300">$200M+</div><div class="text-xs text-slate-300">Business impact modeled</div>
@@ -257,7 +260,7 @@
           <div class="mt-7">
             <h4 class="font-semibold mb-3">Core strengths</h4>
             <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm">Pricing & Tariff Modeling</span>
+              <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm">Pricing & Benefit Modeling</span>
               <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm">VOC / Segmentation / ICPs</span>
               <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm">GTM & Positioning</span>
               <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm">Dashboards (Power BI / Excel / Tableau)</span>
@@ -362,7 +365,7 @@
               <li>Owned full-funnel performance marketing (Meta/Google) and CRM nurturing; delivered <strong>$150K+ incremental revenue</strong> and <strong>+35% engagements</strong>.</li>
               <li>Built pricing, merchandising & cohort dashboards (Excel/Tableau) to optimize inventory turns, margin, and repeat rate.</li>
               <li>Ran regional market research to size demand and assess competitive gaps; informed assortment and channel mix.</li>
-              <li>Partnered with finance & ops on demand forecasting, vendor negotiations, and logistics optimization to reduce stock-outs.</li>
+              <li>Partnered with finance & ops on demand forecasting, vendor/carrier negotiations, and logistics optimization to reduce stock-outs.</li>
             </ul>
           </div>
         </article>
@@ -382,8 +385,8 @@
             Assessed hydrogen blending feasibility and industrial tariff structures; built scenarios for hyperscale data-center loads and produced
             executive recommendations that shaped GTM and partnership options.
           </p>
-          <a class="inline-block mt-4 text-accent-300 hover:text-accent-400 text-sm font-semibold"
-             href="assets/Peoples%20Natural%20Gas%20-%20Hydrogen%20Bledning%20%26%20Data%20Centers.pptx">Open deck →</a>
+          <a class="mini-link mt-4 text-accent-300 hover:text-accent-400 text-sm font-semibold"
+             href="assets/Peoples%20Natural%20Gas%20-%20Hydrogen%20Bledning%20%26%20Data%20Centers.pptx">Open deck </a>
         </article>
 
         <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
@@ -392,8 +395,8 @@
             Validated a product configurator through customer interviews and competitive insights; defined ICPs, messaging, and reporting that
             improved decision-making and accelerated roadmap alignment.
           </p>
-          <a class="inline-block mt-4 text-accent-300 hover:text-accent-400 text-sm font-semibold"
-             href="assets/Market%20Research%20and%20Strategy%20for%20DMI.pptx">Open deck →</a>
+          <a class="mini-link mt-4 text-accent-300 hover:text-accent-400 text-sm font-semibold"
+             href="assets/Market%20Research%20and%20Strategy%20for%20DMI.pptx">Open deck </a>
         </article>
 
         <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft md:col-span-2">
@@ -402,8 +405,8 @@
             Built a SIMIO discrete-event model for staffing, oven capacity, and batching; recommended changes that reduced wait times and
             improved throughput while maintaining service quality.
           </p>
-          <a class="inline-block mt-4 text-accent-300 hover:text-accent-400 text-sm font-semibold"
-             href="assets/Applied%20Simulation%20-%20Pizza%20Romano.pdf">Download PDF →</a>
+          <a class="mini-link mt-4 text-accent-300 hover:text-accent-400 text-sm font-semibold"
+             href="assets/Applied%20Simulation%20-%20Pizza%20Romano.pdf">Download PDF </a>
         </article>
       </div>
     </div>
@@ -427,7 +430,7 @@
             <li>Focus: market research, analytics strategy, pricing, and sustainability.</li>
             <li>Member, <strong>Student Executive Board</strong> — organized events and served as student representative for <strong>2 years</strong>.</li>
           </ul>
-          <a class="inline-block mt-3 text-accent-300 hover:text-accent-400 text-sm font-semibold" href="assets/Transcript-Pitt-Spring-2025.pdf">Transcript →</a>
+          <a class="mini-link inline-block mt-3 text-accent-300 hover:text-accent-400 text-sm font-semibold" href="assets/Transcript-Pitt-Spring-2025.pdf">Transcript </a>
         </div>
 
         <div class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
@@ -474,13 +477,47 @@
     <div class="mx-auto container-tight px-4 py-16">
       <h3 class="heading-underline text-3xl font-display font-extrabold">Professional Certificates</h3>
       <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        <a href="assets/Google-Analytics-Certification.pdf" class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card"><h4 class="font-semibold">Google Analytics Certification</h4><p class="text-sm text-slate-300 mt-1">Google</p></a>
-        <a href="assets/Facebook-Instagram-Advertising-Workshop.pdf" class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card"><h4 class="font-semibold">Facebook & Instagram Advertising</h4><p class="text-sm text-slate-300 mt-1">Workshop</p></a>
-        <a href="assets/Generative-AI-for-Digital-Marketers.pdf" class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card"><h4 class="font-semibold">Generative AI for Digital Marketers</h4><p class="text-sm text-slate-300 mt-1">2025</p></a>
-        <a href="assets/Excel-with-Copilot-AI-Driven-Data-Analysis.pdf" class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card"><h4 class="font-semibold">Excel with Copilot — AI-Driven Data Analysis</h4><p class="text-sm text-slate-300 mt-1">2025</p></a>
-        <a href="assets/AI-for-Google-Analytics.pdf" class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card"><h4 class="font-semibold">AI for Google Analytics</h4><p class="text-sm text-slate-300 mt-1">2025</p></a>
-        <a href="assets/Scenario-Analysis-Certificate.pdf" class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card"><h4 class="font-semibold">Scenario Analysis</h4><p class="text-sm text-slate-300 mt-1">Certificate</p></a>
-        <a href="assets/TL-Saaty-Decision-Making-Hackathon.pdf" class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card"><h4 class="font-semibold">TL Saaty Decision-Making Hackathon</h4><p class="text-sm text-slate-300 mt-1">Participation</p></a>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card">
+          <h4 class="font-semibold">Google Analytics Certification</h4>
+          <p class="text-sm text-slate-300 mt-1">Google</p>
+          <a href="assets/Google-Analytics-Certification.pdf" class="mini-link mt-3 text-accent-300 hover:text-accent-400 text-sm font-semibold">View certificate </a>
+        </div>
+
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card">
+          <h4 class="font-semibold">Facebook & Instagram Advertising</h4>
+          <p class="text-sm text-slate-300 mt-1">Workshop</p>
+          <a href="assets/Facebook-Instagram-Advertising-Workshop.pdf" class="mini-link mt-3 text-accent-300 hover:text-accent-400 text-sm font-semibold">View certificate </a>
+        </div>
+
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card">
+          <h4 class="font-semibold">Generative AI for Digital Marketers</h4>
+          <p class="text-sm text-slate-300 mt-1">2025</p>
+          <a href="assets/Generative-AI-for-Digital-Marketers.pdf" class="mini-link mt-3 text-accent-300 hover:text-accent-400 text-sm font-semibold">View certificate </a>
+        </div>
+
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card">
+          <h4 class="font-semibold">Excel with Copilot — AI-Driven Data Analysis</h4>
+          <p class="text-sm text-slate-300 mt-1">2025</p>
+          <a href="assets/Excel-with-Copilot-AI-Driven-Data-Analysis.pdf" class="mini-link mt-3 text-accent-300 hover:text-accent-400 text-sm font-semibold">View certificate </a>
+        </div>
+
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card">
+          <h4 class="font-semibold">AI for Google Analytics</h4>
+          <p class="text-sm text-slate-300 mt-1">2025</p>
+          <a href="assets/AI-for-Google-Analytics.pdf" class="mini-link mt-3 text-accent-300 hover:text-accent-400 text-sm font-semibold">View certificate </a>
+        </div>
+
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card">
+          <h4 class="font-semibold">Scenario Analysis</h4>
+          <p class="text-sm text-slate-300 mt-1">Certificate</p>
+          <a href="assets/Scenario-Analysis-Certificate.pdf" class="mini-link mt-3 text-accent-300 hover:text-accent-400 text-sm font-semibold">View certificate </a>
+        </div>
+
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card">
+          <h4 class="font-semibold">TL Saaty Decision-Making Hackathon</h4>
+          <p class="text-sm text-slate-300 mt-1">Participation</p>
+          <a href="assets/TL-Saaty-Decision-Making-Hackathon.pdf" class="mini-link mt-3 text-accent-300 hover:text-accent-400 text-sm font-semibold">View certificate </a>
+        </div>
       </div>
     </div>
   </section>
@@ -506,9 +543,9 @@
         <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
           <h4 class="font-semibold">Marketing & Strategy</h4>
           <ul class="mt-3 grid gap-3 text-sm text-slate-300">
-            <li>VOC research, ICPs & personas, JTBD</li>
+            <li>VOC research, Digital Marketing, SEO/SEM, Communication</li>
             <li>Pricing, positioning, and go-to-market strategy</li>
-            <li>A/B testing, funnel analytics, and performance marketing</li>
+            <li>A/B testing, Funnel analytics, and Performance marketing</li>
           </ul>
           <div class="mt-4 space-y-3">
             <div><div class="flex justify-between text-xs"><span>Market Research</span><span>Advanced</span></div><div class="w-full bg-white/10 rounded-full mt-1"><div class="h-2 rounded-full bg-gradient-to-r from-accent-300 to-accent-500 w-[90%]"></div></div></div>
