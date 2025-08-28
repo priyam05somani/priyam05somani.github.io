@@ -661,7 +661,7 @@
     "sameAs": ["https://www.linkedin.com/in/priyam-somani/","https://github.com/priyam05somani"]
   }
   </script>
-  <!-- ===== PRIYAM CHATBOT v2 (paste before </body>) ===== -->
+  <!-- ===== PRIYAM CHATBOT v2.1 (paste before </body>) ===== -->
 <div id="ps-chatbot" class="fixed bottom-5 right-5 z-[60] select-none">
   <!-- Launcher -->
   <button id="ps-launcher" aria-label="Open chat"
@@ -690,7 +690,7 @@
       <button id="ps-close" class="rounded-lg border border-white/10 px-2 py-1 text-xs hover:border-accent-400" aria-label="Close chat">Esc</button>
     </div>
 
-    <!-- Quick actions -->
+    <!-- Quick actions bar -->
     <div class="px-3 py-2 border-b border-white/10 bg-white/5">
       <div class="flex flex-wrap gap-2">
         <button class="ps-chip" data-suggest="resume">Resume</button>
@@ -705,12 +705,12 @@
     <!-- Messages -->
     <div id="ps-msgs" class="flex-1 overflow-y-auto px-3 py-3 space-y-3 text-[14px]" role="log" aria-live="polite"></div>
 
-    <!-- Composer -->
-    <div class="border-t border-white/10 p-3 bg-white/5">
-      <form id="ps-form" class="flex items-end gap-2">
-        <textarea id="ps-input" rows="1" placeholder="Type a message… (Enter to send, Shift+Enter for new line)"
-          class="flex-1 resize-none rounded-xl bg-transparent border border-white/15 px-3 py-2 focus:outline-none focus:border-accent-400"></textarea>
-        <button class="rounded-xl bg-accent-400 hover:bg-accent-500 text-white px-3 py-2 text-sm">Send</button>
+    <!-- Composer (re-styled & aligned) -->
+    <div class="border-t border-white/10 bg-white/5 px-3 py-3">
+      <form id="ps-form" class="ps-composer">
+        <textarea id="ps-input" rows="1" placeholder="Type a message…  (Enter to send • Shift+Enter = new line)"
+          class="ps-input"></textarea>
+        <button class="ps-send" aria-label="Send">Send</button>
       </form>
       <div class="mt-2 text-[12px] text-slate-400">Try: <span class="opacity-90">“open experience”</span> • <span class="opacity-90">“view resume”</span> • <span class="opacity-90">“show certificates”</span></div>
     </div>
@@ -718,25 +718,55 @@
 </div>
 
 <style>
-  /* Small UI helpers */
+  /* Chips, bubbles, alignment */
   .ps-chip{font-size:12px;padding:.28rem .55rem;border-radius:9999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
   .ps-bot{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
   .ps-user{background:rgba(251,113,133,.12);border:1px solid rgba(251,113,133,.35)}
   .ps-link{color:#fb7185;font-weight:600}
   .ps-msg{max-width:78%}
-  .ps-typing .dot{width:6px;height:6px;border-radius:9999px;background:#e5e7eb;display:inline-block;margin:0 2px;opacity:.7;animation:ps-bounce 1.2s infinite}
+  .ps-typing .dot{width:6px;height:6px;border-radius:9999px;background:#e5e7eb;display:inline-block;margin:0 2px;opacity:.75;animation:ps-bounce 1.2s infinite}
   .ps-typing .dot:nth-child(2){animation-delay:.15s}
   .ps-typing .dot:nth-child(3){animation-delay:.3s}
   @keyframes ps-bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-4px)}}
-  /* highlight target section on jump */
+
+  /* Composer: neat, aligned, responsive */
+  .ps-composer{
+    display:grid;
+    grid-template-columns: 1fr auto;
+    gap:.5rem;
+    align-items:end;
+  }
+  .ps-input{
+    width:100%;
+    max-height:110px;
+    resize:none;
+    border-radius:14px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.15);
+    padding:.6rem .8rem;
+    color:#e5e7eb;
+    line-height:1.35;
+    outline:none;
+  }
+  .ps-input:focus{border-color:#fb7185; box-shadow:0 0 0 2px rgba(244,63,94,.25)}
+  .ps-send{
+    border:none;
+    border-radius:12px;
+    background:#f43f5e;
+    color:white;
+    padding:.55rem .9rem;
+    font-size:14px;
+    font-weight:600;
+    height:38px;
+  }
+  .ps-send:hover{background:#e11d48}
+  /* highlight section when jumping */
   .ps-ring{box-shadow:0 0 0 3px rgba(244,63,94,.45) inset, 0 0 0 3px rgba(244,63,94,.35); transition:box-shadow .8s ease}
 </style>
 
 <script>
 (() => {
   const $ = (s, r=document)=>r.querySelector(s);
-  const $$ = (s, r=document)=>Array.from(r.querySelectorAll(s));
-
   const panel = $('#ps-panel');
   const launcher = $('#ps-launcher');
   const closeBtn = $('#ps-close');
@@ -745,38 +775,46 @@
   const input = $('#ps-input');
   const header = $('#ps-header');
 
-  /* ---------- Knowledge Base (static) ---------- */
+  /* ---------- Knowledge Base ---------- */
   const KB = {
-    about:
-      `I focus on Market Research, Business/Marketing Analytics, Pricing & GTM. <strong>4+ years</strong> experience with <strong>$200M+</strong> modeled impact. See <a class="ps-link" href="#about">About</a>.`,
-    resume:
-      `Here’s my latest resume: <a class="ps-link" target="_blank" href="assets/Priyam%20-%20Resume.pdf">Open Resume (PDF)</a>`,
-    experience:
-      `Recent roles:<br>
+    greet: () => `Hi! I’m Priyam’s assistant 👋<br/>
+      Ask about my roles, experience, projects, education, or open the resume.<div class="mt-2 flex flex-wrap gap-2">
+        <button class="ps-chip" data-suggest="resume">Resume</button>
+        <button class="ps-chip" data-suggest="experience">Experience</button>
+        <button class="ps-chip" data-suggest="projects">Projects</button>
+        <button class="ps-chip" data-suggest="certificates">Certificates</button>
+        <button class="ps-chip" data-suggest="contact">Contact</button>
+      </div>`,
+    info: () => `I can help with: <em>resume</em>, <em>experience</em>, <em>projects</em>, <em>education</em>, <em>certificates</em>, <em>skills</em>, <em>contact</em>.<br/>
+      Quick links: <a class="ps-link" target="_blank" href="assets/Priyam%20-%20Resume.pdf">Resume</a> •
+      <a class="ps-link" target="_blank" href="assets/Portfolio-Slides.pdf">Portfolio</a> •
+      <a class="ps-link" href="#experience">Experience</a> •
+      <a class="ps-link" href="#research">Projects</a> •
+      <a class="ps-link" href="#education">Education</a> •
+      <a class="ps-link" href="#certs">Certificates</a> •
+      <a class="ps-link" href="#skills">Skills</a> •
+      <a class="ps-link" href="#contact">Contact</a>`,
+    resume:`Here’s my latest resume: <a class="ps-link" target="_blank" href="assets/Priyam%20-%20Resume.pdf">Open Resume (PDF)</a>`,
+    experience:`Recent roles:<br>
       • Peoples Natural Gas — Sustainability & Strategy (pricing models, data-center entry, hydrogen blending).<br>
       • DMI Companies — Marketing & Research (VOC, segmentation, dashboards).<br>
       • GuardAI (consulting) — Market mapping, ICPs, competitor snapshots.<br>
       • Jai Udit Suitings — Performance marketing & ops analytics.<br>
       Explore: <a class="ps-link" href="#experience">Experience section</a>.`,
-    projects:
-      `Project artifacts:<br>
-      • Peoples Natural Gas — Hydrogen Blending & Data Centers: <a class="ps-link" target="_blank" href="assets/Peoples%20Natural%20Gas%20-%20Hydrogen%20Bledning%20%26%20Data%20Centers.pptx">deck</a><br>
-      • DMI — Market Research & Strategy: <a class="ps-link" target="_blank" href="assets/Market%20Research%20and%20Strategy%20for%20DMI.pptx">deck</a><br>
-      • Applied Simulation — Pizza Romano: <a class="ps-link" target="_blank" href="assets/Applied%20Simulation%20-%20Pizza%20Romano.pdf">PDF</a><br>
+    projects:`Project artifacts:<br>
+      • Peoples — <a class="ps-link" target="_blank" href="assets/Peoples%20Natural%20Gas%20-%20Hydrogen%20Bledning%20%26%20Data%20Centers.pptx">Hydrogen Blending & Data Centers</a><br>
+      • DMI — <a class="ps-link" target="_blank" href="assets/Market%20Research%20and%20Strategy%20for%20DMI.pptx">Market Research & Strategy</a><br>
+      • Pizza Romano — <a class="ps-link" target="_blank" href="assets/Applied%20Simulation%20-%20Pizza%20Romano.pdf">Simulation PDF</a><br>
       See <a class="ps-link" href="#research">Research</a>.`,
-    education:
-      `Education:<br>
+    education:`Education:<br>
       • University of Pittsburgh — MS Marketing & Business Analytics (GPA 3.78/4.00). <a class="ps-link" target="_blank" href="assets/Transcript-Pitt-Spring-2025.pdf">Transcript</a><br>
       • Christ University — BBA Business Analytics (GPA 3.45/4.00).`,
-    volunteering:
-      `Giving Joy — Market Research Volunteer (June 2025 – Present). Mapping women-owned businesses in NY, MA & Philadelphia; focusing on apparel/fashion, beauty & wellness, women’s health products, and ethical consumer goods. See <a class="ps-link" href="#volunteering">Volunteering</a>.`,
-    skills:
-      `Skills & Tools:<br>
+    volunteering:`Giving Joy — Market Research Volunteer (June 2025 – Present). Mapping women-owned businesses in NY, MA & Philadelphia across apparel/fashion, beauty & wellness, women’s health, and ethical consumer goods. See <a class="ps-link" href="#volunteering">Volunteering</a>.`,
+    skills:`Skills & Tools:<br>
       • Analytics: Excel/Power BI/Tableau, SQL, Python, forecasting & optimization.<br>
       • Marketing/Strategy: VOC, pricing, GTM, A/B testing, performance marketing.<br>
       Explore: <a class="ps-link" href="#skills">Skills</a>.`,
-    certificates:
-      `Certificates:<br>
+    certificates:`Certificates:<br>
       • <a class="ps-link" target="_blank" href="assets/Google-Analytics-Certification.pdf">Google Analytics</a> •
       <a class="ps-link" target="_blank" href="assets/Facebook-Instagram-Advertising-Workshop.pdf">Meta Ads</a> •
       <a class="ps-link" target="_blank" href="assets/Generative-AI-for-Digital-Marketers.pdf">GenAI for Marketers</a> •
@@ -784,25 +822,22 @@
       <a class="ps-link" target="_blank" href="assets/AI-for-Google-Analytics.pdf">AI for GA</a> •
       <a class="ps-link" target="_blank" href="assets/Scenario-Analysis-Certificate.pdf">Scenario Analysis</a> •
       <a class="ps-link" target="_blank" href="assets/TL-Saaty-Decision-Making-Hackathon.pdf">TL Saaty</a>`,
-    contact:
-      `Reach me at <a class="ps-link" href="mailto:priyam05somani@gmail.com">priyam05somani@gmail.com</a>, call <a class="ps-link" href="tel:+14124302670">+1 (412) 430-2670</a>, or connect on <a class="ps-link" target="_blank" href="https://www.linkedin.com/in/priyam-somani/">LinkedIn</a>.`,
-    links:
-      `Quick links: <a class="ps-link" target="_blank" href="assets/Priyam%20-%20Resume.pdf">Resume</a> • <a class="ps-link" target="_blank" href="assets/Portfolio-Slides.pdf">Portfolio</a> • <a class="ps-link" href="#experience">Experience</a> • <a class="ps-link" href="#research">Projects</a> • <a class="ps-link" href="#education">Education</a> • <a class="ps-link" href="#certs">Certificates</a> • <a class="ps-link" href="#skills">Skills</a> • <a class="ps-link" href="#contact">Contact</a>`
+    contact:`Reach me at <a class="ps-link" href="mailto:priyam05somani@gmail.com">priyam05somani@gmail.com</a>, call <a class="ps-link" href="tel:+14124302670">+1 (412) 430-2670</a>, or connect on <a class="ps-link" target="_blank" href="https://www.linkedin.com/in/priyam-somani/">LinkedIn</a>.`
   };
 
   /* ---------- Utilities ---------- */
-  const LS_KEY = 'ps_chat_history_v2';
-
-  function saveHistory(){
-    localStorage.setItem(LS_KEY, msgs.innerHTML);
-  }
-  function loadHistory(){
+  const LS_KEY = 'ps_chat_history_v2_1';
+  const save = () => localStorage.setItem(LS_KEY, msgs.innerHTML);
+  const load = () => {
     const html = localStorage.getItem(LS_KEY);
     if (html) msgs.innerHTML = html;
-    else greeting();
-    // always scroll to bottom
+    else {
+      // Greet first, then info (after a breath)
+      addMsg({who:'bot', html: KB.greet()});
+      setTimeout(()=> addMsg({who:'bot', html: KB.info()}), 600);
+    }
     msgs.scrollTop = msgs.scrollHeight;
-  }
+  };
 
   function addMsg({who='bot', html=''}) {
     const row = document.createElement('div');
@@ -816,14 +851,14 @@
       </div>`;
     msgs.appendChild(row);
     msgs.scrollTop = msgs.scrollHeight;
-    saveHistory();
+    save();
   }
 
-  let typingRow = null;
-  function showTyping(){
+  let typingRow=null;
+  const showTyping=()=> {
     if (typingRow) return;
     typingRow = document.createElement('div');
-    typingRow.className = 'w-full flex justify-start';
+    typingRow.className='w-full flex justify-start';
     typingRow.innerHTML = `
       <div class="flex items-start gap-2 ps-msg">
         <div class="shrink-0 w-7 h-7 rounded-full grid place-items-center bg-accent-400/90 text-night-900 font-bold">PS</div>
@@ -833,98 +868,38 @@
       </div>`;
     msgs.appendChild(typingRow);
     msgs.scrollTop = msgs.scrollHeight;
-  }
-  function hideTyping(){
-    typingRow?.remove();
-    typingRow = null;
-  }
+  };
+  const hideTyping=()=>{ typingRow?.remove(); typingRow=null; };
 
   function jumpToSection(id){
     const el = document.getElementById(id);
     if (!el) return;
     el.scrollIntoView({behavior:'smooth', block:'start'});
-    // highlight briefly
     el.classList.add('ps-ring');
     setTimeout(()=> el.classList.remove('ps-ring'), 1200);
   }
 
-  function copy(text){
-    navigator.clipboard?.writeText(text);
-  }
-
   /* ---------- Intent & Actions ---------- */
   function intent(text){
-    const t = (text||'').toLowerCase();
+    const t = (text||'').trim().toLowerCase();
 
-    // normalized commands
-    if (/(^|\b)(resume|cv)(\b|$)|download resume|open resume/.test(t)) {
-      return { html: KB.resume };
-    }
-    if (/^(open|show|go to)\s+experience|experience|work|roles?/.test(t)) {
-      return { html: KB.experience, action: ()=>jumpToSection('experience') };
-    }
-    if (/projects?|research|deck|peoples|dmi|pizza/.test(t)) {
-      return { html: KB.projects, action: ()=>jumpToSection('research') };
-    }
-    if (/education|gpa|katz|christ/.test(t)) {
-      return { html: KB.education, action: ()=>jumpToSection('education') };
-    }
-    if (/volunteer|volunteering|giving joy|leadership/.test(t)) {
-      return { html: KB.volunteering, action: ()=>jumpToSection('volunteering') };
-    }
-    if (/skills?|tools?|tech/.test(t)) {
-      return { html: KB.skills, action: ()=>jumpToSection('skills') };
-    }
-    if (/certificate|certifications?|badges?/.test(t)) {
-      return { html: KB.certificates, action: ()=>jumpToSection('certs') };
-    }
-    if (/contact|email|phone|linkedin/.test(t)) {
-      return { html: KB.contact, action: ()=>jumpToSection('contact') };
-    }
-    if (/about|summary|profile/.test(t)) {
-      return { html: KB.about, action: ()=>jumpToSection('about') };
-    }
-    if (/help|menu|options|links/.test(t)) {
-      return { html: KB.links };
-    }
-    if (/copy email|copy my email/.test(t)) {
-      copy('priyam05somani@gmail.com');
-      return { html: `Copied: <strong>priyam05somani@gmail.com</strong>` };
-    }
-    if (/find\s+(.+)/.test(t)) {
-      // basic page search → jump to most relevant section
-      const q = t.replace('find','').trim();
-      if (q.includes('experience')) return { html: KB.experience, action: ()=>jumpToSection('experience') };
-      if (q.includes('project')||q.includes('research')) return { html: KB.projects, action: ()=>jumpToSection('research') };
-      return { html:`I couldn’t locate that exactly, but here are <a class="ps-link" href="#research">projects</a> and <a class="ps-link" href="#experience">experience</a>.` };
+    // Greet on hi/hello/hey
+    if (/^(hi|hello|hey|yo|hola|namaste|greetings)[.! ]*$/i.test(text)) {
+      return { html: KB.greet() + `<div class="mt-2"></div>` + KB.info() };
     }
 
-    // shortcuts for specific projects
-    if (/peoples|hydrogen|data ?centers?/.test(t)) {
-      return { html:`Peoples Natural Gas — artifact: <a class="ps-link" target="_blank" href="assets/Peoples%20Natural%20Gas%20-%20Hydrogen%20Bledning%20%26%20Data%20Centers.pptx">Open deck</a>`, action: ()=>jumpToSection('research') };
-    }
-    if (/dmi|configurator|hvac/.test(t)) {
-      return { html:`DMI Companies — artifact: <a class="ps-link" target="_blank" href="assets/Market%20Research%20and%20Strategy%20for%20DMI.pptx">Open deck</a>`, action: ()=>jumpToSection('research') };
-    }
-    if (/pizza|simio|simulation/.test(t)) {
-      return { html:`Applied Simulation — Pizza Romano: <a class="ps-link" target="_blank" href="assets/Applied%20Simulation%20-%20Pizza%20Romano.pdf">Download PDF</a>`, action: ()=>jumpToSection('research') };
-    }
+    if (/(^|\b)(resume|cv)(\b|$)|download resume|open resume/.test(t)) return { html: KB.resume };
+    if (/^(open|show|go to)\s+experience|experience|work|roles?/.test(t)) return { html: KB.experience, action:()=>jumpToSection('experience') };
+    if (/projects?|research|deck|peoples|dmi|pizza/.test(t)) return { html: KB.projects, action:()=>jumpToSection('research') };
+    if (/education|gpa|katz|christ/.test(t)) return { html: KB.education, action:()=>jumpToSection('education') };
+    if (/volunteer|volunteering|giving joy|leadership/.test(t)) return { html: KB.volunteering, action:()=>jumpToSection('volunteering') };
+    if (/skills?|tools?|tech/.test(t)) return { html: KB.skills, action:()=>jumpToSection('skills') };
+    if (/certificate|certifications?|badges?/.test(t)) return { html: KB.certificates, action:()=>jumpToSection('certs') };
+    if (/contact|email|phone|linkedin/.test(t)) return { html: KB.contact, action:()=>jumpToSection('contact') };
+    if (/about|summary|profile/.test(t)) return { html: KB.greet() };
 
-    // fallback
-    return { html:`I can help with: <em>resume</em>, <em>experience</em>, <em>projects</em>, <em>education</em>, <em>certificates</em>, <em>skills</em>, <em>contact</em>.<br>${KB.links}` };
-  }
-
-  /* ---------- Greeting ---------- */
-  function greeting(){
-    addMsg({ who:'bot', html:
-      `Hi! I’m Priyam’s assistant. Ask about roles, experience, projects, education, or open the resume.<div class="mt-2 flex flex-wrap gap-2">
-        <button class="ps-chip" data-suggest="resume">Resume</button>
-        <button class="ps-chip" data-suggest="experience">Experience</button>
-        <button class="ps-chip" data-suggest="projects">Projects</button>
-        <button class="ps-chip" data-suggest="certificates">Certificates</button>
-        <button class="ps-chip" data-suggest="contact">Contact</button>
-      </div>`
-    });
+    // Default help
+    return { html: KB.info() };
   }
 
   /* ---------- Events ---------- */
@@ -932,100 +907,74 @@
   launcher.addEventListener('click', () => {
     panel.classList.toggle('hidden');
     if (!panel.classList.contains('hidden')) {
-      $('.relative > span', launcher)?.classList.add('hidden'); // hide badge
+      $('.relative > span', launcher)?.classList.add('hidden');
       setTimeout(()=> input.focus(), 80);
     }
   });
   closeBtn.addEventListener('click', ()=> panel.classList.add('hidden'));
   document.addEventListener('keydown', e => { if (e.key==='Escape') panel.classList.add('hidden') });
 
-  // suggestion chips (both greeting & quick bar)
+  // chips
   document.addEventListener('click', (e)=>{
     const chip = e.target.closest('.ps-chip');
     if (!chip) return;
     const text = chip.getAttribute('data-suggest') || chip.textContent.trim();
     addMsg({who:'user', html: text});
     showTyping();
-    setTimeout(()=>{
-      hideTyping();
-      const {html, action} = intent(text);
-      addMsg({who:'bot', html});
-      action?.();
-    }, 400);
+    setTimeout(()=>{ hideTyping(); const {html, action} = intent(text); addMsg({who:'bot', html}); action?.(); }, 400);
   });
 
-  // send message
+  // send
   form.addEventListener('submit', (e)=>{
     e.preventDefault();
     const text = input.value.trim();
     if (!text) return;
     addMsg({who:'user', html: text});
-    input.value = '';
-    autoResize();
+    input.value=''; autoresize();
     showTyping();
-    setTimeout(()=>{
-      hideTyping();
-      const {html, action} = intent(text);
-      addMsg({who:'bot', html});
-      action?.();
-    }, 450);
+    setTimeout(()=>{ hideTyping(); const {html, action} = intent(text); addMsg({who:'bot', html}); action?.(); }, 450);
   });
 
-  // Enter to send, Shift+Enter for newline
+  // Enter to send, Shift+Enter newline
   input.addEventListener('keydown', (e)=>{
-    if (e.key === 'Enter' && !e.shiftKey){
-      e.preventDefault();
-      form.requestSubmit();
-    }
+    if (e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); form.requestSubmit(); }
   });
 
-  // textarea autoresize
-  function autoResize(){
-    input.style.height = 'auto';
-    const max = 110; // px
-    input.style.height = Math.min(input.scrollHeight, max) + 'px';
+  // autoresize
+  function autoresize(){
+    input.style.height='auto';
+    input.style.height=Math.min(input.scrollHeight, 110)+'px';
   }
-  input.addEventListener('input', autoResize);
-  autoResize();
+  input.addEventListener('input', autoresize);
+  autoresize();
 
-  // draggable (desktop only)
+  // Make panel draggable (desktop)
   (function enableDrag(){
-    let startX, startY, startLeft, startTop, dragging = false;
+    let startX, startY, startLeft, startTop, dragging=false;
     header.addEventListener('mousedown', (e)=>{
-      if (window.innerWidth < 768) return; // skip on mobile
-      dragging = true; header.classList.add('cursor-grabbing');
+      if (window.innerWidth < 768) return;
+      dragging=true; header.classList.add('cursor-grabbing');
       const rect = panel.getBoundingClientRect();
-      startLeft = rect.left; startTop = rect.top;
-      startX = e.clientX; startY = e.clientY;
-      // switch from bottom/right to top/left positioning
-      panel.style.position = 'fixed';
-      panel.style.left = startLeft + 'px';
-      panel.style.top = startTop + 'px';
-      panel.style.right = 'auto'; panel.style.bottom = 'auto';
-      e.preventDefault();
+      startLeft=rect.left; startTop=rect.top; startX=e.clientX; startY=e.clientY;
+      panel.style.position='fixed'; panel.style.left=startLeft+'px'; panel.style.top=startTop+'px';
+      panel.style.right='auto'; panel.style.bottom='auto'; e.preventDefault();
     });
     window.addEventListener('mousemove', (e)=>{
       if (!dragging) return;
-      const dx = e.clientX - startX;
-      const dy = e.clientY - startY;
-      let nx = startLeft + dx;
-      let ny = startTop + dy;
-      // keep within viewport
-      const w = panel.offsetWidth, h = panel.offsetHeight;
-      nx = Math.max(8, Math.min(nx, window.innerWidth - w - 8));
-      ny = Math.max(8, Math.min(ny, window.innerHeight - h - 8));
-      panel.style.left = nx + 'px';
-      panel.style.top = ny + 'px';
+      const dx=e.clientX-startX, dy=e.clientY-startY;
+      let nx=startLeft+dx, ny=startTop+dy;
+      const w=panel.offsetWidth, h=panel.offsetHeight;
+      nx=Math.max(8, Math.min(nx, window.innerWidth-w-8));
+      ny=Math.max(8, Math.min(ny, window.innerHeight-h-8));
+      panel.style.left=nx+'px'; panel.style.top=ny+'px';
     });
-    window.addEventListener('mouseup', ()=>{
-      dragging = false; header.classList.remove('cursor-grabbing');
-    });
+    window.addEventListener('mouseup', ()=>{ dragging=false; header.classList.remove('cursor-grabbing'); });
   })();
 
   // init
-  loadHistory();
+  load();
 })();
 </script>
-<!-- ===== END PRIYAM CHATBOT v2 ===== -->
+<!-- ===== END PRIYAM CHATBOT v2.1 ===== -->
 </body>
 </html>
