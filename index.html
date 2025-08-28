@@ -661,35 +661,28 @@
     "sameAs": ["https://www.linkedin.com/in/priyam-somani/","https://github.com/priyam05somani"]
   }
   </script>
- <!-- ========== Nexora Chatbot (Chatbase) ========== -->
+<!-- ========== Nexora Chatbot (Chatbase + Quick Links) ========== -->
 <div id="nx-chat-root"></div>
 <style>
   :root{
-    --nx-accent:#f43f5e;
-    --nx-dark:#0f172a;
-    --nx-panel:#111827;
-    --nx-text:#e5e7eb;
+    --nx-accent:#f43f5e; --nx-dark:#0f172a; --nx-panel:#0b1220; --nx-text:#e5e7eb;
     --nx-shadow:0 20px 50px rgba(0,0,0,.45);
   }
   .nx-reset *{box-sizing:border-box;font:inherit}
   .nx-fixed{position:fixed;z-index:9999}
+
+  /* Launcher button (icon only) */
   .nx-launch{
     right:18px; bottom:18px; width:62px; height:62px; border-radius:50%;
     background: radial-gradient(100% 100% at 30% 20%, #ff7a90 0%, var(--nx-accent) 60%, #be123c 100%);
-    box-shadow: var(--nx-shadow);
-    border:none; outline:none; cursor:pointer; display:grid; place-items:center;
+    box-shadow: var(--nx-shadow); border:none; outline:none; cursor:pointer; display:grid; place-items:center;
   }
   .nx-launch svg{width:34px;height:34px;filter: drop-shadow(0 3px 10px rgba(244,63,94,.35));}
-  .nx-launch:focus-visible{outline:3px solid #fff2; outline-offset:3px}
-  .nx-badge{position:absolute;right:16px;bottom:84px;background:#fff;color:#1f2937;
-    padding:.35rem .6rem;border-radius:12px;font:600 12px/1.1 Inter,system-ui;
-    box-shadow:0 8px 30px rgba(0,0,0,.18);display:none}
-  @media (min-width: 768px){ .nx-badge{display:block} }
 
   .nx-backdrop{inset:0; background:rgba(2,6,23,.55); backdrop-filter: blur(4px); display:none}
   .nx-panel{
     right:16px; bottom:96px; width:min(420px, calc(100vw - 32px));
-    height:min(640px, calc(100vh - 120px));
+    height:min(660px, calc(100vh - 120px));
     border-radius:16px; overflow:hidden; background:var(--nx-panel); color:var(--nx-text);
     display:none; box-shadow: var(--nx-shadow);
   }
@@ -703,23 +696,33 @@
   }
   .nx-avatar svg{width:18px;height:18px}
   .nx-title{font:700 16px/1.2 Inter,system-ui;color:#e5e7eb}
-  .nx-spacer{flex:1}
-  .nx-esc{border:1px solid #ffffff22;background:#ffffff12;color:#e5e7eb;
+  .nx-esc{margin-left:auto;border:1px solid #ffffff22;background:#ffffff12;color:#e5e7eb;
     border-radius:10px;padding:.35rem .55rem;font:600 12px/1 Inter,system-ui;cursor:pointer}
-  .nx-body{position:relative; height:calc(100% - 56px); background:#0b1220}
-  .nx-iframe{width:100%;height:100%;border:0;display:block}
+
+  .nx-body{position:relative; height:calc(100% - 56px); display:flex; flex-direction:column}
+  .nx-greet{padding:.6rem .9rem; font:600 13px/1.4 Inter,system-ui; color:#cbd5e1; border-bottom:1px solid #ffffff14}
+  .nx-links{
+    display:flex; gap:.5rem; overflow:auto; padding:.6rem .9rem; border-bottom:1px solid #ffffff14;
+  }
+  .nx-chip{
+    white-space:nowrap; padding:.4rem .65rem; border-radius:999px; font:600 12px/1 Inter,system-ui;
+    border:1px solid #ffffff22; background:#111827; color:#e5e7eb;
+  }
+  .nx-chip:hover{border-color:var(--nx-accent); color:#fff}
+
+  .nx-iframe{width:100%;height:100%;border:0;display:block; background:#0b1220}
   .nx-loading{position:absolute;inset:0;display:grid;place-items:center;gap:.5rem;color:#cbd5e1}
   .nx-spinner{width:28px;height:28px;border:3px solid #fff3;border-top-color:var(--nx-accent);
     border-radius:50%;animation:nx-spin .9s linear infinite}
   @keyframes nx-spin{to{transform:rotate(360deg)}}
   .nx-error{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:1rem}
   .nx-error a{color:#fb7185;text-decoration:underline}
+
   .nx-show{display:block}
-  @media (prefers-reduced-motion: reduce){ .nx-spinner{animation:none} }
 </style>
 
+<!-- Backdrop + launcher -->
 <div class="nx-fixed nx-backdrop" id="nxBackdrop" aria-hidden="true"></div>
-
 <button class="nx-fixed nx-launch" id="nxLauncher" aria-label="Open Nexora chatbot">
   <!-- Bot icon -->
   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -730,28 +733,40 @@
     <circle cx="14" cy="11.2" r="1.1" fill="#0e1325"/>
   </svg>
 </button>
-<div class="nx-badge">Chat with Nexora</div>
 
+<!-- Panel -->
 <section class="nx-fixed nx-panel" id="nxPanel" role="dialog" aria-modal="true" aria-label="Nexora chatbot">
   <header class="nx-header">
     <span class="nx-avatar" aria-hidden="true">
-      <!-- tiny bot avatar -->
       <svg viewBox="0 0 24 24" fill="none">
         <path d="M6.8 10a5.2 5.2 0 0110.4 0v2.1H6.8V10Z" fill="#fff"/>
         <rect x="5.8" y="11.7" width="12.4" height="6.3" rx="2.4" fill="#fff"/>
       </svg>
     </span>
     <span class="nx-title">Nexora</span>
-    <span class="nx-spacer"></span>
     <button class="nx-esc" id="nxClose" aria-label="Close (Esc)">Esc</button>
   </header>
 
   <div class="nx-body">
+    <!-- Friendly greeting -->
+    <div class="nx-greet">👋 Hi! I’m Nexora—ask for the resume, transcript, certificates, or jump to a section below.</div>
+
+    <!-- Quick links (docs open in new tab; sections scroll on page) -->
+    <div class="nx-links">
+      <a class="nx-chip" href="assets/Priyam%20-%20Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+      <a class="nx-chip" data-go="#experience" href="#experience">Experience</a>
+      <a class="nx-chip" data-go="#research" href="#research">Projects</a>
+      <a class="nx-chip" data-go="#education" href="#education">Education</a>
+      <a class="nx-chip" data-go="#certs" href="#certs">Certificates</a>
+      <a class="nx-chip" data-go="#skills" href="#skills">Skills</a>
+      <a class="nx-chip" data-go="#contact" href="#contact">Contact</a>
+    </div>
+
+    <!-- Chatbase iframe -->
     <div class="nx-loading" id="nxLoading">
       <div class="nx-spinner"></div>
       <div style="font:600 12px/1 Inter,system-ui;opacity:.8">Loading Nexora…</div>
     </div>
-
     <iframe
       id="nxFrame"
       title="Nexora by Chatbase"
@@ -760,12 +775,13 @@
       src="https://www.chatbase.co/chatbot-iframe/FGIwdqgBOp1V3vEUZFBPj"
     ></iframe>
 
+    <!-- 404 / private fallback -->
     <div class="nx-error" id="nxError" style="display:none">
       <div style="max-width: 320px; color:#e5e7eb; font:500 14px/1.45 Inter,system-ui">
-        <div style="font-weight:700; margin-bottom:.25rem; color:#fb7185">404 — Not found</div>
+        <div style="font-weight:700; margin-bottom:.25rem; color:#fb7185">Not available</div>
         This bot is private or the domain isn’t allowed.  
-        Ask the owner to set the bot to <b>Public</b> and allow your domain in Chatbase.  
-        You can also <a href="https://www.chatbase.co/chatbot-iframe/FGIwdqgBOp1V3vEUZFBPj" target="_blank" rel="noopener">open Nexora in a new tab</a>.
+        In Chatbase set it to <b>Public</b> and allow your domain, or
+        <a href="https://www.chatbase.co/chatbot-iframe/FGIwdqgBOp1V3vEUZFBPj" target="_blank" rel="noopener">open in a new tab</a>.
       </div>
     </div>
   </div>
@@ -773,7 +789,6 @@
 
 <script>
   (function(){
-    const root = document.getElementById('nx-chat-root');
     const btn  = document.getElementById('nxLauncher');
     const panel= document.getElementById('nxPanel');
     const close= document.getElementById('nxClose');
@@ -781,35 +796,28 @@
     const spnr = document.getElementById('nxLoading');
     const err  = document.getElementById('nxError');
     const iframe = document.getElementById('nxFrame');
-    const badge = document.querySelector('.nx-badge');
 
-    function openPanel(){
-      panel.classList.add('nx-show');
-      back.classList.add('nx-show');
-      badge?.classList.remove('nx-show');
-      // focus close button for a11y
-      setTimeout(()=> close.focus(), 50);
-    }
-    function closePanel(){
-      panel.classList.remove('nx-show');
-      back.classList.remove('nx-show');
-      btn.focus();
-    }
+    function openPanel(){ panel.classList.add('nx-show'); back.classList.add('nx-show'); setTimeout(()=>close.focus(), 50); }
+    function closePanel(){ panel.classList.remove('nx-show'); back.classList.remove('nx-show'); btn.focus(); }
     btn.addEventListener('click', openPanel);
     close.addEventListener('click', closePanel);
     back.addEventListener('click', closePanel);
     document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closePanel(); });
 
-    // loader + simple 404 detector
-    let loaded = false;
-    const whenLoaded = ()=>{ loaded = true; spnr.style.display='none'; };
-    iframe.addEventListener('load', whenLoaded);
-    // timeout: if still not loaded after 6s, show help
-    setTimeout(()=>{ if(!loaded){ spnr.style.display='none'; err.style.display='grid'; }}, 6000);
+    // Quick links that scroll the page (and close the panel)
+    document.querySelectorAll('.nx-links a[data-go]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const sel = a.getAttribute('data-go');
+        closePanel();
+        requestAnimationFrame(()=>{ document.querySelector(sel)?.scrollIntoView({behavior:'smooth', block:'start'}); });
+      });
+    });
 
-    // show the little badge once to hint
-    setTimeout(()=> badge?.classList.add('nx-show'), 1200);
-    setTimeout(()=> badge?.classList.remove('nx-show'), 6000);
+    // loader + simple timeout fallback
+    let loaded = false;
+    iframe.addEventListener('load', ()=>{ loaded = true; spnr.style.display='none'; });
+    setTimeout(()=>{ if(!loaded){ spnr.style.display='none'; err.style.display='grid'; }}, 6000);
   })();
 </script>
 <!-- ========== /Nexora Chatbot ========== -->
