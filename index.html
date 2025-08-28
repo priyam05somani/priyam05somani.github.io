@@ -661,5 +661,209 @@
     "sameAs": ["https://www.linkedin.com/in/priyam-somani/","https://github.com/priyam05somani"]
   }
   </script>
+  <!-- ===== PRIYAM CHATBOT (paste before </body>) ===== -->
+<div id="ps-chatbot" class="fixed bottom-5 right-5 z-50">
+  <!-- Toggle Button -->
+  <button id="ps-chat-toggle" aria-label="Open chat"
+    class="rounded-full bg-accent-400 hover:bg-accent-500 text-white w-14 h-14 shadow-lg flex items-center justify-center">
+    <!-- chat icon -->
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M21 12a8 8 0 01-8 8H7l-4 3 1.5-5.5A8 8 0 1113 4a8 8 0 018 8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <!-- Panel -->
+  <div id="ps-chat-panel"
+       class="hidden mt-3 w-[360px] max-w-[92vw] rounded-2xl bg-night-800 border border-white/10 shadow-2xl overflow-hidden">
+    <!-- Header -->
+    <div class="px-4 py-3 bg-night-900 border-b border-white/10 flex items-center justify-between">
+      <div>
+        <div class="font-semibold">Ask about Priyam</div>
+        <div class="text-xs text-slate-400">Try: “resume”, “projects”, “experience”, “certificates”, “contact”</div>
+      </div>
+      <button id="ps-chat-close" aria-label="Close chat"
+        class="rounded-lg border border-white/10 px-2 py-1 text-xs hover:border-accent-400">Esc</button>
+    </div>
+
+    <!-- Messages -->
+    <div id="ps-chat-body" class="h-[420px] overflow-y-auto px-3 py-3 space-y-3 text-[14px]">
+      <!-- Greeting -->
+      <div class="flex gap-2 items-start">
+        <div class="shrink-0 w-7 h-7 rounded-full bg-accent-400/90 grid place-items-center text-night-900 font-bold">PS</div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl px-3 py-2 max-w-[85%]">
+          <div class="font-medium mb-1">Hi! I’m Priyam’s assistant.</div>
+          <div class="text-slate-200">Ask about roles, experience, projects, education, or open the resume.</div>
+          <div class="mt-2 flex flex-wrap gap-2">
+            <button data-suggest="resume" class="ps-chip">Resume</button>
+            <button data-suggest="experience" class="ps-chip">Experience</button>
+            <button data-suggest="projects" class="ps-chip">Projects</button>
+            <button data-suggest="certificates" class="ps-chip">Certificates</button>
+            <button data-suggest="contact" class="ps-chip">Contact</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Composer -->
+    <form id="ps-chat-form" class="border-t border-white/10 flex items-center gap-2 p-3">
+      <input id="ps-chat-input" type="text" autocomplete="off" placeholder="Type a message… (Enter to send)"
+             class="flex-1 rounded-xl bg-transparent border border-white/15 px-3 py-2 focus:outline-none focus:border-accent-400"/>
+      <button class="rounded-xl bg-accent-400 hover:bg-accent-500 text-white px-3 py-2 text-sm">Send</button>
+    </form>
+  </div>
+</div>
+
+<style>
+  /* tiny chip button */
+  .ps-chip{font-size:12px; padding:.25rem .5rem; border-radius:9999px; background:rgba(255,255,255,.06);
+           border:1px solid rgba(255,255,255,.12)}
+  .ps-bot{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12)}
+  .ps-user{background:rgba(251,113,133,.1); border:1px solid rgba(251,113,133,.25)}
+  .ps-link{color:#fb7185; font-weight:600}
+</style>
+
+<script>
+(() => {
+  const $ = (sel, root=document) => root.querySelector(sel);
+  const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+  const panel = $('#ps-chat-panel');
+  const toggle = $('#ps-chat-toggle');
+  const closeBtn = $('#ps-chat-close');
+  const body = $('#ps-chat-body');
+  const form = $('#ps-chat-form');
+  const input = $('#ps-chat-input');
+
+  // Knowledge base (static, no server)
+  const KB = {
+    about:
+      `I focus on Market Research, Business/Marketing Analytics, Pricing & GTM. **4+ years** experience with **$200M+** modeled impact. See <a class="ps-link" href="#about">About</a>.`,
+    resume:
+      `Here’s my latest resume: <a class="ps-link" target="_blank" href="assets/Priyam%20-%20Resume.pdf">Open Resume (PDF)</a>`,
+    experience:
+      `Recent roles (highlights):<br>
+      • Peoples Natural Gas — Sustainability & Strategy (pricing models, data-center entry, hydrogen blending).<br>
+      • DMI Companies — Marketing & Research (VOC, segmentation, dashboards).<br>
+      • GuardAI (consulting) — Market mapping, ICPs, competitor snapshots.<br>
+      • Jai Udit Suitings — Performance marketing & ops analytics.<br>
+      Explore: <a class="ps-link" href="#experience">Experience section</a>.`,
+    projects:
+      `Open project artifacts:<br>
+      • Peoples Natural Gas — Hydrogen Blending & Data Centers: <a class="ps-link" target="_blank" href="assets/Peoples%20Natural%20Gas%20-%20Hydrogen%20Bledning%20%26%20Data%20Centers.pptx">deck</a><br>
+      • DMI — Market Research & Strategy: <a class="ps-link" target="_blank" href="assets/Market%20Research%20and%20Strategy%20for%20DMI.pptx">deck</a><br>
+      • Applied Simulation — Pizza Romano: <a class="ps-link" target="_blank" href="assets/Applied%20Simulation%20-%20Pizza%20Romano.pdf">PDF</a><br>
+      See more: <a class="ps-link" href="#research">Research section</a>.`,
+    education:
+      `Education:<br>
+      • University of Pittsburgh — MS Marketing & Business Analytics (GPA 3.78/4.00). <a class="ps-link" target="_blank" href="assets/Transcript-Pitt-Spring-2025.pdf">Transcript</a><br>
+      • Christ University — BBA Business Analytics (GPA 3.45/4.00).<br>
+      Details: <a class="ps-link" href="#education">Education</a>.`,
+    volunteering:
+      `Giving Joy — Market Research Volunteer (June 2025 – Present). Mapping women-owned businesses in NY, MA & Philadelphia across priority industries and networks. See <a class="ps-link" href="#volunteering">Volunteering</a>.`,
+    skills:
+      `Skills & Tools:<br>
+      • Analytics: Excel/Power BI/Tableau, SQL, Python, forecasting & optimization.<br>
+      • Marketing/Strategy: VOC, pricing, GTM, A/B testing, performance marketing.<br>
+      Explore: <a class="ps-link" href="#skills">Skills section</a>.`,
+    certificates:
+      `Professional certificates (view docs):<br>
+      • <a class="ps-link" target="_blank" href="assets/Google-Analytics-Certification.pdf">Google Analytics</a><br>
+      • <a class="ps-link" target="_blank" href="assets/Facebook-Instagram-Advertising-Workshop.pdf">Facebook & Instagram Advertising</a><br>
+      • <a class="ps-link" target="_blank" href="assets/Generative-AI-for-Digital-Marketers.pdf">Generative AI for Digital Marketers</a><br>
+      • <a class="ps-link" target="_blank" href="assets/Excel-with-Copilot-AI-Driven-Data-Analysis.pdf">Excel with Copilot</a><br>
+      • <a class="ps-link" target="_blank" href="assets/AI-for-Google-Analytics.pdf">AI for Google Analytics</a><br>
+      • <a class="ps-link" target="_blank" href="assets/Scenario-Analysis-Certificate.pdf">Scenario Analysis</a><br>
+      • <a class="ps-link" target="_blank" href="assets/TL-Saaty-Decision-Making-Hackathon.pdf">TL Saaty Decision-Making Hackathon</a>`,
+    contact:
+      `You can reach me at <a class="ps-link" href="mailto:priyam05somani@gmail.com">priyam05somani@gmail.com</a>, call <a class="ps-link" href="tel:+14124302670">+1 (412) 430-2670</a>, or connect on <a class="ps-link" target="_blank" href="https://www.linkedin.com/in/priyam-somani/">LinkedIn</a>. See <a class="ps-link" href="#contact">Contact</a>.`,
+    links:
+      `Quick links:<br>
+      <a class="ps-link" target="_blank" href="assets/Priyam%20-%20Resume.pdf">Resume</a> • 
+      <a class="ps-link" target="_blank" href="assets/Portfolio-Slides.pdf">Portfolio Slides</a> • 
+      <a class="ps-link" href="#experience">Experience</a> • 
+      <a class="ps-link" href="#research">Projects</a> • 
+      <a class="ps-link" href="#education">Education</a> • 
+      <a class="ps-link" href="#certs">Certificates</a> • 
+      <a class="ps-link" href="#skills">Skills</a> • 
+      <a class="ps-link" href="#contact">Contact</a>`
+  };
+
+  // Simple intent matcher
+  function answer(q) {
+    const t = (q||'').trim().toLowerCase();
+
+    // direct keywords
+    if (/(^|\b)(resume|cv)(\b|$)/.test(t)) return KB.resume;
+    if (/project|research|deck|ppt|pdf|peoples|dmi|pizza/.test(t)) return KB.projects;
+    if (/experience|exp|work|roles|jobs?/.test(t)) return KB.experience;
+    if (/education|gpa|university|school|katz|christ/.test(t)) return KB.education;
+    if (/volunteer|volunteering|leadership|giving joy/.test(t)) return KB.volunteering;
+    if (/skill|tools?|tech|stack/.test(t)) return KB.skills;
+    if (/certificate|certifications?|badges?/.test(t)) return KB.certificates;
+    if (/contact|email|phone|linkedin|github/.test(t)) return KB.contact;
+    if (/about|summary|profile/.test(t)) return KB.about;
+    if (/help|menu|options|links/.test(t)) return KB.links;
+
+    // specific project shortcuts
+    if (/peoples|hydrogen|data ?centers?/.test(t)) {
+      return `Peoples Natural Gas — artifact: <a class="ps-link" target="_blank" href="assets/Peoples%20Natural%20Gas%20-%20Hydrogen%20Bledning%20%26%20Data%20Centers.pptx">Open deck</a>`;
+    }
+    if (/dmi|configurator|hvac/.test(t)) {
+      return `DMI Companies — artifact: <a class="ps-link" target="_blank" href="assets/Market%20Research%20and%20Strategy%20for%20DMI.pptx">Open deck</a>`;
+    }
+    if (/pizza|simio|simulation/.test(t)) {
+      return `Applied Simulation — Pizza Romano: <a class="ps-link" target="_blank" href="assets/Applied%20Simulation%20-%20Pizza%20Romano.pdf">Download PDF</a>`;
+    }
+
+    // fallback
+    return `I can help with: <em>resume</em>, <em>experience</em>, <em>projects</em>, <em>education</em>, <em>certificates</em>, <em>skills</em>, <em>contact</em>.<br>${KB.links}`;
+  }
+
+  // UI helpers
+  function addMsg(html, who='bot') {
+    const row = document.createElement('div');
+    row.className = 'flex gap-2 items-start';
+    const avatar = who === 'bot'
+      ? `<div class="shrink-0 w-7 h-7 rounded-full bg-accent-400/90 grid place-items-center text-night-900 font-bold">PS</div>`
+      : `<div class="shrink-0 w-7 h-7 rounded-full bg-white/10 border border-white/15 grid place-items-center">🧑‍💼</div>`;
+    const bubbleClass = who === 'bot' ? 'ps-bot' : 'ps-user';
+    row.innerHTML = `${avatar}<div class="${bubbleClass} rounded-2xl px-3 py-2 max-w-[85%] text-slate-200">${html}</div>`;
+    body.appendChild(row);
+    body.scrollTop = body.scrollHeight;
+  }
+
+  // Event wiring
+  toggle.addEventListener('click', () => {
+    panel.classList.toggle('hidden');
+    if (!panel.classList.contains('hidden')) {
+      setTimeout(() => input.focus(), 50);
+    }
+  });
+  closeBtn.addEventListener('click', () => panel.classList.add('hidden'));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') panel.classList.add('hidden'); });
+
+  // Suggestion chips
+  body.addEventListener('click', (e) => {
+    const el = e.target.closest('[data-suggest]');
+    if (!el) return;
+    const text = el.getAttribute('data-suggest');
+    addMsg(text, 'user');
+    const reply = answer(text);
+    addMsg(reply, 'bot');
+  });
+
+  // Send message
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    addMsg(text, 'user');
+    input.value = '';
+    const reply = answer(text);
+    addMsg(reply, 'bot');
+  });
+})();
+</script>
+<!-- ===== END PRIYAM CHATBOT ===== -->
 </body>
 </html>
