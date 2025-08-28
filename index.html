@@ -661,320 +661,229 @@
     "sameAs": ["https://www.linkedin.com/in/priyam-somani/","https://github.com/priyam05somani"]
   }
   </script>
-  <!-- ===== PRIYAM CHATBOT v2.1 (paste before </body>) ===== -->
-<div id="ps-chatbot" class="fixed bottom-5 right-5 z-[60] select-none">
-  <!-- Launcher -->
-  <button id="ps-launcher" aria-label="Open chat"
-    class="relative rounded-full bg-accent-400 hover:bg-accent-500 text-white w-14 h-14 shadow-2xl grid place-items-center">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M21 12a8 8 0 01-8 8H7l-4 3 1.5-5.5A8 8 0 1113 4a8 8 0 018 8z"
-            stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-    </svg>
-    <span class="absolute -top-1 -right-1 inline-flex h-4 min-w-4 items-center justify-center text-[10px] px-1 rounded-full bg-white text-accent-500 font-bold shadow">
-      1
-    </span>
+  <!-- === Priyam Chatbot v3 (wide composer) === -->
+<style id="psgpt-style">
+  :root{--ps-bg:#0f162d;--ps-panel:#131a34;--ps-elev:#0b1229;--ps-text:#e6e8ee;--ps-muted:#b6bdd3;--ps-accent:#f43f5e;--ps-ring:#fb7185;}
+  #psgpt *{box-sizing:border-box}
+  #psgpt{position:fixed;z-index:60;bottom:16px;right:16px;font:14px/1.4 Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ps-text)}
+  #psgpt button{cursor:pointer}
+
+  /* Launcher */
+  #psgpt .launcher{position:absolute;bottom:0;right:0;display:flex;align-items:center;gap:.65rem;
+    background:linear-gradient(180deg,#17203f, #121938); border:1px solid #263055; color:var(--ps-text);
+    border-radius:20px; padding:.65rem .9rem; box-shadow:0 12px 40px rgba(0,0,0,.45)}
+  #psgpt .launcher .dot{width:8px;height:8px;background:#22c55e;border-radius:50%}
+
+  /* Panel */
+  #psgpt .panel{position:absolute;bottom:64px;right:0;width:min(720px,calc(100vw - 24px));height:min(72vh,680px);
+    display:none;flex-direction:column;background:var(--ps-panel);border:1px solid #29335b;border-radius:16px;
+    box-shadow:0 24px 80px rgba(0,0,0,.6);overflow:hidden}
+  #psgpt.open .panel{display:flex}
+
+  /* Header */
+  #psgpt .hdr{padding:14px 16px;border-bottom:1px solid #223056;background:#121936}
+  #psgpt .hdr h4{margin:0;font-weight:700;font-size:18px}
+  #psgpt .hdr .x{margin-left:auto;border:none;background:transparent;color:var(--ps-muted);font-size:14px}
+  #psgpt .quick{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  #psgpt .chip{padding:8px 12px;border:1px solid #2a355f;border-radius:9999px;background:#0d1835;color:var(--ps-text)}
+  #psgpt .chip:hover{border-color:var(--ps-ring);color:#fff}
+
+  /* Messages */
+  #psgpt .scroll{flex:1;overflow:auto;background:var(--ps-bg);padding:14px}
+  #psgpt .bubble{max-width:78%;padding:14px;border-radius:14px;background:#0e1731;border:1px solid #26335b}
+  #psgpt .row{display:flex;gap:12px;margin:12px 0}
+  #psgpt .me{justify-content:flex-end}
+  #psgpt .me .bubble{background:#1b2243;border-color:#384272}
+  #psgpt .avatar{flex:0 0 36px;height:36px;width:36px;border-radius:50%;background:#26335a;
+    display:grid;place-items:center;font-weight:700;color:#ffb4c0}
+
+  /* Composer (BOTTOM BAR) */
+  #psgpt .composer{position:sticky;bottom:0;left:0;right:0;display:flex;align-items:center;gap:12px;
+    padding:12px;border-top:1px solid #26335b;background:#0f1733}
+  #psgpt .inputWrap{flex:1;display:flex}
+  #psgpt textarea{
+    flex:1;width:100%;min-height:44px;height:44px;max-height:160px; /* 1–4 lines */
+    padding:10px 12px;border-radius:9999px;border:2px solid rgba(244,63,94,.35);
+    background:#0b1229;color:var(--ps-text);outline:none;resize:none;overflow:auto}
+  #psgpt textarea:focus{border-color:var(--ps-ring);box-shadow:0 0 0 3px rgba(244,63,94,.20)}
+  #psgpt .send{flex:0 0 auto;border:none;border-radius:14px;padding:.9rem 1.2rem;color:#fff;
+    background:linear-gradient(180deg,#fb7185,#f43f5e);box-shadow:0 12px 30px rgba(244,63,94,.35)}
+  #psgpt .hint{padding:4px 12px 10px;color:var(--ps-muted);font-size:12px}
+  #psgpt .hint b{color:#e8bccc}
+</style>
+
+<div id="psgpt" aria-live="polite">
+  <button class="launcher" aria-haspopup="dialog" aria-controls="psgpt-panel">
+    <span class="dot"></span> Ask about Priyam
   </button>
 
-  <!-- Panel -->
-  <div id="ps-panel"
-       class="hidden mt-3 w-[400px] max-w-[92vw] max-h-[78vh] rounded-2xl overflow-hidden bg-night-800 border border-white/10 shadow-2xl flex flex-col">
-    <!-- Header (drag handle) -->
-    <div id="ps-header" class="cursor-grab active:cursor-grabbing bg-night-900 border-b border-white/10 px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-full grid place-items-center bg-accent-400/90 text-night-900 font-extrabold">PS</div>
-        <div>
-          <div class="font-semibold">Ask about Priyam</div>
-          <div class="text-xs text-slate-400">Quick info • Links • Jump to sections</div>
+  <section class="panel" id="psgpt-panel" role="dialog" aria-label="Ask about Priyam">
+    <header class="hdr" role="none">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="avatar">PS</div>
+        <h4>Ask about Priyam</h4>
+        <button class="x" title="Close (Esc)">Esc</button>
+      </div>
+      <div class="quick" role="group" aria-label="Shortcuts">
+        <button class="chip" data-q="open resume">Resume</button>
+        <button class="chip" data-q="open experience">Experience</button>
+        <button class="chip" data-q="show projects">Projects</button>
+        <button class="chip" data-q="show certificates">Certificates</button>
+        <button class="chip" data-q="open education">Education</button>
+        <button class="chip" data-q="contact details">Contact</button>
+      </div>
+    </header>
+
+    <div class="scroll" id="psgpt-feed">
+      <!-- Assistant greeting -->
+      <div class="row">
+        <div class="avatar">PS</div>
+        <div class="bubble">
+          <p><strong>Hi! I’m Priyam’s assistant</strong> 👋</p>
+          <p>Ask about my roles, experience, projects, education, or open the resume.</p>
+          <div class="quick" style="margin-top:8px;">
+            <button class="chip" data-q="open resume">Resume</button>
+            <button class="chip" data-q="open experience">Experience</button>
+            <button class="chip" data-q="show projects">Projects</button>
+            <button class="chip" data-q="show certificates">Certificates</button>
+            <button class="chip" data-q="contact details">Contact</button>
+          </div>
         </div>
       </div>
-      <button id="ps-close" class="rounded-lg border border-white/10 px-2 py-1 text-xs hover:border-accent-400" aria-label="Close chat">Esc</button>
-    </div>
 
-    <!-- Quick actions bar -->
-    <div class="px-3 py-2 border-b border-white/10 bg-white/5">
-      <div class="flex flex-wrap gap-2">
-        <button class="ps-chip" data-suggest="resume">Resume</button>
-        <button class="ps-chip" data-suggest="experience">Experience</button>
-        <button class="ps-chip" data-suggest="projects">Projects</button>
-        <button class="ps-chip" data-suggest="certificates">Certificates</button>
-        <button class="ps-chip" data-suggest="education">Education</button>
-        <button class="ps-chip" data-suggest="contact">Contact</button>
+      <div class="row">
+        <div class="avatar">PS</div>
+        <div class="bubble">
+          <p>I can help with: <em>resume, experience, projects, education, certificates, skills, contact.</em></p>
+          <p class="hint" style="margin:6px 0 0 0">
+            Quick links: <b>Resume</b> • <b>Portfolio</b> • <b>Experience</b> • <b>Projects</b> •
+            <b>Education</b> • <b>Certificates</b> • <b>Skills</b> • <b>Contact</b>
+          </p>
+        </div>
       </div>
     </div>
 
-    <!-- Messages -->
-    <div id="ps-msgs" class="flex-1 overflow-y-auto px-3 py-3 space-y-3 text-[14px]" role="log" aria-live="polite"></div>
-
-    <!-- Composer (re-styled & aligned) -->
-    <div class="border-t border-white/10 bg-white/5 px-3 py-3">
-      <form id="ps-form" class="ps-composer">
-        <textarea id="ps-input" rows="1" placeholder="Type a message…  (Enter to send • Shift+Enter = new line)"
-          class="ps-input"></textarea>
-        <button class="ps-send" aria-label="Send">Send</button>
-      </form>
-      <div class="mt-2 text-[12px] text-slate-400">Try: <span class="opacity-90">“open experience”</span> • <span class="opacity-90">“view resume”</span> • <span class="opacity-90">“show certificates”</span></div>
+    <div class="composer">
+      <div class="inputWrap">
+        <textarea id="psgpt-input" placeholder="Type a message…  (Enter to send)"></textarea>
+      </div>
+      <button class="send" id="psgpt-send">Send</button>
     </div>
-  </div>
+    <div class="hint">Try: “<b>open experience</b>” • “<b>view resume</b>” • “<b>show certificates</b>”</div>
+  </section>
 </div>
-
-<style>
-  /* Chips, bubbles, alignment */
-  .ps-chip{font-size:12px;padding:.28rem .55rem;border-radius:9999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
-  .ps-bot{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
-  .ps-user{background:rgba(251,113,133,.12);border:1px solid rgba(251,113,133,.35)}
-  .ps-link{color:#fb7185;font-weight:600}
-  .ps-msg{max-width:78%}
-  .ps-typing .dot{width:6px;height:6px;border-radius:9999px;background:#e5e7eb;display:inline-block;margin:0 2px;opacity:.75;animation:ps-bounce 1.2s infinite}
-  .ps-typing .dot:nth-child(2){animation-delay:.15s}
-  .ps-typing .dot:nth-child(3){animation-delay:.3s}
-  @keyframes ps-bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-4px)}}
-
-  /* Composer: neat, aligned, responsive */
-  .ps-composer{
-    display:grid;
-    grid-template-columns: 1fr auto;
-    gap:.5rem;
-    align-items:end;
-  }
-  .ps-input{
-    width:100%;
-    max-height:110px;
-    resize:none;
-    border-radius:14px;
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.15);
-    padding:.6rem .8rem;
-    color:#e5e7eb;
-    line-height:1.35;
-    outline:none;
-  }
-  .ps-input:focus{border-color:#fb7185; box-shadow:0 0 0 2px rgba(244,63,94,.25)}
-  .ps-send{
-    border:none;
-    border-radius:12px;
-    background:#f43f5e;
-    color:white;
-    padding:.55rem .9rem;
-    font-size:14px;
-    font-weight:600;
-    height:38px;
-  }
-  .ps-send:hover{background:#e11d48}
-  /* highlight section when jumping */
-  .ps-ring{box-shadow:0 0 0 3px rgba(244,63,94,.45) inset, 0 0 0 3px rgba(244,63,94,.35); transition:box-shadow .8s ease}
-</style>
 
 <script>
 (() => {
-  const $ = (s, r=document)=>r.querySelector(s);
-  const panel = $('#ps-panel');
-  const launcher = $('#ps-launcher');
-  const closeBtn = $('#ps-close');
-  const msgs = $('#ps-msgs');
-  const form = $('#ps-form');
-  const input = $('#ps-input');
-  const header = $('#ps-header');
+  const root   = document.getElementById('psgpt');
+  const panel  = document.getElementById('psgpt-panel');
+  const feed   = document.getElementById('psgpt-feed');
+  const input  = document.getElementById('psgpt-input');
+  const send   = document.getElementById('psgpt-send');
 
-  /* ---------- Knowledge Base ---------- */
-  const KB = {
-    greet: () => `Hi! I’m Priyam’s assistant 👋<br/>
-      Ask about my roles, experience, projects, education, or open the resume.<div class="mt-2 flex flex-wrap gap-2">
-        <button class="ps-chip" data-suggest="resume">Resume</button>
-        <button class="ps-chip" data-suggest="experience">Experience</button>
-        <button class="ps-chip" data-suggest="projects">Projects</button>
-        <button class="ps-chip" data-suggest="certificates">Certificates</button>
-        <button class="ps-chip" data-suggest="contact">Contact</button>
-      </div>`,
-    info: () => `I can help with: <em>resume</em>, <em>experience</em>, <em>projects</em>, <em>education</em>, <em>certificates</em>, <em>skills</em>, <em>contact</em>.<br/>
-      Quick links: <a class="ps-link" target="_blank" href="assets/Priyam%20-%20Resume.pdf">Resume</a> •
-      <a class="ps-link" target="_blank" href="assets/Portfolio-Slides.pdf">Portfolio</a> •
-      <a class="ps-link" href="#experience">Experience</a> •
-      <a class="ps-link" href="#research">Projects</a> •
-      <a class="ps-link" href="#education">Education</a> •
-      <a class="ps-link" href="#certs">Certificates</a> •
-      <a class="ps-link" href="#skills">Skills</a> •
-      <a class="ps-link" href="#contact">Contact</a>`,
-    resume:`Here’s my latest resume: <a class="ps-link" target="_blank" href="assets/Priyam%20-%20Resume.pdf">Open Resume (PDF)</a>`,
-    experience:`Recent roles:<br>
-      • Peoples Natural Gas — Sustainability & Strategy (pricing models, data-center entry, hydrogen blending).<br>
-      • DMI Companies — Marketing & Research (VOC, segmentation, dashboards).<br>
-      • GuardAI (consulting) — Market mapping, ICPs, competitor snapshots.<br>
-      • Jai Udit Suitings — Performance marketing & ops analytics.<br>
-      Explore: <a class="ps-link" href="#experience">Experience section</a>.`,
-    projects:`Project artifacts:<br>
-      • Peoples — <a class="ps-link" target="_blank" href="assets/Peoples%20Natural%20Gas%20-%20Hydrogen%20Bledning%20%26%20Data%20Centers.pptx">Hydrogen Blending & Data Centers</a><br>
-      • DMI — <a class="ps-link" target="_blank" href="assets/Market%20Research%20and%20Strategy%20for%20DMI.pptx">Market Research & Strategy</a><br>
-      • Pizza Romano — <a class="ps-link" target="_blank" href="assets/Applied%20Simulation%20-%20Pizza%20Romano.pdf">Simulation PDF</a><br>
-      See <a class="ps-link" href="#research">Research</a>.`,
-    education:`Education:<br>
-      • University of Pittsburgh — MS Marketing & Business Analytics (GPA 3.78/4.00). <a class="ps-link" target="_blank" href="assets/Transcript-Pitt-Spring-2025.pdf">Transcript</a><br>
-      • Christ University — BBA Business Analytics (GPA 3.45/4.00).`,
-    volunteering:`Giving Joy — Market Research Volunteer (June 2025 – Present). Mapping women-owned businesses in NY, MA & Philadelphia across apparel/fashion, beauty & wellness, women’s health, and ethical consumer goods. See <a class="ps-link" href="#volunteering">Volunteering</a>.`,
-    skills:`Skills & Tools:<br>
-      • Analytics: Excel/Power BI/Tableau, SQL, Python, forecasting & optimization.<br>
-      • Marketing/Strategy: VOC, pricing, GTM, A/B testing, performance marketing.<br>
-      Explore: <a class="ps-link" href="#skills">Skills</a>.`,
-    certificates:`Certificates:<br>
-      • <a class="ps-link" target="_blank" href="assets/Google-Analytics-Certification.pdf">Google Analytics</a> •
-      <a class="ps-link" target="_blank" href="assets/Facebook-Instagram-Advertising-Workshop.pdf">Meta Ads</a> •
-      <a class="ps-link" target="_blank" href="assets/Generative-AI-for-Digital-Marketers.pdf">GenAI for Marketers</a> •
-      <a class="ps-link" target="_blank" href="assets/Excel-with-Copilot-AI-Driven-Data-Analysis.pdf">Excel + Copilot</a> •
-      <a class="ps-link" target="_blank" href="assets/AI-for-Google-Analytics.pdf">AI for GA</a> •
-      <a class="ps-link" target="_blank" href="assets/Scenario-Analysis-Certificate.pdf">Scenario Analysis</a> •
-      <a class="ps-link" target="_blank" href="assets/TL-Saaty-Decision-Making-Hackathon.pdf">TL Saaty</a>`,
-    contact:`Reach me at <a class="ps-link" href="mailto:priyam05somani@gmail.com">priyam05somani@gmail.com</a>, call <a class="ps-link" href="tel:+14124302670">+1 (412) 430-2670</a>, or connect on <a class="ps-link" target="_blank" href="https://www.linkedin.com/in/priyam-somani/">LinkedIn</a>.`
-  };
-
-  /* ---------- Utilities ---------- */
-  const LS_KEY = 'ps_chat_history_v2_1';
-  const save = () => localStorage.setItem(LS_KEY, msgs.innerHTML);
-  const load = () => {
-    const html = localStorage.getItem(LS_KEY);
-    if (html) msgs.innerHTML = html;
-    else {
-      // Greet first, then info (after a breath)
-      addMsg({who:'bot', html: KB.greet()});
-      setTimeout(()=> addMsg({who:'bot', html: KB.info()}), 600);
-    }
-    msgs.scrollTop = msgs.scrollHeight;
-  };
-
-  function addMsg({who='bot', html=''}) {
-    const row = document.createElement('div');
-    row.className = `w-full flex ${who==='user'?'justify-end':'justify-start'}`;
-    row.innerHTML = `
-      <div class="flex items-start gap-2 ps-msg ${who==='user'?'flex-row-reverse':''}">
-        <div class="shrink-0 w-7 h-7 rounded-full grid place-items-center ${who==='user' ? 'bg-white/10 border border-white/15' : 'bg-accent-400/90 text-night-900 font-bold'}">
-          ${who==='user' ? '🧑‍💼' : 'PS'}
-        </div>
-        <div class="${who==='user'?'ps-user':'ps-bot'} rounded-2xl px-3 py-2 text-slate-200 leading-relaxed text-[14px]">${html}</div>
-      </div>`;
-    msgs.appendChild(row);
-    msgs.scrollTop = msgs.scrollHeight;
-    save();
-  }
-
-  let typingRow=null;
-  const showTyping=()=> {
-    if (typingRow) return;
-    typingRow = document.createElement('div');
-    typingRow.className='w-full flex justify-start';
-    typingRow.innerHTML = `
-      <div class="flex items-start gap-2 ps-msg">
-        <div class="shrink-0 w-7 h-7 rounded-full grid place-items-center bg-accent-400/90 text-night-900 font-bold">PS</div>
-        <div class="ps-bot rounded-2xl px-3 py-2 text-slate-200">
-          <span class="ps-typing"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
-        </div>
-      </div>`;
-    msgs.appendChild(typingRow);
-    msgs.scrollTop = msgs.scrollHeight;
-  };
-  const hideTyping=()=>{ typingRow?.remove(); typingRow=null; };
-
-  function jumpToSection(id){
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.scrollIntoView({behavior:'smooth', block:'start'});
-    el.classList.add('ps-ring');
-    setTimeout(()=> el.classList.remove('ps-ring'), 1200);
-  }
-
-  /* ---------- Intent & Actions ---------- */
-  function intent(text){
-    const t = (text||'').trim().toLowerCase();
-
-    // Greet on hi/hello/hey
-    if (/^(hi|hello|hey|yo|hola|namaste|greetings)[.! ]*$/i.test(text)) {
-      return { html: KB.greet() + `<div class="mt-2"></div>` + KB.info() };
-    }
-
-    if (/(^|\b)(resume|cv)(\b|$)|download resume|open resume/.test(t)) return { html: KB.resume };
-    if (/^(open|show|go to)\s+experience|experience|work|roles?/.test(t)) return { html: KB.experience, action:()=>jumpToSection('experience') };
-    if (/projects?|research|deck|peoples|dmi|pizza/.test(t)) return { html: KB.projects, action:()=>jumpToSection('research') };
-    if (/education|gpa|katz|christ/.test(t)) return { html: KB.education, action:()=>jumpToSection('education') };
-    if (/volunteer|volunteering|giving joy|leadership/.test(t)) return { html: KB.volunteering, action:()=>jumpToSection('volunteering') };
-    if (/skills?|tools?|tech/.test(t)) return { html: KB.skills, action:()=>jumpToSection('skills') };
-    if (/certificate|certifications?|badges?/.test(t)) return { html: KB.certificates, action:()=>jumpToSection('certs') };
-    if (/contact|email|phone|linkedin/.test(t)) return { html: KB.contact, action:()=>jumpToSection('contact') };
-    if (/about|summary|profile/.test(t)) return { html: KB.greet() };
-
-    // Default help
-    return { html: KB.info() };
-  }
-
-  /* ---------- Events ---------- */
   // open/close
-  launcher.addEventListener('click', () => {
-    panel.classList.toggle('hidden');
-    if (!panel.classList.contains('hidden')) {
-      $('.relative > span', launcher)?.classList.add('hidden');
-      setTimeout(()=> input.focus(), 80);
+  root.querySelector('.launcher').addEventListener('click', () => { root.classList.add('open'); input.focus(); });
+  panel.querySelector('.x').addEventListener('click', () => root.classList.remove('open'));
+  document.addEventListener('keydown', e => { if(e.key==='Escape') root.classList.remove('open'); });
+
+  // auto-grow textarea (1–4 lines)
+  const baseH = 44, maxH = 160;
+  const grow = () => {
+    input.style.height = baseH + 'px';
+    const nh = Math.min(input.scrollHeight, maxH);
+    input.style.height = nh + 'px';
+  };
+  input.addEventListener('input', grow);
+  grow();
+
+  // shortcuts
+  panel.querySelectorAll('.chip[data-q]').forEach(btn => {
+    btn.addEventListener('click', () => { input.value = btn.dataset.q; grow(); handleSubmit(); });
+  });
+
+  // basic “router”
+  const openURL = url => { window.open(url, '_blank'); };
+
+  function reply(html){
+    const row = document.createElement('div');
+    row.className = 'row';
+    row.innerHTML = `<div class="avatar">PS</div><div class="bubble">${html}</div>`;
+    feed.appendChild(row);
+    feed.scrollTo({top: feed.scrollHeight, behavior:'smooth'});
+  }
+  function userSay(text){
+    const row = document.createElement('div');
+    row.className = 'row me';
+    row.innerHTML = `<div class="bubble">${text}</div>`;
+    feed.appendChild(row);
+    feed.scrollTo({top: feed.scrollHeight, behavior:'smooth'});
+  }
+
+  function greetIfHi(text){
+    if(/^\s*(hi|hello|hey|yo|hola)\b/i.test(text)){
+      reply("Hey there! 👋 What would you like to see — <b>experience</b>, <b>projects</b>, <b>resume</b>, <b>education</b>, or <b>certificates</b>?");
+      return true;
+    }
+    return false;
+  }
+
+  function handle(text){
+    const t = text.trim().toLowerCase();
+
+    if (greetIfHi(t)) return;
+
+    // quick intents
+    if (/\bresume\b|open resume|view resume/.test(t)) {
+      reply('Opening my resume (PDF)…');
+      openURL('assets/Priyam%20-%20Resume.pdf'); return;
+    }
+    if (/experience|work|roles/.test(t)) {
+      document.querySelector('a[href="#experience"]')?.click();
+      reply('Jumped to the <b>Professional Experience</b> section.'); return;
+    }
+    if (/project|research/.test(t)) {
+      document.querySelector('a[href="#research"]')?.click();
+      reply('Here are my <b>Research Projects</b>.'); return;
+    }
+    if (/certificate|certifications/.test(t)) {
+      document.querySelector('a[href="#certs"]')?.click();
+      reply('Opening <b>Professional Certificates</b>.'); return;
+    }
+    if (/education|degree|gpa/.test(t)) {
+      document.querySelector('a[href="#education"]')?.click();
+      reply('Scrolled to <b>Education</b>.'); return;
+    }
+    if (/skill|tools?/.test(t)) {
+      document.querySelector('a[href="#skills"]')?.click();
+      reply('Showing <b>Skills & Tools</b>.'); return;
+    }
+    if (/contact|email|phone|linkedin|github/.test(t)) {
+      document.querySelector('a[href="#contact"]')?.click();
+      reply('Jumped to <b>Contact</b> — my email, phone, and links are there.'); return;
+    }
+
+    // fallback
+    reply("Got it! If you’d like, I can also open <b>experience</b>, <b>projects</b>, <b>resume</b>, <b>education</b>, or <b>certificates</b>.");
+  }
+
+  function handleSubmit(){
+    const text = input.value.trim();
+    if(!text) return;
+    userSay(text);
+    input.value = '';
+    grow();
+    handle(text);
+  }
+
+  send.addEventListener('click', handleSubmit);
+  input.addEventListener('keydown', e => {
+    if(e.key === 'Enter' && !e.shiftKey){
+      e.preventDefault();
+      handleSubmit();
     }
   });
-  closeBtn.addEventListener('click', ()=> panel.classList.add('hidden'));
-  document.addEventListener('keydown', e => { if (e.key==='Escape') panel.classList.add('hidden') });
-
-  // chips
-  document.addEventListener('click', (e)=>{
-    const chip = e.target.closest('.ps-chip');
-    if (!chip) return;
-    const text = chip.getAttribute('data-suggest') || chip.textContent.trim();
-    addMsg({who:'user', html: text});
-    showTyping();
-    setTimeout(()=>{ hideTyping(); const {html, action} = intent(text); addMsg({who:'bot', html}); action?.(); }, 400);
-  });
-
-  // send
-  form.addEventListener('submit', (e)=>{
-    e.preventDefault();
-    const text = input.value.trim();
-    if (!text) return;
-    addMsg({who:'user', html: text});
-    input.value=''; autoresize();
-    showTyping();
-    setTimeout(()=>{ hideTyping(); const {html, action} = intent(text); addMsg({who:'bot', html}); action?.(); }, 450);
-  });
-
-  // Enter to send, Shift+Enter newline
-  input.addEventListener('keydown', (e)=>{
-    if (e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); form.requestSubmit(); }
-  });
-
-  // autoresize
-  function autoresize(){
-    input.style.height='auto';
-    input.style.height=Math.min(input.scrollHeight, 110)+'px';
-  }
-  input.addEventListener('input', autoresize);
-  autoresize();
-
-  // Make panel draggable (desktop)
-  (function enableDrag(){
-    let startX, startY, startLeft, startTop, dragging=false;
-    header.addEventListener('mousedown', (e)=>{
-      if (window.innerWidth < 768) return;
-      dragging=true; header.classList.add('cursor-grabbing');
-      const rect = panel.getBoundingClientRect();
-      startLeft=rect.left; startTop=rect.top; startX=e.clientX; startY=e.clientY;
-      panel.style.position='fixed'; panel.style.left=startLeft+'px'; panel.style.top=startTop+'px';
-      panel.style.right='auto'; panel.style.bottom='auto'; e.preventDefault();
-    });
-    window.addEventListener('mousemove', (e)=>{
-      if (!dragging) return;
-      const dx=e.clientX-startX, dy=e.clientY-startY;
-      let nx=startLeft+dx, ny=startTop+dy;
-      const w=panel.offsetWidth, h=panel.offsetHeight;
-      nx=Math.max(8, Math.min(nx, window.innerWidth-w-8));
-      ny=Math.max(8, Math.min(ny, window.innerHeight-h-8));
-      panel.style.left=nx+'px'; panel.style.top=ny+'px';
-    });
-    window.addEventListener('mouseup', ()=>{ dragging=false; header.classList.remove('cursor-grabbing'); });
-  })();
-
-  // init
-  load();
 })();
 </script>
-<!-- ===== END PRIYAM CHATBOT v2.1 ===== -->
+<!-- === /Priyam Chatbot v3 === -->
 </body>
 </html>
