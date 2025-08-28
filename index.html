@@ -661,229 +661,125 @@
     "sameAs": ["https://www.linkedin.com/in/priyam-somani/","https://github.com/priyam05somani"]
   }
   </script>
-  <!-- === Priyam Chatbot v3 (wide composer) === -->
-<style id="psgpt-style">
-  :root{--ps-bg:#0f162d;--ps-panel:#131a34;--ps-elev:#0b1229;--ps-text:#e6e8ee;--ps-muted:#b6bdd3;--ps-accent:#f43f5e;--ps-ring:#fb7185;}
-  #psgpt *{box-sizing:border-box}
-  #psgpt{position:fixed;z-index:60;bottom:16px;right:16px;font:14px/1.4 Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ps-text)}
-  #psgpt button{cursor:pointer}
+  <!-- =======================
+     NEXORA (Chatbase) Widget — Priyam
+     Paste before </body>
+     ======================= -->
+<style>
+  :root{
+    --nexora-accent:#f43f5e;
+    --nexora-panel:#121936;
+    --nexora-border:#24315a;
+  }
+  #nexora{position:fixed; right:18px; bottom:18px; z-index:9999; font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  #nexora *{box-sizing:border-box}
 
   /* Launcher */
-  #psgpt .launcher{position:absolute;bottom:0;right:0;display:flex;align-items:center;gap:.65rem;
-    background:linear-gradient(180deg,#17203f, #121938); border:1px solid #263055; color:var(--ps-text);
-    border-radius:20px; padding:.65rem .9rem; box-shadow:0 12px 40px rgba(0,0,0,.45)}
-  #psgpt .launcher .dot{width:8px;height:8px;background:#22c55e;border-radius:50%}
+  #nexora .n-launch{
+    display:flex; align-items:center; gap:.6rem;
+    background:linear-gradient(180deg,#fb7185,#f43f5e);
+    color:#fff; border:none; border-radius:9999px;
+    padding:.7rem 1rem; box-shadow:0 12px 36px rgba(244,63,94,.45);
+    cursor:pointer;
+  }
+  #nexora .n-launch .dot{width:8px;height:8px;background:#22c55e;border-radius:50%}
 
-  /* Panel */
-  #psgpt .panel{position:absolute;bottom:64px;right:0;width:min(720px,calc(100vw - 24px));height:min(72vh,680px);
-    display:none;flex-direction:column;background:var(--ps-panel);border:1px solid #29335b;border-radius:16px;
-    box-shadow:0 24px 80px rgba(0,0,0,.6);overflow:hidden}
-  #psgpt.open .panel{display:flex}
+  /* Backdrop + panel */
+  #nexora .n-backdrop{position:fixed; inset:0; background:rgba(4,7,17,.45); backdrop-filter:blur(2px); display:none}
+  #nexora.open .n-backdrop{display:block}
+
+  #nexora .n-panel{
+    position:fixed; right:18px; bottom:80px;
+    width:420px; height:640px; max-height:75vh;
+    background:var(--nexora-panel);
+    border:1px solid var(--nexora-border);
+    border-radius:16px; overflow:hidden;
+    box-shadow:0 24px 80px rgba(0,0,0,.6); display:none;
+  }
+  #nexora.open .n-panel{display:block}
 
   /* Header */
-  #psgpt .hdr{padding:14px 16px;border-bottom:1px solid #223056;background:#121936}
-  #psgpt .hdr h4{margin:0;font-weight:700;font-size:18px}
-  #psgpt .hdr .x{margin-left:auto;border:none;background:transparent;color:var(--ps-muted);font-size:14px}
-  #psgpt .quick{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-  #psgpt .chip{padding:8px 12px;border:1px solid #2a355f;border-radius:9999px;background:#0d1835;color:var(--ps-text)}
-  #psgpt .chip:hover{border-color:var(--ps-ring);color:#fff}
+  #nexora .n-header{display:flex; align-items:center; gap:10px; padding:12px 14px; background:#101733; color:#e7e9f3; border-bottom:1px solid var(--nexora-border)}
+  #nexora .n-avatar{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:#20305f;color:#ffd0d8;font-weight:800}
+  #nexora .n-title{margin:0;font-weight:700}
+  #nexora .n-x{margin-left:auto;background:transparent;border:none;color:#a8b2d9;cursor:pointer}
 
-  /* Messages */
-  #psgpt .scroll{flex:1;overflow:auto;background:var(--ps-bg);padding:14px}
-  #psgpt .bubble{max-width:78%;padding:14px;border-radius:14px;background:#0e1731;border:1px solid #26335b}
-  #psgpt .row{display:flex;gap:12px;margin:12px 0}
-  #psgpt .me{justify-content:flex-end}
-  #psgpt .me .bubble{background:#1b2243;border-color:#384272}
-  #psgpt .avatar{flex:0 0 36px;height:36px;width:36px;border-radius:50%;background:#26335a;
-    display:grid;place-items:center;font-weight:700;color:#ffb4c0}
+  /* Iframe */
+  #nexora .n-body{height:calc(100% - 49px); background:#fff}
+  #nexora iframe{width:100%; height:100%; border:0}
 
-  /* Composer (BOTTOM BAR) */
-  #psgpt .composer{position:sticky;bottom:0;left:0;right:0;display:flex;align-items:center;gap:12px;
-    padding:12px;border-top:1px solid #26335b;background:#0f1733}
-  #psgpt .inputWrap{flex:1;display:flex}
-  #psgpt textarea{
-    flex:1;width:100%;min-height:44px;height:44px;max-height:160px; /* 1–4 lines */
-    padding:10px 12px;border-radius:9999px;border:2px solid rgba(244,63,94,.35);
-    background:#0b1229;color:var(--ps-text);outline:none;resize:none;overflow:auto}
-  #psgpt textarea:focus{border-color:var(--ps-ring);box-shadow:0 0 0 3px rgba(244,63,94,.20)}
-  #psgpt .send{flex:0 0 auto;border:none;border-radius:14px;padding:.9rem 1.2rem;color:#fff;
-    background:linear-gradient(180deg,#fb7185,#f43f5e);box-shadow:0 12px 30px rgba(244,63,94,.35)}
-  #psgpt .hint{padding:4px 12px 10px;color:var(--ps-muted);font-size:12px}
-  #psgpt .hint b{color:#e8bccc}
+  /* Mobile sheet */
+  @media (max-width: 640px){
+    #nexora .n-panel{
+      left:0; right:0; bottom:0;
+      width:100%; height:90vh; max-height:none;
+      border-radius:16px 16px 0 0;
+    }
+  }
 </style>
 
-<div id="psgpt" aria-live="polite">
-  <button class="launcher" aria-haspopup="dialog" aria-controls="psgpt-panel">
-    <span class="dot"></span> Ask about Priyam
+<div id="nexora" aria-live="polite">
+  <!-- launcher -->
+  <button class="n-launch" id="nexora-open" aria-haspopup="dialog" aria-controls="nexora-panel">
+    <span class="dot"></span> Ask with Nexora
   </button>
 
-  <section class="panel" id="psgpt-panel" role="dialog" aria-label="Ask about Priyam">
-    <header class="hdr" role="none">
-      <div style="display:flex;align-items:center;gap:10px;">
-        <div class="avatar">PS</div>
-        <h4>Ask about Priyam</h4>
-        <button class="x" title="Close (Esc)">Esc</button>
-      </div>
-      <div class="quick" role="group" aria-label="Shortcuts">
-        <button class="chip" data-q="open resume">Resume</button>
-        <button class="chip" data-q="open experience">Experience</button>
-        <button class="chip" data-q="show projects">Projects</button>
-        <button class="chip" data-q="show certificates">Certificates</button>
-        <button class="chip" data-q="open education">Education</button>
-        <button class="chip" data-q="contact details">Contact</button>
-      </div>
+  <!-- backdrop -->
+  <div class="n-backdrop" id="nexora-backdrop" aria-hidden="true"></div>
+
+  <!-- panel -->
+  <section class="n-panel" id="nexora-panel" role="dialog" aria-label="Ask with Nexora">
+    <header class="n-header">
+      <div class="n-avatar">NX</div>
+      <h4 class="n-title">Nexora</h4>
+      <button class="n-x" id="nexora-close" title="Close (Esc)">✕</button>
     </header>
-
-    <div class="scroll" id="psgpt-feed">
-      <!-- Assistant greeting -->
-      <div class="row">
-        <div class="avatar">PS</div>
-        <div class="bubble">
-          <p><strong>Hi! I’m Priyam’s assistant</strong> 👋</p>
-          <p>Ask about my roles, experience, projects, education, or open the resume.</p>
-          <div class="quick" style="margin-top:8px;">
-            <button class="chip" data-q="open resume">Resume</button>
-            <button class="chip" data-q="open experience">Experience</button>
-            <button class="chip" data-q="show projects">Projects</button>
-            <button class="chip" data-q="show certificates">Certificates</button>
-            <button class="chip" data-q="contact details">Contact</button>
-          </div>
+    <div class="n-body">
+      <!-- Chatbase inline embed -->
+      <iframe
+        id="nexora-frame"
+        src="https://www.chatbase.co/chatbot-iframe/FGIwdqgBOp1V3vEUZFBPj"
+        allow="microphone; clipboard-read; clipboard-write">
+      </iframe>
+      <noscript>
+        <div style="padding:12px;background:#0f162d;color:#e7e9f3">
+          JavaScript is disabled. Open the chatbot here:
+          <a href="https://www.chatbase.co/chatbot-iframe/FGIwdqgBOp1V3vEUZFBPj" target="_blank" style="color:#fb7185">Open Nexora ↗</a>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="avatar">PS</div>
-        <div class="bubble">
-          <p>I can help with: <em>resume, experience, projects, education, certificates, skills, contact.</em></p>
-          <p class="hint" style="margin:6px 0 0 0">
-            Quick links: <b>Resume</b> • <b>Portfolio</b> • <b>Experience</b> • <b>Projects</b> •
-            <b>Education</b> • <b>Certificates</b> • <b>Skills</b> • <b>Contact</b>
-          </p>
-        </div>
-      </div>
+      </noscript>
     </div>
-
-    <div class="composer">
-      <div class="inputWrap">
-        <textarea id="psgpt-input" placeholder="Type a message…  (Enter to send)"></textarea>
-      </div>
-      <button class="send" id="psgpt-send">Send</button>
-    </div>
-    <div class="hint">Try: “<b>open experience</b>” • “<b>view resume</b>” • “<b>show certificates</b>”</div>
   </section>
 </div>
 
 <script>
-(() => {
-  const root   = document.getElementById('psgpt');
-  const panel  = document.getElementById('psgpt-panel');
-  const feed   = document.getElementById('psgpt-feed');
-  const input  = document.getElementById('psgpt-input');
-  const send   = document.getElementById('psgpt-send');
+  (function(){
+    const root = document.getElementById('nexora');
+    const btnOpen = document.getElementById('nexora-open');
+    const btnClose = document.getElementById('nexora-close');
+    const backdrop = document.getElementById('nexora-backdrop');
+    const panel = document.getElementById('nexora-panel');
 
-  // open/close
-  root.querySelector('.launcher').addEventListener('click', () => { root.classList.add('open'); input.focus(); });
-  panel.querySelector('.x').addEventListener('click', () => root.classList.remove('open'));
-  document.addEventListener('keydown', e => { if(e.key==='Escape') root.classList.remove('open'); });
+    function open()  { root.classList.add('open'); setTimeout(()=>panel.focus?.(), 0); }
+    function close() { root.classList.remove('open'); btnOpen.focus(); }
 
-  // auto-grow textarea (1–4 lines)
-  const baseH = 44, maxH = 160;
-  const grow = () => {
-    input.style.height = baseH + 'px';
-    const nh = Math.min(input.scrollHeight, maxH);
-    input.style.height = nh + 'px';
-  };
-  input.addEventListener('input', grow);
-  grow();
-
-  // shortcuts
-  panel.querySelectorAll('.chip[data-q]').forEach(btn => {
-    btn.addEventListener('click', () => { input.value = btn.dataset.q; grow(); handleSubmit(); });
-  });
-
-  // basic “router”
-  const openURL = url => { window.open(url, '_blank'); };
-
-  function reply(html){
-    const row = document.createElement('div');
-    row.className = 'row';
-    row.innerHTML = `<div class="avatar">PS</div><div class="bubble">${html}</div>`;
-    feed.appendChild(row);
-    feed.scrollTo({top: feed.scrollHeight, behavior:'smooth'});
-  }
-  function userSay(text){
-    const row = document.createElement('div');
-    row.className = 'row me';
-    row.innerHTML = `<div class="bubble">${text}</div>`;
-    feed.appendChild(row);
-    feed.scrollTo({top: feed.scrollHeight, behavior:'smooth'});
-  }
-
-  function greetIfHi(text){
-    if(/^\s*(hi|hello|hey|yo|hola)\b/i.test(text)){
-      reply("Hey there! 👋 What would you like to see — <b>experience</b>, <b>projects</b>, <b>resume</b>, <b>education</b>, or <b>certificates</b>?");
-      return true;
-    }
-    return false;
-  }
-
-  function handle(text){
-    const t = text.trim().toLowerCase();
-
-    if (greetIfHi(t)) return;
-
-    // quick intents
-    if (/\bresume\b|open resume|view resume/.test(t)) {
-      reply('Opening my resume (PDF)…');
-      openURL('assets/Priyam%20-%20Resume.pdf'); return;
-    }
-    if (/experience|work|roles/.test(t)) {
-      document.querySelector('a[href="#experience"]')?.click();
-      reply('Jumped to the <b>Professional Experience</b> section.'); return;
-    }
-    if (/project|research/.test(t)) {
-      document.querySelector('a[href="#research"]')?.click();
-      reply('Here are my <b>Research Projects</b>.'); return;
-    }
-    if (/certificate|certifications/.test(t)) {
-      document.querySelector('a[href="#certs"]')?.click();
-      reply('Opening <b>Professional Certificates</b>.'); return;
-    }
-    if (/education|degree|gpa/.test(t)) {
-      document.querySelector('a[href="#education"]')?.click();
-      reply('Scrolled to <b>Education</b>.'); return;
-    }
-    if (/skill|tools?/.test(t)) {
-      document.querySelector('a[href="#skills"]')?.click();
-      reply('Showing <b>Skills & Tools</b>.'); return;
-    }
-    if (/contact|email|phone|linkedin|github/.test(t)) {
-      document.querySelector('a[href="#contact"]')?.click();
-      reply('Jumped to <b>Contact</b> — my email, phone, and links are there.'); return;
-    }
-
-    // fallback
-    reply("Got it! If you’d like, I can also open <b>experience</b>, <b>projects</b>, <b>resume</b>, <b>education</b>, or <b>certificates</b>.");
-  }
-
-  function handleSubmit(){
-    const text = input.value.trim();
-    if(!text) return;
-    userSay(text);
-    input.value = '';
-    grow();
-    handle(text);
-  }
-
-  send.addEventListener('click', handleSubmit);
-  input.addEventListener('keydown', e => {
-    if(e.key === 'Enter' && !e.shiftKey){
-      e.preventDefault();
-      handleSubmit();
-    }
-  });
-})();
+    btnOpen.addEventListener('click', open);
+    btnClose.addEventListener('click', close);
+    backdrop.addEventListener('click', close);
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
+  })();
 </script>
-<!-- === /Priyam Chatbot v3 === -->
+<!-- =======================
+     /NEXORA Widget
+     ======================= -->
+<script>
+  window.embeddedChatbotConfig = {
+    chatbotId: "FGIwdqgBOp1V3vEUZFBPj",
+    domain: "www.chatbase.co"
+  };
+</script>
+<script src="https://www.chatbase.co/embed.min.js"
+        chatbotId="FGIwdqgBOp1V3vEUZFBPj"
+        domain="www.chatbase.co"
+        defer></script>
 </body>
 </html>
