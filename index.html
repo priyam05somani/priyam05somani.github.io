@@ -1,21 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DY0T18WBWE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-DY0T18WBWE');
-</script>
-  
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Priyam Somani • Marketing & Business Analytics</title>
-  <meta name="description" content="Priyam Somani — Marketing & Business Analytics. Market research, pricing & GTM strategy, sustainability, and data-driven growth." />
-  <meta name="keywords" content="Priyam Somani, Business Analyst, Market Research, Strategy Analyst, Sustainability Analyst, Pricing, Tariff, GTM, SQL, Power BI, Tableau, Python, Forecasting, Pittsburgh, Cambridge MA" />
+  <meta name="description" content="Priyam Somani — Marketing & Business Analytics portfolio. Growth, market research, dashboards, CRM automation, and strategy." />
+  <meta name="keywords" content="Priyam Somani, Marketing Analytics, Business Analytics, Market Research, Strategy, Power BI, SQL, GA4, Tableau, HubSpot" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,22 +21,14 @@
         extend: {
           fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'], display:['Poppins','Inter','ui-sans-serif'] },
           colors: {
-            night: { 900:'#0e1325', 800:'#151a30' },
-            accent:{ 300:'#fb7185', 400:'#f43f5e', 500:'#e11d48' }
+            ink: { 950:'#070A12', 900:'#0B1020', 850:'#0F1730', 800:'#121B36' },
+            rose: { 300:'#fb7185', 400:'#f43f5e', 500:'#e11d48' },
+            cyan: { 300:'#67e8f9', 400:'#22d3ee' },
+            lime: { 300:'#bef264', 400:'#a3e635' }
           },
-          boxShadow:{ card:'0 16px 40px -20px rgba(0,0,0,.45)', soft:'0 8px 20px -10px rgba(0,0,0,.35)' },
-          keyframes:{
-            orbit:{ to:{ transform:'rotate(360deg)' } },
-            orbitReverse:{ to:{ transform:'rotate(-360deg)' } },
-            pulse:{ '0%':{ boxShadow:'0 0 0 0 rgba(244,63,94,.45)' }, '70%':{ boxShadow:'0 0 0 28px rgba(244,63,94,0)' }, '100%':{ boxShadow:'0 0 0 0 rgba(244,63,94,0)' } },
-            revealUp:{ from:{ opacity:0, transform:'translateY(16px)'}, to:{ opacity:1, transform:'translateY(0)'} }
-          },
-          animation:{
-            orbit:'orbit 28s linear infinite',
-            orbitSlow:'orbit 42s linear infinite',
-            orbitReverse:'orbitReverse 32s linear infinite',
-            pulse:'pulse 3s ease-out infinite',
-            revealUp:'revealUp .7s ease-out both'
+          boxShadow:{
+            soft:'0 10px 30px -18px rgba(0,0,0,.55)',
+            glow:'0 0 0 1px rgba(255,255,255,.08), 0 20px 60px -40px rgba(244,63,94,.55)'
           }
         }
       }
@@ -55,804 +37,521 @@
 
   <style>
     html{scroll-behavior:smooth}
-    .container-tight{max-width:1150px}
     section{scroll-margin-top:92px}
-    .heading-underline{position:relative;display:inline-block}
-    .heading-underline::after{content:"";position:absolute;left:0;bottom:-10px;width:64px;height:4px;border-radius:9999px;background:linear-gradient(90deg,#f43f5e,#fb7185)}
-    .tick-list li{position:relative;padding-left:1.6rem}
-    .tick-list li::before{content:"";position:absolute;left:0;top:.3rem;width:1rem;height:1rem;background-repeat:no-repeat;background-size:100% 100%;
-      background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='12' r='11' stroke='%23fb7185' stroke-width='2'/><path d='M7 12.5l3.2 3.2L17 9.8' stroke='%23fb7185' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-    }
-    /* tiny action link style */
-    .mini-link{display:inline-flex;align-items:center;gap:.25rem}
-    .mini-link::after{content:"→"}
 
-    /* --- HERO ORBIT (icons + tooltips) --- */
-    .orbit-wrap{position:relative;width:100%;min-height:420px}
-    @media (min-width:1024px){.orbit-wrap{min-height:520px}}
-    .rings{position:absolute;inset:0;opacity:.5}
-    .rings div{position:absolute;border-radius:9999px;border:1px solid rgba(255,255,255,.08)}
-    .rings .r1{inset:6%}.rings .r2{inset:16%}.rings .r3{inset:26%}
-
-    .core{
-      position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-      width:230px;height:230px;border-radius:9999px;display:grid;place-items:center;
-      border:2px solid rgba(244,63,94,.35);
-      background:radial-gradient(ellipse at 50% 40%, rgba(244,63,94,.55), rgba(244,63,94,.08) 65%, transparent 72%);
-      box-shadow:0 0 60px 0 rgba(244,63,94,.25) inset;
+    /* Subtle animated grid */
+    .grid-bg{
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(255,255,255,.08) 1px, transparent 0);
+      background-size: 22px 22px;
+      mask-image: radial-gradient(ellipse at 50% 30%, #000 55%, transparent 75%);
     }
 
-    .rail{position:absolute;left:50%;top:50%;width:0;height:0;transform-origin:0 0}
+    /* Gradient border card */
+    .gcard{
+      position:relative;
+      border-radius: 20px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      overflow:hidden;
+    }
+    .gcard:before{
+      content:"";
+      position:absolute; inset:-1px;
+      background: linear-gradient(120deg, rgba(244,63,94,.55), rgba(34,211,238,.35), rgba(190,242,100,.25));
+      opacity:.18;
+      filter: blur(10px);
+      z-index:0;
+    }
+    .gcard > *{position:relative; z-index:1;}
 
+    /* Pill chips */
     .chip{
-      --angle:0deg;--radius:210px;
-      position:absolute;left:0;top:0;
-      transform:rotate(var(--angle)) translateX(var(--radius)) rotate(calc(-1*var(--angle)));
-      height:56px;width:56px;border-radius:9999px;
-      background:rgba(255,255,255,.10);
-      border:1px solid rgba(255,255,255,.16);
-      backdrop-filter:blur(6px);
-      display:grid;place-items:center;color:#e2e8f0;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
+      padding:.42rem .7rem;
+      font-weight: 600;
+      font-size: .82rem;
+      color: rgba(226,232,240,1);
     }
-    @media (max-width:640px){ .chip{--radius:160px;height:50px;width:50px} .core{width:200px;height:200px} }
+    .chip:hover{border-color: rgba(244,63,94,.55)}
+    .mini-link{display:inline-flex; align-items:center; gap:.35rem}
+    .mini-link:after{content:"→"}
 
-    /* Accessible tooltips */
-    .chip[data-label]::after{
-      content:attr(data-label);
-      position:absolute;left:50%;top:-10px;transform:translate(-50%,-6px) scale(.92);
-      white-space:nowrap;font-size:.7rem;padding:.28rem .5rem;border-radius:.5rem;
-      background:rgba(14,19,37,.9);border:1px solid rgba(255,255,255,.14);color:#e5e7eb;
-      opacity:0;pointer-events:none;transition:opacity .18s ease, transform .18s ease;
+    /* Tiny tag */
+    .tag{
+      font-size:.72rem;
+      padding:.22rem .55rem;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: rgba(203,213,225,1);
     }
-    .chip:hover::after,.chip:focus-visible::after{opacity:1;transform:translate(-50%,-10px) scale(1)}
   </style>
 </head>
 
-<body class="bg-night-900 text-slate-100 text-[17px]">
+<body class="bg-ink-950 text-slate-100">
   <!-- NAV -->
-  <header class="sticky top-0 z-50 backdrop-blur bg-night-900/80 border-b border-white/10">
-    <div class="mx-auto container-tight px-4 py-4 flex items-center justify-between">
-      <a href="#home" class="font-display font-extrabold text-2xl">PS</a>
-      <nav class="hidden md:flex items-center gap-7 text-sm">
-        <a href="#about" class="hover:text-accent-300">About</a>
-        <a href="#experience" class="hover:text-accent-300">Experience</a>
-        <a href="#research" class="hover:text-accent-300">Research</a>
-        <a href="#education" class="hover:text-accent-300">Education</a>
-        <a href="#volunteering" class="hover:text-accent-300">Volunteering</a>
-        <a href="#certs" class="hover:text-accent-300">Certificates</a>
-        <a href="#skills" class="hover:text-accent-300">Skills</a>
-        <a href="#contact" class="hover:text-accent-300">Contact</a>
+  <header class="sticky top-0 z-50 backdrop-blur bg-ink-950/75 border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="#home" class="font-display font-extrabold text-2xl tracking-tight">PS</a>
+
+      <nav class="hidden md:flex items-center gap-7 text-sm text-slate-200">
+        <a href="#work" class="hover:text-rose-300">Work</a>
+        <a href="#projects" class="hover:text-rose-300">Projects</a>
+        <a href="#experience" class="hover:text-rose-300">Experience</a>
+        <a href="#skills" class="hover:text-rose-300">Skills</a>
+        <a href="#contact" class="hover:text-rose-300">Contact</a>
       </nav>
+
       <div class="flex items-center gap-2">
-        <a href="assets/Priyam%20Somani%20-%20Resume%20Z.pdf" class="hidden sm:inline-flex rounded-full bg-accent-400 hover:bg-accent-500 text-white px-4 py-2 text-xs font-semibold shadow-soft">Resume</a>
+        <!-- ✅ Rename your file + update this path -->
+        <a href="assets/priyam-somani-resume-z.pdf"
+           class="hidden sm:inline-flex rounded-full bg-rose-400 hover:bg-rose-500 text-white px-4 py-2 text-xs font-semibold shadow-soft">
+          Resume
+        </a>
         <button id="menuBtn" class="md:hidden rounded-xl border border-white/15 px-3 py-1.5 text-xs">Menu</button>
       </div>
     </div>
+
     <div id="mobileMenu" class="md:hidden hidden border-t border-white/10">
-      <nav class="mx-auto container-tight px-4 py-3 grid gap-2 text-sm">
-        <a href="#about">About</a><a href="#experience">Experience</a><a href="#research">Research</a>
-        <a href="#education">Education</a><a href="#volunteering">Volunteering</a><a href="#certs">Certificates</a>
-        <a href="#skills">Skills</a><a href="#contact">Contact</a>
+      <nav class="max-w-6xl mx-auto px-4 py-3 grid gap-2 text-sm text-slate-200">
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <!-- HERO -->
-  <section id="home" class="bg-gradient-to-b from-night-900 to-night-800">
-    <div class="mx-auto container-tight px-4 py-16 md:py-24 grid lg:grid-cols-2 gap-12 items-center">
-      <div class="animate-revealUp">
-        <h1 class="font-display text-5xl md:text-6xl font-extrabold leading-tight text-accent-300">Priyam Somani</h1>
-        <h2 class="mt-2 text-2xl md:text-3xl font-semibold">Marketing & Business Analytics • Strategy • Market Research</h2>
-        <p class="mt-5 text-slate-300 max-w-xl">
-          I turn complex data into clear strategy. I deliver pricing models, growth roadmaps, and executive insights across energy,
-          data centers, manufacturing, and consumer brands—always tied to measurable outcomes.
-        </p>
-        <div class="mt-7 flex flex-wrap gap-3">
-          <a href="#about" class="rounded-full bg-accent-400 hover:bg-accent-500 text-white px-5 py-2.5 text-sm font-semibold shadow-soft">About me</a>
-          <a href="#experience" class="rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold">Professional Experience</a>
-          <a href="assets/Priyam%20Somani%20-%20Resume%20Z.pdf" class="rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold">Download Resume</a>
-        </div>
-      </div>
+  <section id="home" class="relative overflow-hidden">
+    <div class="absolute inset-0 grid-bg opacity-70"></div>
 
-      <!-- Orbit with icon chips -->
-      <div class="orbit-wrap">
-        <div class="rings"><div class="r1"></div><div class="r2"></div><div class="r3"></div></div>
+    <div class="max-w-6xl mx-auto px-4 pt-14 pb-12 md:pt-20 md:pb-16 relative">
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+        <!-- Left -->
+        <div>
+          <div class="inline-flex items-center gap-2 tag mb-4">
+            <span class="inline-block h-2 w-2 rounded-full bg-rose-400"></span>
+            Marketing • Analytics • Strategy
+          </div>
 
-        <!-- Center: astronaut bot -->
-        <div class="core animate-pulse">
-          <svg width="150" height="150" viewBox="0 0 256 256" aria-hidden="true">
-            <defs>
-              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="6" result="blur"/>
-                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-            </defs>
-            <circle cx="128" cy="128" r="82" fill="#f43f5e" opacity=".18"/>
-            <g filter="url(#glow)" fill="#fff">
-              <path d="M128 60c-22 0-40 15-40 34v11h80v-11c0-19-18-34-40-34z"/>
-              <rect x="72" y="105" width="112" height="70" rx="18"/>
-              <rect x="92" y="88" width="72" height="40" rx="16"/>
-              <circle cx="116" cy="106" r="7" fill="#0e1325"/>
-              <circle cx="140" cy="106" r="7" fill="#0e1325"/>
-              <rect x="116" y="156" width="24" height="10" rx="3" fill="#0e1325"/>
-            </g>
-          </svg>
-        </div>
+          <h1 class="font-display text-5xl md:text-6xl font-extrabold leading-[1.05] tracking-tight">
+            Priyam <span class="text-rose-300">Somani</span>
+          </h1>
 
-        <!-- Rail A (clockwise) -->
-        <div class="rail animate-orbit">
-          <!-- AI -->
-          <button class="chip" data-label="AI" aria-label="AI">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M8 12a4 4 0 018 0M6 12a6 6 0 0012 0" stroke="#e5e7eb" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="9" cy="12" r="1.2" fill="#e5e7eb"/><circle cx="15" cy="12" r="1.2" fill="#e5e7eb"/>
-            </svg>
-          </button>
+          <p class="mt-4 text-slate-300 text-lg leading-relaxed max-w-xl">
+            I build <span class="text-slate-100 font-semibold">growth stories backed by data</span> —
+            market research, performance marketing, CRM automation, and dashboards that help teams move faster and decide smarter.
+          </p>
 
-          <!-- Sustainability -->
-          <button class="chip" style="--angle:60deg" data-label="Sustainability" aria-label="Sustainability">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M5 13c4-8 10-8 14-6-2 6-6 10-12 11 0-2 1-4 3-5" stroke="#e5e7eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
+          <div class="mt-6 flex flex-wrap gap-2">
+            <span class="chip">GA4 • GTM</span>
+            <span class="chip">SQL</span>
+            <span class="chip">Power BI</span>
+            <span class="chip">Tableau</span>
+            <span class="chip">HubSpot</span>
+            <span class="chip">Python/R</span>
+          </div>
 
-          <!-- Market Research -->
-          <button class="chip" style="--angle:120deg" data-label="Market Research" aria-label="Market Research">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <circle cx="10" cy="10" r="6" stroke="#e5e7eb" stroke-width="2"/>
-              <path d="M14.5 14.5L20 20" stroke="#e5e7eb" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </button>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#projects" class="rounded-full bg-rose-400 hover:bg-rose-500 text-white px-5 py-2.5 text-sm font-semibold shadow-soft">
+              View Projects
+            </a>
+            <a href="#experience" class="rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold">
+              Experience
+            </a>
+            <a href="assets/priyam-somani-resume-z.pdf" class="rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold">
+              Download Resume
+            </a>
+          </div>
+
+          <!-- Proof points (pulled from your resume metrics) -->
+          <div class="mt-10 grid sm:grid-cols-3 gap-4">
+            <div class="gcard p-4 shadow-glow">
+              <div class="text-2xl font-extrabold text-rose-300">40%</div>
+              <div class="text-xs text-slate-300 mt-1">YoY customer growth</div>
+            </div>
+            <div class="gcard p-4 shadow-glow">
+              <div class="text-2xl font-extrabold text-cyan-300">$26M</div>
+              <div class="text-xs text-slate-300 mt-1">strategy/investment initiative</div>
+            </div>
+            <div class="gcard p-4 shadow-glow">
+              <div class="text-2xl font-extrabold text-lime-300">75%</div>
+              <div class="text-xs text-slate-300 mt-1">retention improvement outcome</div>
+            </div>
+          </div>
         </div>
 
-        <!-- Rail B (counter-clockwise) -->
-        <div class="rail animate-orbitReverse">
-          <!-- Business Analytics -->
-          <button class="chip" style="--angle:180deg" data-label="Business Analytics" aria-label="Business Analytics">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M4 19h16M7 16v-6M12 16V8M17 16v-4" stroke="#e5e7eb" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </button>
+        <!-- Right: “Creative + Technical” feature panel -->
+        <div class="gcard p-6 shadow-glow">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <h2 class="font-display text-2xl font-extrabold">What I do</h2>
+              <p class="text-slate-300 text-sm mt-1">A marketing brain + analytics engine.</p>
+            </div>
+            <span class="tag">Portfolio v2</span>
+          </div>
 
-          <!-- SQL -->
-          <button class="chip" style="--angle:240deg" data-label="SQL" aria-label="SQL">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <ellipse cx="12" cy="6" rx="7" ry="3" stroke="#e5e7eb" stroke-width="2"/>
-              <path d="M5 6v8c0 1.66 3.13 3 7 3s7-1.34 7-3V6" stroke="#e5e7eb" stroke-width="2"/>
-            </svg>
-          </button>
+          <div class="mt-6 grid gap-4">
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <div class="flex items-center justify-between">
+                <div class="font-semibold">Insight → Strategy</div>
+                <span class="tag">Research</span>
+              </div>
+              <p class="text-slate-300 text-sm mt-2">
+                Competitive intelligence, VOC, segmentation, positioning — delivered as crisp, exec-ready narratives.
+              </p>
+            </div>
 
-          <!-- Tableau -->
-          <button class="chip" style="--angle:300deg" data-label="Tableau" aria-label="Tableau">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 3v6M12 15v6M3 12h6M15 12h6M7.5 7.5v3M16.5 13.5v3M7.5 13.5v3M16.5 7.5v3" stroke="#e5e7eb" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </button>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <div class="flex items-center justify-between">
+                <div class="font-semibold">Strategy → Execution</div>
+                <span class="tag">Growth</span>
+              </div>
+              <p class="text-slate-300 text-sm mt-2">
+                Performance marketing, lifecycle journeys, A/B testing, funnel optimization and attribution.
+              </p>
+            </div>
+
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <div class="flex items-center justify-between">
+                <div class="font-semibold">Execution → Measurement</div>
+                <span class="tag">Analytics</span>
+              </div>
+              <p class="text-slate-300 text-sm mt-2">
+                Dashboards + KPI systems (GA4, BI tools, SQL) to track what matters and scale what works.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-6 flex flex-wrap gap-2 text-sm">
+            <a class="mini-link text-rose-300 hover:text-rose-200 font-semibold" href="#contact">Let’s collaborate</a>
+            <a class="mini-link text-slate-200 hover:text-white font-semibold" target="_blank" rel="noopener"
+               href="https://www.linkedin.com/in/priyam-somani/">LinkedIn</a>
+            <a class="mini-link text-slate-200 hover:text-white font-semibold" target="_blank" rel="noopener"
+               href="https://github.com/priyam05somani">GitHub</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="bg-night-800">
-    <div class="mx-auto container-tight px-4 py-16">
-      <h3 class="heading-underline text-3xl font-display font-extrabold">About Me</h3>
+  <!-- WORK / SNAPSHOT -->
+  <section id="work" class="border-t border-white/10 bg-ink-900/30">
+    <div class="max-w-6xl mx-auto px-4 py-14">
+      <h3 class="font-display text-3xl font-extrabold">Work Snapshot</h3>
+      <p class="text-slate-300 mt-2 max-w-2xl">
+        Recent roles span sustainability strategy, market research, growth marketing, and analytics dashboards.
+      </p>
 
-      <div class="mt-8 grid lg:grid-cols-3 gap-10 items-start">
-        <!-- Profile image -->
-        <div class="order-1 lg:order-none">
-          <div class="relative w-64 h-64 rounded-full p-2 bg-gradient-to-b from-accent-400/70 to-transparent mx-auto">
-            <img src="assets/Profile%20Picture.jpg" alt="Priyam Somani" class="w-full h-full object-cover rounded-full border-4 border-night-900 shadow-card">
-          </div>
-        </div>
-
-        <div class="lg:col-span-2 order-2 lg:order-none">
-          <p class="text-slate-300 leading-relaxed">
-            I’m a data-driven strategist with a marketer’s empathy. I blend quantitative models with clear storytelling to help leaders make
-            <strong>strategic decisions</strong>. Recent work spans <span class="text-accent-300 font-medium">rate-structure benchmarking & pricing for industrial customers</span>,
-            <span class="text-accent-300 font-medium">market entry for hyperscale data centers</span>, 
-            <span class="text-accent-300 font-medium">VOC-led product validation</span>, and
-            <span class="text-accent-300 font-medium">performance marketing</span>.
+      <div class="mt-8 grid md:grid-cols-3 gap-5">
+        <div class="gcard p-6">
+          <div class="tag mb-2">Strategy</div>
+          <div class="font-semibold text-lg">Peoples Natural Gas</div>
+          <p class="text-sm text-slate-300 mt-2">
+            Competitive benchmarking & executive strategy for infrastructure + hyperscale data center market entry.
           </p>
-
-          <div class="mt-6 grid grid-cols-3 gap-4">
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-center">
-              <div class="text-2xl font-bold text-accent-300">4+</div><div class="text-xs text-slate-300">Years experience</div>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-center">
-              <div class="text-2xl font-bold text-accent-300">$200M+</div><div class="text-xs text-slate-300">Business impact modeled</div>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-center">
-              <div class="text-2xl font-bold text-accent-300">6+</div><div class="text-xs text-slate-300">Professional certificates</div>
-            </div>
-          </div>
-
-          <div class="mt-7">
-            <h4 class="font-semibold mb-3">Core strengths</h4>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm">Pricing & Benefit Modeling</span>
-              <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm">VOC / Segmentation / ICPs</span>
-              <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm">GTM & Positioning</span>
-              <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm">Dashboards (Power BI / Excel / Tableau)</span>
-              <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm">SQL & Python</span>
-              <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm">Forecasting & Optimization</span>
-              <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm">A/B Testing & Funnel Analytics</span>
-              <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm">Executive Storytelling</span>
-              <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm">Stakeholder Management</span>
-            </div>
-          </div>
         </div>
+
+        <div class="gcard p-6">
+          <div class="tag mb-2">Research</div>
+          <div class="font-semibold text-lg">Ductmate (Consulting)</div>
+          <p class="text-sm text-slate-300 mt-2">
+            Surveys + interviews + analysis to shape messaging, positioning, and product strategy.
+          </p>
+        </div>
+
+        <div class="gcard p-6">
+          <div class="tag mb-2">Growth</div>
+          <div class="font-semibold text-lg">JaiUdit Suitings</div>
+          <p class="text-sm text-slate-300 mt-2">
+            CRM + performance marketing + GA4 measurement to improve acquisition, retention, and efficiency.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-14">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        <div>
+          <h3 class="font-display text-3xl font-extrabold">Projects</h3>
+          <p class="text-slate-300 mt-2">A mix of analytics, strategy, and real-world execution.</p>
+        </div>
+
+        <!-- Filter -->
+        <div class="flex flex-wrap gap-2">
+          <button class="chip" data-filter="all">All</button>
+          <button class="chip" data-filter="analytics">Analytics</button>
+          <button class="chip" data-filter="growth">Growth</button>
+          <button class="chip" data-filter="web">Web / Brand</button>
+          <button class="chip" data-filter="strategy">Strategy</button>
+        </div>
+      </div>
+
+      <div class="mt-8 grid md:grid-cols-2 gap-5" id="projectGrid">
+
+        <!-- NEW: Somani Textile Group / JaiUdit -->
+        <article class="gcard p-6 project" data-tags="web,growth,strategy">
+          <div class="flex items-start justify-between gap-3">
+            <h4 class="font-semibold text-lg">Somani Textile Group — Brand Website</h4>
+            <span class="tag">Web / Brand</span>
+          </div>
+          <p class="text-sm text-slate-300 mt-2">
+            Built a brand-forward website for JaiUdit Suitings under Somani Textile Group to support credibility, discovery,
+            and customer outreach.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="tag">Brand storytelling</span>
+            <span class="tag">Product pages</span>
+            <span class="tag">Conversion-focused UX</span>
+          </div>
+          <div class="mt-5 flex gap-3 text-sm">
+            <a class="mini-link text-rose-300 hover:text-rose-200 font-semibold" target="_blank" rel="noopener"
+               href="https://priyam05somani.wixsite.com/somani-textile-group">Open website</a>
+          </div>
+        </article>
+
+        <article class="gcard p-6 project" data-tags="strategy,analytics">
+          <div class="flex items-start justify-between gap-3">
+            <h4 class="font-semibold text-lg">Peoples Natural Gas — Hydrogen + Data Centers</h4>
+            <span class="tag">Strategy</span>
+          </div>
+          <p class="text-sm text-slate-300 mt-2">
+            Market entry and infrastructure benchmarking with executive dashboards and strategic playbooks.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="tag">Competitive intelligence</span>
+            <span class="tag">Dashboards</span>
+            <span class="tag">Exec storytelling</span>
+          </div>
+          <div class="mt-5 flex gap-3 text-sm">
+            <!-- Replace with your actual deck path if you keep it -->
+            <a class="mini-link text-rose-300 hover:text-rose-200 font-semibold" href="assets/Peoples%20Natural%20Gas%20-%20Hydrogen%20Bledning%20%26%20Data%20Centers.pptx">
+              Open deck
+            </a>
+          </div>
+        </article>
+
+        <article class="gcard p-6 project" data-tags="analytics,strategy">
+          <div class="flex items-start justify-between gap-3">
+            <h4 class="font-semibold text-lg">Ductmate — Market Research & Insights</h4>
+            <span class="tag">Analytics</span>
+          </div>
+          <p class="text-sm text-slate-300 mt-2">
+            Survey + interview research, EDA, segmentation, and insight synthesis to inform positioning and decisions.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="tag">VOC</span>
+            <span class="tag">EDA</span>
+            <span class="tag">Tableau / Excel</span>
+          </div>
+          <div class="mt-5 flex gap-3 text-sm">
+            <a class="mini-link text-rose-300 hover:text-rose-200 font-semibold" href="assets/Market%20Research%20and%20Strategy%20for%20DMI.pptx">
+              Open deck
+            </a>
+          </div>
+        </article>
+
+        <article class="gcard p-6 project" data-tags="analytics">
+          <div class="flex items-start justify-between gap-3">
+            <h4 class="font-semibold text-lg">Analytics Toolkit — Dashboards & KPI Systems</h4>
+            <span class="tag">Analytics</span>
+          </div>
+          <p class="text-sm text-slate-300 mt-2">
+            KPI design and reporting systems (Power BI / Tableau / Excel) that connect spend, funnel performance, and outcomes.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="tag">KPI design</span>
+            <span class="tag">Attribution</span>
+            <span class="tag">Forecasts</span>
+          </div>
+          <div class="mt-5 text-sm text-slate-300">
+            Tip: Add screenshots in <code>assets/projects/</code> and I’ll style them into this card.
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
 
   <!-- EXPERIENCE -->
-  <section id="experience" class="bg-night-900">
-    <div class="mx-auto container-tight px-4 py-16">
-      <h3 class="heading-underline text-3xl font-display font-extrabold">Professional Experience</h3>
-
-      <div class="relative mt-10">
-        <div class="absolute left-4 top-0 bottom-0 w-px bg-white/10"></div>
-
-        <!-- Peoples Natural Gas -->
-        <article class="relative pl-12 mb-8">
-          <div class="rounded-2xl bg-white/5 border border-white/10 p-6 shadow-soft">
-            <h4 class="font-semibold text-lg">Sustainability & Strategy Consulting</h4>
-            <p class="text-sm text-slate-300">Peoples Natural Gas · Pittsburgh, PA · Sep 2024 – Jun 2025</p>
-            <ul class="mt-3 text-sm text-slate-200 space-y-2 tick-list">
-              <li>Conducted quantitative and financial modeling to evaluate market position and support data-driven growth strategies across 5+ utilities.</li>
-              <li>Supported a $26M data center investment project with feasibility analysis and infrastructure benchmarking for sustainable power delivery.</li>
-              <li>Created competitive playbooks comparing Western PA to Virginia, influencing executive-level hyperscale attraction strategy.</li>
-              <li>Partnered with H Quest and University of Pittsburgh to model hydrogen blending and RNG strategies for clean energy transition.</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- DMI -->
-        <article class="relative pl-12 mb-8">
-          <div class="rounded-2xl bg-white/5 border border-white/10 p-6 shadow-soft">
-            <h4 class="font-semibold text-lg">Marketing & Research Consulting Fellow</h4>
-            <p class="text-sm text-slate-300">Client: Ductmate Industries · Pittsburgh, PA · Sep 2024 – Nov 2024</p>
-            <ul class="mt-3 text-sm text-slate-200 space-y-2 tick-list">
-              <li>Executed market research using Python, R, and Tableau to analyze distributor insights and inform product strategy.</li>
-              <li>Developed an AI-enabled webpage improving inquiry efficiency by 25% and product interest by 15%.</li>
-              <li>Produced demo videos and workshops to strengthen customer engagement and brand credibility.</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- Bridge Program -->
-        <article class="relative pl-12 mb-8">
-          <div class="rounded-2xl bg-white/5 border border-white/10 p-6 shadow-soft">
-            <h4 class="font-semibold text-lg">Strategy & Sponsorship Consultant</h4>
-            <p class="text-sm text-slate-300">University of Pittsburgh – Bridge Program · Pittsburgh, PA · Jul 2024 – Aug 2024</p>
-            <ul class="mt-3 text-sm text-slate-200 space-y-2 tick-list">
-              <li>Built sponsorship playbook and financial models unlocking $50K+ in new funding opportunities.</li>
-              <li>Designed automated workflows and promotional campaigns improving sponsor engagement and visibility.</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- GuardAI -->
-        <article class="relative pl-12 mb-8">
-          <div class="rounded-2xl bg-white/5 border border-white/10 p-6 shadow-soft">
-            <h4 class="font-semibold text-lg">Market Research Analyst Intern</h4>
-            <p class="text-sm text-slate-300">GuardAI – Himalayan Quantitative Solutions · Pittsburgh, USA · May 2024 – Aug 2024</p>
-            <ul class="mt-3 text-sm text-slate-200 space-y-2 tick-list">
-              <li>Benchmarked 100+ AI startups on LLM personalization, cybersecurity, and trust features.</li>
-              <li>Delivered insights that shaped GTM strategy and improved LinkedIn engagement for GuardAI.</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- Jai Udit Suitings -->
-        <article class="relative pl-12">
-          <div class="rounded-2xl bg-white/5 border border-white/10 p-6 shadow-soft">
-            <h4 class="font-semibold text-lg">Marketing and CRM Analyst</h4>
-            <p class="text-sm text-slate-300">Jai Udit Suitings Pvt Ltd · Rajasthan, India · Aug 2020 – Jul 2023</p>
-            <ul class="mt-3 text-sm text-slate-200 space-y-2 tick-list">
-              <li>Managed multi-channel campaigns (Google Ads, HubSpot) achieving 40% YoY growth in new customers.</li>
-              <li>Built Tableau and Excel dashboards linking spend to ROI, enhancing forecasting and decision-making.</li>
-              <li>Improved CRM segmentation, increasing engagement by 25% and customer retention rates.</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-  <!-- RESEARCH -->
-  <section id="research" class="bg-night-800">
-    <div class="mx-auto container-tight px-4 py-16">
-      <h3 class="heading-underline text-3xl font-display font-extrabold">Research Projects</h3>
-
-      <div class="mt-8 grid md:grid-cols-2 gap-5">
-        <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
-          <h4 class="font-semibold">Peoples Natural Gas — Hydrogen Blending & Data Centers</h4>
-          <p class="mt-2 text-sm text-slate-300">
-            Assessed hydrogen blending feasibility and industrial tariff structures; built scenarios for hyperscale data-center loads and produced
-            executive recommendations that shaped GTM and partnership options.
-          </p>
-          <a class="mini-link mt-4 text-accent-300 hover:text-accent-400 text-sm font-semibold"
-             href="assets/Peoples%20Natural%20Gas%20-%20Hydrogen%20Bledning%20%26%20Data%20Centers.pptx">Open deck </a>
-        </article>
-
-        <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
-          <h4 class="font-semibold">Market Research & Strategy — DMI Companies</h4>
-          <p class="mt-2 text-sm text-slate-300">
-            Validated a product configurator through customer interviews and competitive insights; defined ICPs, messaging, and reporting that
-            improved decision-making and accelerated roadmap alignment.
-          </p>
-          <a class="mini-link mt-4 text-accent-300 hover:text-accent-400 text-sm font-semibold"
-             href="assets/Market%20Research%20and%20Strategy%20for%20DMI.pptx">Open deck </a>
-        </article>
-
-        <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft md:col-span-2">
-          <h4 class="font-semibold">Applied Simulation — Pizza Romano</h4>
-          <p class="mt-2 text-sm text-slate-300">
-            Built a SIMIO discrete-event model for staffing, oven capacity, and batching; recommended changes that reduced wait times and
-            improved throughput while maintaining service quality.
-          </p>
-          <a class="mini-link mt-4 text-accent-300 hover:text-accent-400 text-sm font-semibold"
-             href="assets/Applied%20Simulation%20-%20Pizza%20Romano.pdf">Download PDF </a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section id="education" class="bg-night-900">
-    <div class="mx-auto container-tight px-4 py-16">
-      <h3 class="heading-underline text-3xl font-display font-extrabold">Education</h3>
+  <section id="experience" class="border-t border-white/10 bg-ink-900/30">
+    <div class="max-w-6xl mx-auto px-4 py-14">
+      <h3 class="font-display text-3xl font-extrabold">Experience</h3>
+      <p class="text-slate-300 mt-2 max-w-2xl">
+        Highlights below are tuned for marketing + analytics roles (growth, product, strategy, research).
+      </p>
 
       <div class="mt-8 grid gap-5">
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
-          <div class="flex items-start justify-between gap-3">
-            <div>
-              <h4 class="font-semibold">University of Pittsburgh — Joseph M. Katz Graduate School of Business</h4>
-              <p class="text-sm text-slate-300">MS, Marketing & Business Analytics · 2025</p>
-            </div>
-            <div class="text-right"><span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm">GPA 3.78 / 4.00</span></div>
+        <div class="gcard p-6">
+          <div class="flex flex-wrap items-baseline justify-between gap-2">
+            <div class="font-semibold text-lg">Peoples Natural Gas — Sustainability & Strategy Consulting</div>
+            <div class="text-sm text-slate-300">Sep 2024 – Jun 2025</div>
           </div>
-          <ul class="mt-3 text-sm text-slate-300 space-y-2 tick-list">
-            <li>Focus: market research, analytics strategy, pricing, and sustainability.</li>
-            <li>Member, <strong>Student Executive Board</strong> — organized events and served as student representative for <strong>2 years</strong>.</li>
-          </ul>
-          <a class="mini-link inline-block mt-3 text-accent-300 hover:text-accent-400 text-sm font-semibold" href="assets/Transcript-Pitt-Spring-2025.pdf">Transcript </a>
-        </div>
-
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
-          <div class="flex items-start justify-between gap-3">
-            <div>
-              <h4 class="font-semibold">Christ University (Deemed)</h4>
-              <p class="text-sm text-slate-300">BBA, Business Analytics · 2020</p>
-            </div>
-            <div class="text-right"><span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm">GPA 3.45 / 4.00</span></div>
-          </div>
-          <ul class="mt-3 text-sm text-slate-300 space-y-2 tick-list">
-            <li>Foundation in statistics, SQL, dashboarding, and marketing analytics.</li>
-            <li>Capstones in forecasting & optimization; student consulting projects with local brands.</li>
+          <ul class="mt-3 text-sm text-slate-200 space-y-2 list-disc pl-5">
+            <li>Competitive benchmarking across 5+ utilities; modeled market position and growth recommendations.</li>
+            <li>Supported a $26M infrastructure initiative with strategy, value proposition, and executive reporting.</li>
+            <li>Built executive dashboards for forecasts, capacity, and pricing structures.</li>
           </ul>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- LEADERSHIP / VOLUNTEERING -->
-  <section id="volunteering" class="bg-night-800">
-    <div class="mx-auto container-tight px-4 py-16">
-      <h3 class="heading-underline text-3xl font-display font-extrabold">Leadership & Volunteering</h3>
-
-      <div class="mt-8 grid gap-5">
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
-          <div class="flex items-baseline justify-between gap-2">
-            <h4 class="font-semibold">Giving Joy — Market Research Volunteer</h4>
-            <span class="text-sm text-slate-300">June 2025 – Present</span>
+        <div class="gcard p-6">
+          <div class="flex flex-wrap items-baseline justify-between gap-2">
+            <div class="font-semibold text-lg">Ductmate Industries — Marketing & Research (Consulting Fellowship)</div>
+            <div class="text-sm text-slate-300">Sep 2024 – Nov 2024</div>
           </div>
-          <ul class="mt-3 text-sm text-slate-300 space-y-2 tick-list">
-            <li>Map women-owned businesses across <strong>New York</strong>, <strong>Massachusetts</strong>, and <strong>Philadelphia (PA)</strong> with an initial focus on metropolitan clusters.</li>
-            <li>Prioritize industries: <strong>Women’s apparel/fashion/accessories</strong>, <strong>beauty & wellness</strong>, <strong>women’s health & reproductive care products</strong>, and <strong>sustainable/ethical consumer products</strong>.</li>
-            <li>Compile local networks and directories: <strong>WBENC</strong> & <strong>NAWBO</strong> chapters, <strong>WOSB/SBA</strong> lists, and state “Women Business Enterprise” vendor registries; track “Top Women-Owned Businesses” & “Fastest-Growing Women-Led Companies” lists from major outlets.</li>
-            <li>Discovery via <strong>LinkedIn</strong> (filters: “Women Founder/CEO” + industry + location) and social hashtags (<strong>#WomenOwnedBusiness</strong>, <strong>#FemaleFounders</strong>, <strong>#BossWomen</strong>, <strong>#SupportWomenOwned</strong>) to surface promising leads.</li>
+          <ul class="mt-3 text-sm text-slate-200 space-y-2 list-disc pl-5">
+            <li>Designed and conducted surveys/interviews to identify customer needs, product gaps, and regional insights.</li>
+            <li>Synthesized qualitative + quantitative findings into structured recommendations for positioning and GTM.</li>
+            <li>Developed dashboards for campaign performance and conversion trends.</li>
           </ul>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- CERTIFICATES -->
-  <section id="certs" class="bg-night-800/95">
-    <div class="mx-auto container-tight px-4 py-16">
-      <h3 class="heading-underline text-3xl font-display font-extrabold">Professional Certificates</h3>
-      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card">
-  <h4 class="font-semibold">Google Analytics (GA4)</h4>
-  <p class="text-sm text-slate-300 mt-1">Google · Completed Sep 2025</p>
-  <a href="assets/Google%20Analytics.pdf" class="mini-link mt-3 text-accent-300 hover:text-accent-400 text-sm font-semibold">View certificate
-  </a>
-</div>
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card">
-          <h4 class="font-semibold">Facebook & Instagram Advertising</h4>
-          <p class="text-sm text-slate-300 mt-1">Workshop</p>
-          <a href="assets/Facebook-Instagram-Advertising-Workshop.pdf" class="mini-link mt-3 text-accent-300 hover:text-accent-400 text-sm font-semibold">View certificate </a>
-        </div>
-
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card">
-          <h4 class="font-semibold">Generative AI for Digital Marketers</h4>
-          <p class="text-sm text-slate-300 mt-1">2025</p>
-          <a href="assets/Generative-AI-for-Digital-Marketers.pdf" class="mini-link mt-3 text-accent-300 hover:text-accent-400 text-sm font-semibold">View certificate </a>
-        </div>
-
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card">
-          <h4 class="font-semibold">Excel with Copilot — AI-Driven Data Analysis</h4>
-          <p class="text-sm text-slate-300 mt-1">2025</p>
-          <a href="assets/Excel-with-Copilot-AI-Driven-Data-Analysis.pdf" class="mini-link mt-3 text-accent-300 hover:text-accent-400 text-sm font-semibold">View certificate </a>
-        </div>
-
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card">
-          <h4 class="font-semibold">AI for Google Analytics</h4>
-          <p class="text-sm text-slate-300 mt-1">2025</p>
-          <a href="assets/AI-for-Google-Analytics.pdf" class="mini-link mt-3 text-accent-300 hover:text-accent-400 text-sm font-semibold">View certificate </a>
-        </div>
-
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card">
-          <h4 class="font-semibold">Scenario Analysis</h4>
-          <p class="text-sm text-slate-300 mt-1">Certificate</p>
-          <a href="assets/Scenario-Analysis-Certificate.pdf" class="mini-link mt-3 text-accent-300 hover:text-accent-400 text-sm font-semibold">View certificate </a>
-        </div>
-
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 hover:shadow-card">
-          <h4 class="font-semibold">TL Saaty Decision-Making Hackathon</h4>
-          <p class="text-sm text-slate-300 mt-1">Participation</p>
-          <a href="assets/TL-Saaty-Decision-Making-Hackathon.pdf" class="mini-link mt-3 text-accent-300 hover:text-accent-400 text-sm font-semibold">View certificate </a>
+        <div class="gcard p-6">
+          <div class="flex flex-wrap items-baseline justify-between gap-2">
+            <div class="font-semibold text-lg">JaiUdit Suitings Pvt Ltd — Digital Marketing & CRM Analyst</div>
+            <div class="text-sm text-slate-300">Aug 2020 – Jul 2023</div>
+          </div>
+          <ul class="mt-3 text-sm text-slate-200 space-y-2 list-disc pl-5">
+            <li>Executed multi-channel marketing (SEO/SEM, Google Ads, HubSpot) driving ~40% YoY growth in new customers.</li>
+            <li>Improved measurement and user experience via GA/Tag Manager; reported retention and conversion performance.</li>
+            <li>Owned KPI reporting (CTR, CAC, ROI) and dashboarding (Power BI / Tableau / Excel) for budget optimization.</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
   <!-- SKILLS -->
-<section id="skills" class="bg-night-900">
-  <div class="mx-auto container-tight px-4 py-16">
-    <h3 class="heading-underline text-3xl font-display font-extrabold">Skills & Tools</h3>
+  <section id="skills" class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-14">
+      <h3 class="font-display text-3xl font-extrabold">Skills</h3>
 
-    <div class="mt-8 grid lg:grid-cols-3 gap-6">
-      
-      <!-- Technical & Analytical Skills -->
-      <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-        <h4 class="font-semibold">Technical & Analytical Skills</h4>
-        <ul class="mt-3 grid gap-3 text-sm text-slate-300">
-          <li>Advanced Excel, SQL, Tableau, Power BI, R, Python</li>
-          <li>Financial & Predictive Modeling, Market Research, Data Visualization</li>
-          <li>Google Analytics (GA4), Forecasting, Optimization, Simulation (SIMIO)</li>
-        </ul>
-        <div class="mt-4 space-y-3">
-          <div>
-            <div class="flex justify-between text-xs"><span>Excel / Power BI</span><span>Advanced</span></div>
-            <div class="w-full bg-white/10 rounded-full mt-1">
-              <div class="h-2 rounded-full bg-gradient-to-r from-accent-300 to-accent-500 w-[92%]"></div>
-            </div>
-          </div>
-          <div>
-            <div class="flex justify-between text-xs"><span>SQL</span><span>Advanced</span></div>
-            <div class="w-full bg-white/10 rounded-full mt-1">
-              <div class="h-2 rounded-full bg-gradient-to-r from-accent-300 to-accent-500 w-[88%]"></div>
-            </div>
-          </div>
-          <div>
-            <div class="flex justify-between text-xs"><span>Python</span><span>Intermediate</span></div>
-            <div class="w-full bg-white/10 rounded-full mt-1">
-              <div class="h-2 rounded-full bg-gradient-to-r from-accent-300 to-accent-500 w-[75%]"></div>
-            </div>
-          </div>
+      <div class="mt-8 grid lg:grid-cols-3 gap-5">
+        <div class="gcard p-6">
+          <h4 class="font-semibold">Analytics</h4>
+          <ul class="mt-3 text-sm text-slate-300 space-y-2">
+            <li>Dashboards: Power BI, Tableau, Excel</li>
+            <li>SQL • Data modeling • Reporting</li>
+            <li>GA4 • Attribution • Funnel analytics</li>
+            <li>Forecasting • KPI systems</li>
+          </ul>
+        </div>
+
+        <div class="gcard p-6">
+          <h4 class="font-semibold">Growth & CRM</h4>
+          <ul class="mt-3 text-sm text-slate-300 space-y-2">
+            <li>Performance marketing (Google/Meta)</li>
+            <li>Lifecycle automation (HubSpot)</li>
+            <li>A/B testing • CRO • Landing pages</li>
+            <li>Segmentation • Retention</li>
+          </ul>
+        </div>
+
+        <div class="gcard p-6">
+          <h4 class="font-semibold">Strategy</h4>
+          <ul class="mt-3 text-sm text-slate-300 space-y-2">
+            <li>Market research • VOC • Competitive intel</li>
+            <li>Positioning • Messaging • GTM support</li>
+            <li>Executive storytelling • Stakeholders</li>
+            <li>Business cases • Decision frameworks</li>
+          </ul>
         </div>
       </div>
 
-      <!-- Marketing & Strategy -->
-      <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-        <h4 class="font-semibold">Marketing & Strategy</h4>
-        <ul class="mt-3 grid gap-3 text-sm text-slate-300">
-          <li>VOC research, Digital Marketing, SEO/SEM, Communication</li>
-          <li>Pricing, positioning, and go-to-market strategy</li>
-          <li>A/B testing, Funnel analytics, and Performance marketing</li>
-        </ul>
-        <div class="mt-4 space-y-3">
-          <div>
-            <div class="flex justify-between text-xs"><span>Market Research</span><span>Advanced</span></div>
-            <div class="w-full bg-white/10 rounded-full mt-1">
-              <div class="h-2 rounded-full bg-gradient-to-r from-accent-300 to-accent-500 w-[90%]"></div>
-            </div>
-          </div>
-          <div>
-            <div class="flex justify-between text-xs"><span>Pricing Strategy</span><span>Advanced</span></div>
-            <div class="w-full bg-white/10 rounded-full mt-1">
-              <div class="h-2 rounded-full bg-gradient-to-r from-accent-300 to-accent-500 w-[86%]"></div>
-            </div>
-          </div>
-          <div>
-            <div class="flex justify-between text-xs"><span>Digital Marketing</span><span>Advanced</span></div>
-            <div class="w-full bg-white/10 rounded-full mt-1">
-              <div class="h-2 rounded-full bg-gradient-to-r from-accent-300 to-accent-500 w-[85%]"></div>
-            </div>
-          </div>
-        </div>
+      <div class="mt-8 flex flex-wrap gap-2">
+        <span class="chip">Google Analytics (GA4)</span>
+        <span class="chip">Google Tag Manager</span>
+        <span class="chip">HubSpot</span>
+        <span class="chip">Power BI</span>
+        <span class="chip">Tableau</span>
+        <span class="chip">SQL</span>
+        <span class="chip">Python</span>
+        <span class="chip">R</span>
       </div>
-
-      <!-- Consulting & Professional Skills -->
-      <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-        <h4 class="font-semibold">Consulting & Professional Skills</h4>
-        <ul class="mt-3 grid gap-3 text-sm text-slate-300">
-          <li>Analytical Problem Solving, Strategic Planning, Insight Synthesis</li>
-          <li>Data-Driven Decision Making, Project Coordination, Stakeholder Management</li>
-          <li>Communication & Presentation, Executive Storytelling, Collaboration</li>
-        </ul>
-      </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="bg-night-800">
-    <div class="mx-auto container-tight px-4 py-16">
-      <h3 class="heading-underline text-3xl font-display font-extrabold">Contact</h3>
-      <div class="mt-8 grid md:grid-cols-2 gap-8 items-start">
-        <form action="https://formspree.io/f/xaylpnrg" method="POST" class="rounded-2xl border border-white/10 bg-white/5 p-6">
+  <section id="contact" class="border-t border-white/10 bg-ink-900/30">
+    <div class="max-w-6xl mx-auto px-4 py-14">
+      <h3 class="font-display text-3xl font-extrabold">Contact</h3>
+      <p class="text-slate-300 mt-2 max-w-2xl">
+        Want to talk marketing analytics, strategy, dashboards, or a brand/growth project? I’m easy to reach.
+      </p>
+
+      <div class="mt-8 grid md:grid-cols-2 gap-6 items-start">
+        <form action="https://formspree.io/f/xaylpnrg" method="POST" class="gcard p-6">
           <div class="grid gap-3">
             <input required name="name" placeholder="Your name" class="w-full rounded-xl border border-white/15 bg-transparent px-3 py-2" />
             <input required name="email" type="email" placeholder="Email address" class="w-full rounded-xl border border-white/15 bg-transparent px-3 py-2" />
             <textarea required name="message" placeholder="Message" rows="4" class="w-full rounded-xl border border-white/15 bg-transparent px-3 py-2"></textarea>
-            <button class="rounded-full bg-accent-400 hover:bg-accent-500 text-white px-5 py-2.5 text-sm font-semibold">Send</button>
+            <button class="rounded-full bg-rose-400 hover:bg-rose-500 text-white px-5 py-2.5 text-sm font-semibold">
+              Send
+            </button>
           </div>
         </form>
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <ul class="grid gap-2 text-sm">
-            <li><span class="font-medium">Email:</span> <a class="text-accent-300" href="mailto:priyam05somani@gmail.com">priyam05somani@gmail.com</a></li>
-            <li><span class="font-medium">Phone:</span> <a class="text-accent-300" href="tel:+14124302670">+1 (412) 430-2670</a></li>
-            <li><span class="font-medium">LinkedIn:</span> <a class="text-accent-300" target="_blank" rel="noopener" href="https://www.linkedin.com/in/priyam-somani/">/in/priyam-somani</a></li>
-            <li><span class="font-medium">Location:</span> Cambridge, MA, USA</li>
+
+        <div class="gcard p-6">
+          <ul class="grid gap-2 text-sm text-slate-200">
+            <li><span class="font-medium">Email:</span> <a class="text-rose-300 hover:text-rose-200" href="mailto:priyam05somani@gmail.com">priyam05somani@gmail.com</a></li>
+            <li><span class="font-medium">Phone:</span> <a class="text-rose-300 hover:text-rose-200" href="tel:+14124302670">+1 (412) 430-2670</a></li>
+            <li><span class="font-medium">LinkedIn:</span> <a class="text-rose-300 hover:text-rose-200" target="_blank" rel="noopener"
+              href="https://www.linkedin.com/in/priyam-somani/">/in/priyam-somani</a></li>
+            <li><span class="font-medium">Location:</span> Cambridge / Boston, MA (Open to relocate)</li>
           </ul>
-          <div class="mt-4 flex gap-3">
-            <a class="px-3 py-2 rounded-xl border border-white/15 hover:border-accent-400" href="assets/Portfolio-Slides.pdf">Portfolio Slides</a>
-            <a class="px-3 py-2 rounded-xl border border-white/15 hover:border-accent-400" href="assets/Priyam%20Somani%20-%20Resume%20Z.pdf">Resume (PDF)</a>
+
+          <div class="mt-5 flex flex-wrap gap-3">
+            <a class="px-3 py-2 rounded-xl border border-white/15 hover:border-rose-400"
+               href="assets/priyam-somani-resume-z.pdf">Resume (PDF)</a>
+            <a class="px-3 py-2 rounded-xl border border-white/15 hover:border-rose-400"
+               href="assets/Portfolio-Slides.pdf">Portfolio Slides</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- FOOTER -->
-  <section class="bg-night-900">
-    <div class="mx-auto container-tight px-4 py-14 text-center">
-      <div class="h-1 w-24 bg-accent-400/70 mx-auto rounded-full mb-8"></div>
-      <p class="max-w-3xl mx-auto text-lg text-slate-300">
-        Interested in collaborating on analytics or market research, discussing pricing & GTM, or just want to connect? Feel free to reach out!
-      </p>
-
-      <div class="mt-8 flex flex-col md:flex-row items-center justify-center gap-6 text-xl">
-        <div class="flex items-center gap-3">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="#fb7185" stroke-width="2"/><path d="M4 7l8 6 8-6" stroke="#fb7185" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <a class="hover:text-accent-300" href="mailto:priyam05somani@gmail.com">priyam05somani@gmail.com</a>
-        </div>
-        <div class="flex items-center gap-3">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v2a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.08 4.18 2 2 0 014.06 2h2a2 2 0 012 1.72c.12.89.32 1.76.59 2.6a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.48-1.11a2 2 0 012.11-.45c.84.27 1.71.47 2.6.59A2 2 0 0122 16.92z" stroke="#fb7185" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <a class="hover:text-accent-300" href="tel:+14124302670">+1 (412) 430-2670</a>
-        </div>
-        <div class="flex items-center gap-3">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.35-7-10a7 7 0 1114 0c0 5.65-7 10-7 10z" stroke="#fb7185" stroke-width="2"/><circle cx="12" cy="11" r="3" stroke="#fb7185" stroke-width="2"/></svg>
-          <span>Cambridge, MA, USA</span>
-        </div>
-      </div>
-
-      <div class="mt-7 flex items-center justify-center gap-5">
-        <a aria-label="LinkedIn" target="_blank" rel="noopener" href="https://www.linkedin.com/in/priyam-somani/" class="p-3 rounded-xl border border-white/10 hover:border-accent-400">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 8h.01M7.5 10.5v6M10.5 10.5v6M10.5 13c0-1.5 1-2.5 2.5-2.5s2.5 1 2.5 2.5v3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        </a>
-        <a aria-label="GitHub" target="_blank" rel="noopener" href="https://github.com/priyam05somani" class="p-3 rounded-xl border border-white/10 hover:border-accent-400">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 000 12.7c0 5.39 3.44 9.96 8.21 11.57.6.11.82-.27.82-.58l-.02-2.03c-3.34.75-4.04-1.61-4.04-1.61-.55-1.42-1.34-1.8-1.34-1.8-1.09-.77.08-.75.08-.75 1.21.09 1.86 1.27 1.86 1.27 1.07 1.87 2.81 1.33 3.5 1.02.11-.8.42-1.33.76-1.64-2.67-.31-5.47-1.39-5.47-6.17 0-1.36.47-2.48 1.24-3.36-.13-.31-.54-1.57.12-3.27 0 0 1.01-.33 3.3 1.28a11.4 11.4 0 016 0c2.29-1.61 3.3-1.28 3.3-1.28.66 1.7.25 2.96.12 3.27.77.88 1.24 2 1.24 3.36 0 4.79-2.8 5.85-5.48 6.16.43.37.81 1.1.81 2.23l-.01 3.3c0 .31.21.7.83.58A12.03 12.03 0 0024 12.7 12 12 0 0012 .5z"/></svg>
-        </a>
-        <a aria-label="Email" href="mailto:priyam05somani@gmail.com" class="p-3 rounded-xl border border-white/10 hover:border-accent-400">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-    </div>
-
-    <div class="bg-[#0c2747]">
-      <div class="mx-auto container-tight px-4 py-6 text-center text-slate-200">
-        <div class="text-sm">© <span id="year"></span> Priyam Somani. All Rights Reserved.</div>
-        <nav class="mt-3 flex flex-wrap items-center justify-center gap-6 text-accent-300 font-medium">
-          <a href="#home" class="hover:underline">Home</a>
-          <a href="#about" class="hover:underline">About</a>
-          <a href="#experience" class="hover:underline">Experience</a>
-          <a href="#research" class="hover:underline">Research</a>
-          <a href="#education" class="hover:underline">Education</a>
-          <a href="#volunteering" class="hover:underline">Volunteering</a>
-          <a href="#skills" class="hover:underline">Skills</a>
-          <a href="#contact" class="hover:underline">Contact</a>
-        </nav>
+      <div class="mt-10 text-center text-xs text-slate-400">
+        © <span id="year"></span> Priyam Somani • Built with clarity, curiosity, and data.
       </div>
     </div>
   </section>
 
-  <!-- SCRIPTS -->
   <script>
     // Mobile menu
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     menuBtn?.addEventListener('click',()=> mobileMenu.classList.toggle('hidden'));
-    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 
-  <!-- Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Priyam Somani",
-    "jobTitle": "Marketing & Business Analytics",
-    "email": "mailto:priyam05somani@gmail.com",
-    "url": "https://priyam05somani.github.io",
-    "sameAs": ["https://www.linkedin.com/in/priyam-somani/","https://github.com/priyam05somani"]
-  }
-  </script>
-<!-- ========== Nexora Chatbot (Chatbase + Quick Links) ========== -->
-<div id="nx-chat-root"></div>
-<style>
-  :root{
-    --nx-accent:#f43f5e; --nx-dark:#0f172a; --nx-panel:#0b1220; --nx-text:#e5e7eb;
-    --nx-shadow:0 20px 50px rgba(0,0,0,.45);
-  }
-  .nx-reset *{box-sizing:border-box;font:inherit}
-  .nx-fixed{position:fixed;z-index:9999}
+    // Project filter
+    const buttons = document.querySelectorAll('[data-filter]');
+    const cards = document.querySelectorAll('.project');
 
-  /* Launcher button (icon only) */
-  .nx-launch{
-    right:18px; bottom:18px; width:62px; height:62px; border-radius:50%;
-    background: radial-gradient(100% 100% at 30% 20%, #ff7a90 0%, var(--nx-accent) 60%, #be123c 100%);
-    box-shadow: var(--nx-shadow); border:none; outline:none; cursor:pointer; display:grid; place-items:center;
-  }
-  .nx-launch svg{width:34px;height:34px;filter: drop-shadow(0 3px 10px rgba(244,63,94,.35));}
-
-  .nx-backdrop{inset:0; background:rgba(2,6,23,.55); backdrop-filter: blur(4px); display:none}
-  .nx-panel{
-    right:16px; bottom:96px; width:min(420px, calc(100vw - 32px));
-    height:min(660px, calc(100vh - 120px));
-    border-radius:16px; overflow:hidden; background:var(--nx-panel); color:var(--nx-text);
-    display:none; box-shadow: var(--nx-shadow);
-  }
-  .nx-header{
-    height:56px; display:flex; align-items:center; gap:.75rem; padding:0 .9rem;
-    background:#0b1220; border-bottom:1px solid #ffffff1a;
-  }
-  .nx-avatar{
-    width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
-    background: radial-gradient(120% 120% at 30% 20%, #ff7a90 0%, var(--nx-accent) 70%);
-  }
-  .nx-avatar svg{width:18px;height:18px}
-  .nx-title{font:700 16px/1.2 Inter,system-ui;color:#e5e7eb}
-  .nx-esc{margin-left:auto;border:1px solid #ffffff22;background:#ffffff12;color:#e5e7eb;
-    border-radius:10px;padding:.35rem .55rem;font:600 12px/1 Inter,system-ui;cursor:pointer}
-
-  .nx-body{position:relative; height:calc(100% - 56px); display:flex; flex-direction:column}
-  .nx-greet{padding:.6rem .9rem; font:600 13px/1.4 Inter,system-ui; color:#cbd5e1; border-bottom:1px solid #ffffff14}
-  .nx-links{
-    display:flex; gap:.5rem; overflow:auto; padding:.6rem .9rem; border-bottom:1px solid #ffffff14;
-  }
-  .nx-chip{
-    white-space:nowrap; padding:.4rem .65rem; border-radius:999px; font:600 12px/1 Inter,system-ui;
-    border:1px solid #ffffff22; background:#111827; color:#e5e7eb;
-  }
-  .nx-chip:hover{border-color:var(--nx-accent); color:#fff}
-
-  .nx-iframe{width:100%;height:100%;border:0;display:block; background:#0b1220}
-  .nx-loading{position:absolute;inset:0;display:grid;place-items:center;gap:.5rem;color:#cbd5e1}
-  .nx-spinner{width:28px;height:28px;border:3px solid #fff3;border-top-color:var(--nx-accent);
-    border-radius:50%;animation:nx-spin .9s linear infinite}
-  @keyframes nx-spin{to{transform:rotate(360deg)}}
-  .nx-error{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:1rem}
-  .nx-error a{color:#fb7185;text-decoration:underline}
-
-  .nx-show{display:block}
-</style>
-
-<!-- Backdrop + launcher -->
-<div class="nx-fixed nx-backdrop" id="nxBackdrop" aria-hidden="true"></div>
-<button class="nx-fixed nx-launch" id="nxLauncher" aria-label="Open Nexora chatbot">
-  <!-- Bot icon -->
-  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <circle cx="12" cy="12" r="10" fill="#fff" opacity=".06"/>
-    <path d="M7 10a5 5 0 0110 0v2H7v-2Z" fill="#fff"/>
-    <rect x="6.2" y="11.8" width="11.6" height="6" rx="2.2" fill="#fff"/>
-    <circle cx="10" cy="11.2" r="1.1" fill="#0e1325"/>
-    <circle cx="14" cy="11.2" r="1.1" fill="#0e1325"/>
-  </svg>
-</button>
-
-<!-- Panel -->
-<section class="nx-fixed nx-panel" id="nxPanel" role="dialog" aria-modal="true" aria-label="Nexora chatbot">
-  <header class="nx-header">
-    <span class="nx-avatar" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none">
-        <path d="M6.8 10a5.2 5.2 0 0110.4 0v2.1H6.8V10Z" fill="#fff"/>
-        <rect x="5.8" y="11.7" width="12.4" height="6.3" rx="2.4" fill="#fff"/>
-      </svg>
-    </span>
-    <span class="nx-title">Nexora</span>
-    <button class="nx-esc" id="nxClose" aria-label="Close (Esc)">Esc</button>
-  </header>
-
-  <div class="nx-body">
-    <!-- Friendly greeting -->
-    <div class="nx-greet">👋 Hi! I’m Nexora—ask for the resume, transcript, certificates, or jump to a section below.</div>
-
-    <!-- Quick links (docs open in new tab; sections scroll on page) -->
-    <div class="nx-links">
-      <a class="nx-chip" href="assets/Priyam%20Somani%20-%20Resume%20Z.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
-      <a class="nx-chip" data-go="#experience" href="#experience">Experience</a>
-      <a class="nx-chip" data-go="#research" href="#research">Projects</a>
-      <a class="nx-chip" data-go="#education" href="#education">Education</a>
-      <a class="nx-chip" data-go="#certs" href="#certs">Certificates</a>
-      <a class="nx-chip" data-go="#skills" href="#skills">Skills</a>
-      <a class="nx-chip" data-go="#contact" href="#contact">Contact</a>
-    </div>
-
-    <!-- Chatbase iframe -->
-    <div class="nx-loading" id="nxLoading">
-      <div class="nx-spinner"></div>
-      <div style="font:600 12px/1 Inter,system-ui;opacity:.8">Loading Nexora…</div>
-    </div>
-    <iframe
-      id="nxFrame"
-      title="Nexora by Chatbase"
-      class="nx-iframe"
-      allow="clipboard-write; microphone *"
-      src="https://www.chatbase.co/chatbot-iframe/FGIwdqgBOp1V3vEUZFBPj"
-    ></iframe>
-
-    <!-- 404 / private fallback -->
-    <div class="nx-error" id="nxError" style="display:none">
-      <div style="max-width: 320px; color:#e5e7eb; font:500 14px/1.45 Inter,system-ui">
-        <div style="font-weight:700; margin-bottom:.25rem; color:#fb7185">Not available</div>
-        This bot is private or the domain isn’t allowed.  
-        In Chatbase set it to <b>Public</b> and allow your domain, or
-        <a href="https://www.chatbase.co/chatbot-iframe/FGIwdqgBOp1V3vEUZFBPj" target="_blank" rel="noopener">open in a new tab</a>.
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-  (function(){
-    const btn  = document.getElementById('nxLauncher');
-    const panel= document.getElementById('nxPanel');
-    const close= document.getElementById('nxClose');
-    const back = document.getElementById('nxBackdrop');
-    const spnr = document.getElementById('nxLoading');
-    const err  = document.getElementById('nxError');
-    const iframe = document.getElementById('nxFrame');
-
-    function openPanel(){ panel.classList.add('nx-show'); back.classList.add('nx-show'); setTimeout(()=>close.focus(), 50); }
-    function closePanel(){ panel.classList.remove('nx-show'); back.classList.remove('nx-show'); btn.focus(); }
-    btn.addEventListener('click', openPanel);
-    close.addEventListener('click', closePanel);
-    back.addEventListener('click', closePanel);
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closePanel(); });
-
-    // Quick links that scroll the page (and close the panel)
-    document.querySelectorAll('.nx-links a[data-go]').forEach(a=>{
-      a.addEventListener('click', (e)=>{
-        e.preventDefault();
-        const sel = a.getAttribute('data-go');
-        closePanel();
-        requestAnimationFrame(()=>{ document.querySelector(sel)?.scrollIntoView({behavior:'smooth', block:'start'}); });
-      });
+    function setActive(btn){
+      buttons.forEach(b=>b.classList.remove('ring-2','ring-rose-400'));
+      btn.classList.add('ring-2','ring-rose-400');
+    }
+    buttons.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const f = btn.getAttribute('data-filter');
+        setActive(btn);
+        cards.forEach(c=>{
+          const tags = (c.getAttribute('data-tags') || '').split(',').map(s=>s.trim());
+          const show = (f === 'all') || tags.includes(f);
+          c.style.display = show ? '' : 'none';
+        });
+      })
     });
-
-    // loader + simple timeout fallback
-    let loaded = false;
-    iframe.addEventListener('load', ()=>{ loaded = true; spnr.style.display='none'; });
-    setTimeout(()=>{ if(!loaded){ spnr.style.display='none'; err.style.display='grid'; }}, 6000);
-  })();
-</script>
-<!-- ========== /Nexora Chatbot ========== -->
+    // default highlight
+    const first = document.querySelector('[data-filter="all"]');
+    if(first) setActive(first);
+  </script>
 </body>
 </html>
