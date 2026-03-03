@@ -1,56 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DY0T18WBWE"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-DY0T18WBWE');
-  </script>
-
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Priyam Somani • Marketing & Business Analytics</title>
-  <meta name="description" content="Priyam Somani — Marketing & Business Analytics. Market research, analytics, GTM strategy, and digital growth." />
-  <meta name="keywords" content="Priyam Somani, Marketing Analytics, Business Analytics, Strategy, Market Research, SQL, Power BI, Tableau, Python, GTM, Growth, SEO, GA4" />
+  <meta name="description" content="Priyam Somani — Marketing & Business Analytics. Performance marketing, market research, CRM automation, dashboards, and strategy." />
+  <meta name="keywords" content="Priyam Somani, Marketing Analytics, Business Analytics, Market Research, Strategy, GA4, SQL, Power BI, Tableau, Python" />
 
-  <!-- Fonts -->
+  <!-- Fonts (Editorial + Modern) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
             sans: ['Inter','ui-sans-serif','system-ui'],
-            display: ['Playfair Display','Inter','ui-sans-serif']
+            serif: ['Fraunces','ui-serif','Georgia']
           },
           colors: {
-            ink:   { 950:'#0b1220', 900:'#0f172a', 800:'#111c33' },
-            sand:  { 50:'#fbf7f0', 100:'#f4eee3', 200:'#eadfcd', 300:'#dcc9ac' },
-            slatey:{ 50:'#f6f7fb', 200:'#d7dde9', 400:'#93a4bf', 600:'#4a5f82' },
-            tealx: { 300:'#66c2b7', 500:'#2a9d8f', 700:'#1b6b62' },
-            goldx: { 300:'#d6b16e', 500:'#b98a3c' }
+            sand: {
+              50:'#fbf8f1',
+              100:'#f6efe1',
+              200:'#efe3cc',
+              300:'#e5d6b6'
+            },
+            ink: {
+              900:'#0b1220',
+              800:'#101a2c',
+              700:'#16233a'
+            },
+            slateish: {
+              100:'#f1f5f9',
+              200:'#e2e8f0',
+              300:'#cbd5e1',
+              400:'#94a3b8',
+              500:'#64748b',
+              700:'#334155'
+            },
+            ocean: {
+              300:'#67e8f9',
+              400:'#22d3ee',
+              500:'#06b6d4',
+              600:'#0891b2',
+              700:'#0e7490'
+            },
+            amberish: {
+              400:'#fbbf24',
+              500:'#f59e0b'
+            }
           },
-          boxShadow:{
-            card:'0 16px 50px -22px rgba(2,6,23,.55)',
-            soft:'0 10px 28px -16px rgba(2,6,23,.45)'
+          boxShadow: {
+            soft:'0 10px 30px rgba(15, 23, 42, .10)',
+            card:'0 18px 50px rgba(15, 23, 42, .14)',
+            ring:'0 0 0 8px rgba(6,182,212,.10)'
           },
           keyframes:{
-            floaty:{ '0%,100%':{transform:'translateY(0)'}, '50%':{transform:'translateY(-10px)'} },
-            glow:{ '0%,100%':{opacity:.45}, '50%':{opacity:.85} },
-            revealUp:{ from:{ opacity:0, transform:'translateY(18px)'}, to:{ opacity:1, transform:'translateY(0)'} }
+            floaty:{ '0%,100%':{transform:'translateY(0)'}, '50%':{transform:'translateY(-8px)'} },
+            fadeUp:{ from:{opacity:0, transform:'translateY(18px)'}, to:{opacity:1, transform:'translateY(0)'} },
+            shimmer:{ '0%':{backgroundPosition:'0% 50%'}, '100%':{backgroundPosition:'100% 50%'} }
           },
           animation:{
-            floaty:'floaty 7s ease-in-out infinite',
-            glow:'glow 5s ease-in-out infinite',
-            revealUp:'revealUp .75s ease-out both'
+            floaty:'floaty 6s ease-in-out infinite',
+            fadeUp:'fadeUp .8s ease-out both',
+            shimmer:'shimmer 10s ease-in-out infinite'
           }
         }
       }
@@ -60,294 +78,266 @@
   <style>
     html{scroll-behavior:smooth}
     section{scroll-margin-top:92px}
-    .container-tight{max-width:1160px}
-
-    /* subtle paper texture */
-    .paper{
-      background:
-        radial-gradient(1200px 400px at 10% 0%, rgba(214,177,110,.14), transparent 60%),
-        radial-gradient(900px 350px at 90% 10%, rgba(102,194,183,.12), transparent 55%),
-        linear-gradient(180deg, rgba(251,247,240,1) 0%, rgba(244,238,227,1) 100%);
+    .container-tight{max-width:1180px}
+    .hairline{background:linear-gradient(90deg, rgba(6,182,212,.0), rgba(6,182,212,.55), rgba(245,158,11,.35), rgba(6,182,212,.0))}
+    .grain::before{
+      content:""; position:absolute; inset:0; pointer-events:none; opacity:.08; mix-blend-mode:multiply;
+      background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='240' height='240' filter='url(%23n)' opacity='.45'/></svg>");
     }
-
-    .underline-accent{position:relative;display:inline-block}
+    .underline-accent{position:relative; display:inline-block}
     .underline-accent::after{
-      content:"";position:absolute;left:0;bottom:-10px;width:72px;height:4px;border-radius:9999px;
-      background:linear-gradient(90deg,#2a9d8f,#d6b16e);
+      content:""; position:absolute; left:0; bottom:-10px; width:72px; height:4px; border-radius:9999px;
+      background:linear-gradient(90deg,#06b6d4,#f59e0b);
+      opacity:.95;
     }
-
-    .chip{border:1px solid rgba(15,23,42,.10); background:rgba(255,255,255,.58); backdrop-filter: blur(6px);}
-    .card{border:1px solid rgba(15,23,42,.10); background:rgba(255,255,255,.70); backdrop-filter: blur(6px);}
-    .card-dark{border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.06); backdrop-filter: blur(10px);}
-    .mono{font-feature-settings:"ss02" 1,"ss01" 1}
-
-    /* nice tick list */
-    .tick li{position:relative;padding-left:1.7rem}
-    .tick li::before{
-      content:"";position:absolute;left:0;top:.28rem;width:1.1rem;height:1.1rem;
-      background-repeat:no-repeat;background-size:100% 100%;
-      background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='12' r='11' stroke='%232a9d8f' stroke-width='2'/><path d='M7 12.5l3.2 3.2L17 9.8' stroke='%232a9d8f' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-    }
-
-    /* --- Nexora Bot theme (recolored) --- */
-    :root{
-      --nx-accent:#2a9d8f;
-      --nx-panel:#0b1220;
-      --nx-text:#e5e7eb;
-      --nx-shadow:0 20px 50px rgba(0,0,0,.45);
-    }
-    .nx-fixed{position:fixed;z-index:9999}
-    .nx-launch{
-      right:18px; bottom:18px; width:62px; height:62px; border-radius:50%;
-      background: radial-gradient(100% 100% at 30% 20%, #66c2b7 0%, var(--nx-accent) 60%, #1b6b62 100%);
-      box-shadow: var(--nx-shadow); border:none; outline:none; cursor:pointer; display:grid; place-items:center;
-    }
-    .nx-launch svg{width:34px;height:34px;filter: drop-shadow(0 3px 10px rgba(42,157,143,.35));}
-    .nx-backdrop{inset:0; background:rgba(2,6,23,.55); backdrop-filter: blur(4px); display:none}
-    .nx-panel{
-      right:16px; bottom:96px; width:min(420px, calc(100vw - 32px));
-      height:min(660px, calc(100vh - 120px));
-      border-radius:16px; overflow:hidden; background:var(--nx-panel); color:var(--nx-text);
-      display:none; box-shadow: var(--nx-shadow);
-    }
-    .nx-header{
-      height:56px; display:flex; align-items:center; gap:.75rem; padding:0 .9rem;
-      background:#0b1220; border-bottom:1px solid #ffffff1a;
-    }
-    .nx-avatar{
-      width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
-      background: radial-gradient(120% 120% at 30% 20%, #66c2b7 0%, var(--nx-accent) 70%);
-    }
-    .nx-title{font:700 16px/1.2 Inter,system-ui;color:#e5e7eb}
-    .nx-esc{margin-left:auto;border:1px solid #ffffff22;background:#ffffff12;color:#e5e7eb;
-      border-radius:10px;padding:.35rem .55rem;font:600 12px/1 Inter,system-ui;cursor:pointer}
-    .nx-body{position:relative; height:calc(100% - 56px); display:flex; flex-direction:column}
-    .nx-greet{padding:.6rem .9rem; font:600 13px/1.4 Inter,system-ui; color:#cbd5e1; border-bottom:1px solid #ffffff14}
-    .nx-links{display:flex; gap:.5rem; overflow:auto; padding:.6rem .9rem; border-bottom:1px solid #ffffff14;}
-    .nx-chip{
-      white-space:nowrap; padding:.4rem .65rem; border-radius:999px; font:600 12px/1 Inter,system-ui;
-      border:1px solid #ffffff22; background:#111827; color:#e5e7eb;
-    }
-    .nx-chip:hover{border-color:var(--nx-accent); color:#fff}
-    .nx-iframe{width:100%;height:100%;border:0;display:block; background:#0b1220}
-    .nx-loading{position:absolute;inset:0;display:grid;place-items:center;gap:.5rem;color:#cbd5e1}
-    .nx-spinner{width:28px;height:28px;border:3px solid #fff3;border-top-color:var(--nx-accent);
-      border-radius:50%;animation:nx-spin .9s linear infinite}
-    @keyframes nx-spin{to{transform:rotate(360deg)}}
-    .nx-error{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:1rem}
-    .nx-error a{color:#66c2b7;text-decoration:underline}
-    .nx-show{display:block}
+    /* nicer focus */
+    :focus-visible{outline: none; box-shadow: 0 0 0 4px rgba(6,182,212,.18); border-radius: 12px;}
   </style>
 </head>
 
-<body class="text-ink-950 bg-sand-50">
+<body class="bg-sand-50 text-ink-900 text-[17px]">
+
   <!-- NAV -->
-  <header class="sticky top-0 z-50 bg-sand-50/85 backdrop-blur border-b border-ink-900/10">
+  <header class="sticky top-0 z-50 backdrop-blur bg-sand-50/80 border-b border-ink-900/10">
     <div class="mx-auto container-tight px-4 py-4 flex items-center justify-between">
-      <a href="#home" class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-ink-950 text-sand-50 grid place-items-center font-extrabold">PS</div>
-        <div class="hidden sm:block leading-tight">
-          <div class="font-semibold">Priyam Somani</div>
-          <div class="text-xs text-ink-900/60 mono">Marketing • Analytics • Strategy</div>
-        </div>
+      <a href="#home" class="flex items-center gap-2">
+        <span class="inline-flex h-9 w-9 rounded-xl bg-ink-900 text-sand-50 items-center justify-center font-black">PS</span>
+        <span class="hidden sm:block font-semibold tracking-tight">Priyam Somani</span>
       </a>
 
-      <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-ink-900/80">
-        <a href="#about" class="hover:text-ink-950">About</a>
-        <a href="#experience" class="hover:text-ink-950">Experience</a>
-        <a href="#projects" class="hover:text-ink-950">Projects</a>
-        <a href="#insights" class="hover:text-ink-950">Insights</a>
-        <a href="#certs" class="hover:text-ink-950">Certificates</a>
-        <a href="#skills" class="hover:text-ink-950">Skills</a>
-        <a href="#contact" class="hover:text-ink-950">Contact</a>
+      <nav class="hidden lg:flex items-center gap-7 text-sm text-ink-900/80">
+        <a href="#about" class="hover:text-ink-900">About</a>
+        <a href="#experience" class="hover:text-ink-900">Experience</a>
+        <a href="#projects" class="hover:text-ink-900">Projects</a>
+        <a href="#blogs" class="hover:text-ink-900">Blogs</a>
+        <a href="#skills" class="hover:text-ink-900">Skills</a>
+        <a href="#certs" class="hover:text-ink-900">Certificates</a>
+        <a href="#volunteering" class="hover:text-ink-900">Volunteering</a>
+        <a href="#education" class="hover:text-ink-900">Education</a>
+        <a href="#contact" class="hover:text-ink-900">Contact</a>
       </nav>
 
       <div class="flex items-center gap-2">
-        <!-- Rename your PDF to avoid spaces if you want -->
-        <a href="assets/Priyam_Somani_Resume_Z.pdf"
-           class="hidden sm:inline-flex rounded-full bg-ink-950 hover:bg-ink-900 text-sand-50 px-4 py-2 text-xs font-semibold shadow-soft">
+        <!-- Replace with your final resume path when ready -->
+        <a href="assets/Resume - Priyam Somani.pdf"
+           class="hidden sm:inline-flex rounded-full bg-ink-900 hover:bg-ink-800 text-sand-50 px-4 py-2 text-xs font-semibold shadow-soft">
           Resume
         </a>
-        <button id="menuBtn" class="md:hidden rounded-xl border border-ink-900/15 px-3 py-2 text-xs font-semibold">Menu</button>
+        <button id="menuBtn" class="lg:hidden rounded-xl border border-ink-900/15 px-3 py-1.5 text-xs bg-white">
+          Menu
+        </button>
       </div>
     </div>
 
-    <div id="mobileMenu" class="md:hidden hidden border-t border-ink-900/10 bg-sand-50">
-      <nav class="mx-auto container-tight px-4 py-3 grid gap-2 text-sm font-semibold">
+    <div id="mobileMenu" class="lg:hidden hidden border-t border-ink-900/10 bg-sand-50">
+      <nav class="mx-auto container-tight px-4 py-3 grid gap-2 text-sm">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
-        <a href="#insights">Insights</a>
-        <a href="#certs">Certificates</a>
+        <a href="#blogs">Blogs</a>
         <a href="#skills">Skills</a>
+        <a href="#certs">Certificates</a>
+        <a href="#volunteering">Volunteering</a>
+        <a href="#education">Education</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <!-- HERO -->
-  <section id="home" class="paper">
-    <div class="mx-auto container-tight px-4 py-14 md:py-20 grid lg:grid-cols-12 gap-10 items-center">
+  <section id="home" class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-gradient-to-b from-sand-50 via-sand-100 to-sand-50"></div>
+      <div class="absolute inset-0 opacity-[.70] bg-[radial-gradient(circle_at_20%_20%,rgba(6,182,212,.16),transparent_40%),radial-gradient(circle_at_80%_10%,rgba(245,158,11,.12),transparent_45%),radial-gradient(circle_at_60%_80%,rgba(6,182,212,.10),transparent_50%)]"></div>
+    </div>
+
+    <div class="mx-auto container-tight px-4 py-16 md:py-20 grid lg:grid-cols-12 gap-10 items-center">
       <!-- Left -->
-      <div class="lg:col-span-7 animate-revealUp">
-        <div class="inline-flex items-center gap-2 rounded-full chip px-3 py-1 text-xs font-semibold text-ink-900/70">
-          <span class="w-2 h-2 rounded-full bg-tealx-500 animate-glow"></span>
-          Open to full-time roles • US + Relocation
+      <div class="lg:col-span-7 animate-fadeUp">
+        <div class="inline-flex items-center gap-2 rounded-full bg-white border border-ink-900/10 px-3 py-1 text-xs shadow-soft">
+          <span class="h-2 w-2 rounded-full bg-ocean-600"></span>
+          Marketing + Business Analytics • Strategy • Growth
         </div>
 
-        <h1 class="mt-5 font-display text-5xl md:text-6xl font-extrabold leading-[1.03]">
-          Marketing <span class="text-tealx-700">&</span> Business Analytics
+        <h1 class="mt-5 font-serif text-5xl md:text-6xl leading-[1.05] tracking-tight">
+          Priyam Somani
         </h1>
-        <p class="mt-4 text-ink-900/70 text-lg max-w-2xl">
-          I turn complex data into clear strategy — blending <b>marketing intuition</b>, <b>analytics</b>, and <b>storytelling</b> to drive growth,
-          product adoption, and executive-ready insights.
+
+        <p class="mt-4 text-ink-900/75 max-w-2xl leading-relaxed">
+          I build data-driven marketing systems — combining <span class="font-semibold">analytics</span>, <span class="font-semibold">research</span>,
+          and <span class="font-semibold">creative strategy</span> to improve acquisition, retention, and decision-making.
+          Experience across energy & sustainability, B2B industrial, AI, and consumer brands.
         </p>
 
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a href="#projects" class="rounded-full bg-ink-950 hover:bg-ink-900 text-sand-50 px-5 py-3 text-sm font-semibold shadow-soft">
-            View projects
+        <!-- CTA -->
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="#projects" class="rounded-full bg-ink-900 hover:bg-ink-800 text-sand-50 px-6 py-2.5 text-sm font-semibold shadow-soft">
+            View Projects
           </a>
-          <a href="#experience" class="rounded-full border border-ink-900/15 bg-white/55 hover:bg-white/80 px-5 py-3 text-sm font-semibold">
+          <a href="#experience" class="rounded-full border border-ink-900/15 bg-white px-6 py-2.5 text-sm font-semibold">
             Experience
           </a>
-          <a href="assets/Priyam_Somani_Resume_Z.pdf" class="rounded-full border border-ink-900/15 bg-white/55 hover:bg-white/80 px-5 py-3 text-sm font-semibold">
-            Download resume
+          <a href="#contact" class="rounded-full border border-ink-900/15 bg-white px-6 py-2.5 text-sm font-semibold">
+            Contact
           </a>
         </div>
 
-        <div class="mt-8 grid sm:grid-cols-3 gap-4">
-          <div class="card rounded-2xl p-4 shadow-soft">
-            <div class="text-2xl font-extrabold text-ink-950">4+</div>
-            <div class="text-xs text-ink-900/70">Years experience</div>
+        <!-- Metric cards -->
+        <div class="mt-10 grid sm:grid-cols-3 gap-4">
+          <div class="rounded-2xl bg-white border border-ink-900/10 p-4 shadow-soft">
+            <div class="text-xs text-ink-900/60">Experience</div>
+            <div class="mt-1 text-2xl font-extrabold">3+ yrs</div>
+            <div class="mt-1 text-xs text-ink-900/60">Marketing + analytics</div>
           </div>
-          <div class="card rounded-2xl p-4 shadow-soft">
-            <div class="text-2xl font-extrabold text-ink-950">$200M+</div>
-            <div class="text-xs text-ink-900/70">Business impact modeled</div>
+          <div class="rounded-2xl bg-white border border-ink-900/10 p-4 shadow-soft">
+            <div class="text-xs text-ink-900/60">Tool stack</div>
+            <div class="mt-1 text-2xl font-extrabold">GA4 • SQL</div>
+            <div class="mt-1 text-xs text-ink-900/60">Power BI • Tableau • Python</div>
           </div>
-          <div class="card rounded-2xl p-4 shadow-soft">
-            <div class="text-2xl font-extrabold text-ink-950">SQL • BI • GA4</div>
-            <div class="text-xs text-ink-900/70">Technical toolkit</div>
+          <div class="rounded-2xl bg-white border border-ink-900/10 p-4 shadow-soft">
+            <div class="text-xs text-ink-900/60">Focus</div>
+            <div class="mt-1 text-2xl font-extrabold">Growth</div>
+            <div class="mt-1 text-xs text-ink-900/60">CRM, funnel, insights</div>
           </div>
         </div>
       </div>
 
-      <!-- Right -->
+      <!-- Right: photo + "analytics widget" -->
       <div class="lg:col-span-5">
-        <div class="relative">
-          <div class="absolute -inset-6 rounded-[36px] bg-gradient-to-br from-tealx-300/30 via-white/10 to-goldx-300/25 blur-2xl"></div>
+        <div class="relative rounded-[28px] bg-white border border-ink-900/10 shadow-card overflow-hidden animate-fadeUp">
+          <div class="absolute inset-0 hairline opacity-[.8] h-[2px]"></div>
 
-          <div class="relative card rounded-[28px] p-6 shadow-card">
+          <div class="p-5">
             <div class="flex items-center justify-between">
-              <div>
-                <div class="text-xs font-semibold text-ink-900/60 mono">Based in</div>
-                <div class="font-semibold">Boston / Cambridge, MA</div>
-              </div>
-              <div class="inline-flex gap-2">
-                <a class="px-3 py-2 rounded-xl border border-ink-900/15 hover:bg-white/70 text-sm font-semibold"
-                   target="_blank" rel="noopener" href="https://www.linkedin.com/in/priyam-somani/">
-                  LinkedIn
-                </a>
-                <a class="px-3 py-2 rounded-xl border border-ink-900/15 hover:bg-white/70 text-sm font-semibold"
-                   target="_blank" rel="noopener" href="https://github.com/priyam05somani">
-                  GitHub
-                </a>
-              </div>
+              <div class="text-xs font-semibold text-ink-900/70">Snapshot</div>
+              <div class="text-[11px] text-ink-900/55">Cambridge, MA • Open to relocate</div>
             </div>
 
-            <div class="mt-6 flex items-center gap-5">
-              <!-- HERO PHOTO -->
-              <!-- Put your image at: assets/Profile%20Picture.jpg (or rename it simpler) -->
-              <img src="assets/Profile%20Picture.jpg" alt="Priyam Somani"
-                   class="w-28 h-28 rounded-2xl object-cover border border-ink-900/10 shadow-soft" />
+            <div class="mt-4 grid grid-cols-12 gap-4 items-center">
+              <div class="col-span-5">
+                <!-- Your hero photo -->
+                <div class="relative">
+                  <div class="absolute -inset-2 rounded-[24px] bg-gradient-to-br from-ocean-500/20 via-amberish-500/10 to-transparent"></div>
+                  <img src="assets/Profile Picture.jpg" alt="Priyam Somani"
+                       class="relative w-full aspect-square object-cover rounded-[22px] border border-ink-900/10 shadow-soft">
+                </div>
+              </div>
 
-              <div>
-                <div class="font-semibold text-lg">Priyam Somani</div>
-                <div class="text-ink-900/65 text-sm">Marketing Analytics • Strategy • Growth</div>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="chip rounded-full px-3 py-1 text-xs font-semibold text-ink-900/70">Market Research</span>
-                  <span class="chip rounded-full px-3 py-1 text-xs font-semibold text-ink-900/70">GTM & Positioning</span>
-                  <span class="chip rounded-full px-3 py-1 text-xs font-semibold text-ink-900/70">Dashboards</span>
-                  <span class="chip rounded-full px-3 py-1 text-xs font-semibold text-ink-900/70">SEO / Paid</span>
+              <div class="col-span-7">
+                <div class="text-sm font-semibold">What I do</div>
+                <ul class="mt-2 text-sm text-ink-900/70 space-y-2">
+                  <li>• Campaign performance + reporting</li>
+                  <li>• Market research + positioning</li>
+                  <li>• CRM automation + lifecycle flows</li>
+                  <li>• Dashboards + insight storytelling</li>
+                </ul>
+
+                <div class="mt-4 rounded-2xl bg-sand-100 border border-ink-900/10 p-3">
+                  <div class="text-[11px] text-ink-900/60">Signature mix</div>
+                  <div class="mt-1 text-sm font-semibold">Creative strategy × Technical execution</div>
+                </div>
+
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/priyam-somani/"
+                     class="text-xs font-semibold px-3 py-1.5 rounded-full bg-ink-900 text-sand-50 hover:bg-ink-800">
+                    LinkedIn
+                  </a>
+                  <a target="_blank" rel="noopener" href="https://github.com/priyam05somani"
+                     class="text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-ink-900/15 hover:shadow-ring">
+                    GitHub
+                  </a>
+                  <a href="#contact"
+                     class="text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-ink-900/15 hover:shadow-ring">
+                    Email
+                  </a>
                 </div>
               </div>
             </div>
-
-            <div class="mt-6 rounded-2xl bg-ink-950 text-sand-50 p-4 shadow-soft">
-              <div class="text-xs text-sand-100/70 mono">Signature</div>
-              <div class="mt-1 font-semibold">“Strategy that leaders can act on — measured, clear, and customer-aware.”</div>
-            </div>
           </div>
 
-          <div class="mt-4 grid grid-cols-2 gap-3">
-            <a class="card rounded-2xl p-4 shadow-soft hover:-translate-y-0.5 transition"
-               href="#certs">
-              <div class="text-xs font-semibold text-ink-900/60 mono">Proof</div>
-              <div class="font-semibold">Certificates</div>
-            </a>
-            <a class="card rounded-2xl p-4 shadow-soft hover:-translate-y-0.5 transition"
-               href="#skills">
-              <div class="text-xs font-semibold text-ink-900/60 mono">Toolkit</div>
-              <div class="font-semibold">Skills & Tools</div>
-            </a>
+          <div class="px-5 pb-5">
+            <div class="rounded-2xl bg-ink-900 text-sand-50 p-4">
+              <div class="text-xs text-sand-50/70">Currently</div>
+              <div class="mt-1 font-semibold">Exploring product / marketing analytics roles</div>
+              <div class="mt-2 text-xs text-sand-50/70">
+                Strong in GA4, SQL, dashboards, segmentation, and executive-ready narratives.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5 grid grid-cols-2 gap-4">
+          <div class="rounded-2xl bg-white border border-ink-900/10 p-4 shadow-soft">
+            <div class="text-xs text-ink-900/60">Strength</div>
+            <div class="mt-1 font-semibold">Insight synthesis</div>
+            <div class="mt-1 text-xs text-ink-900/60">From raw data → clear decision</div>
+          </div>
+          <div class="rounded-2xl bg-white border border-ink-900/10 p-4 shadow-soft">
+            <div class="text-xs text-ink-900/60">Strength</div>
+            <div class="mt-1 font-semibold">Execution</div>
+            <div class="mt-1 text-xs text-ink-900/60">Campaigns, CRM, dashboards</div>
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section id="about" class="bg-sand-50">
-    <div class="mx-auto container-tight px-4 py-16">
-      <h2 class="underline-accent font-display text-3xl md:text-4xl font-extrabold">About</h2>
-
-      <div class="mt-8 grid lg:grid-cols-3 gap-8 items-start">
-        <div class="card rounded-3xl p-6 shadow-soft">
-          <div class="text-xs font-semibold text-ink-900/60 mono">What I do</div>
-          <ul class="mt-4 space-y-3 text-ink-900/75 tick text-sm">
-            <li>Translate customer + market signals into clear positioning and GTM strategy</li>
-            <li>Build dashboards & analytics models (SQL, Tableau/Power BI, Excel, Python)</li>
-            <li>Run growth experiments across funnel: acquisition → activation → retention</li>
-            <li>Create executive-ready narratives (one-pagers, decks, decision frameworks)</li>
-          </ul>
-        </div>
-
-        <div class="lg:col-span-2 card rounded-3xl p-7 shadow-card">
-          <div class="grid md:grid-cols-2 gap-6">
-            <div>
-              <div class="text-xs font-semibold text-ink-900/60 mono">Bio</div>
-              <p class="mt-3 text-ink-900/75 leading-relaxed">
-                I’m a marketer with an analytics brain. My work spans <b>market research</b>, <b>pricing & benchmarking</b>, <b>strategy</b>,
-                and <b>digital growth</b>—from energy and data centers to textiles and consumer brands.
-                I like building systems that are both creative and measurable.
-              </p>
-              <div class="mt-5 flex flex-wrap gap-2">
-                <span class="chip rounded-full px-3 py-1 text-xs font-semibold text-ink-900/70">Market Research</span>
-                <span class="chip rounded-full px-3 py-1 text-xs font-semibold text-ink-900/70">Marketing Analytics</span>
-                <span class="chip rounded-full px-3 py-1 text-xs font-semibold text-ink-900/70">GTM Strategy</span>
-                <span class="chip rounded-full px-3 py-1 text-xs font-semibold text-ink-900/70">SEO / Paid / CRM</span>
+  <section id="about" class="relative py-16">
+    <div class="mx-auto container-tight px-4">
+      <h2 class="font-serif text-3xl md:text-4xl underline-accent">About</h2>
+      <div class="mt-8 grid lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-7">
+          <div class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-7">
+            <p class="text-ink-900/75 leading-relaxed">
+              I’m a <span class="font-semibold">Marketing & Business Analytics</span> professional who bridges creativity and measurement.
+              I enjoy building systems that scale: structured research, clean dashboards, and clear GTM narratives that teams can actually use.
+            </p>
+            <div class="mt-6 grid sm:grid-cols-2 gap-4 text-sm">
+              <div class="rounded-2xl bg-sand-100 border border-ink-900/10 p-4">
+                <div class="font-semibold">Core focus</div>
+                <div class="mt-1 text-ink-900/70">Growth analytics • CRM • Market research • Strategy</div>
+              </div>
+              <div class="rounded-2xl bg-sand-100 border border-ink-900/10 p-4">
+                <div class="font-semibold">Working style</div>
+                <div class="mt-1 text-ink-900/70">Organized, detail-oriented, executive-ready</div>
               </div>
             </div>
-            <div class="rounded-3xl bg-gradient-to-br from-ink-950 to-ink-900 text-sand-50 p-6 shadow-soft">
-              <div class="text-xs text-sand-100/70 mono">Highlights</div>
-              <div class="mt-4 space-y-3 text-sm">
-                <div class="flex items-start gap-3">
-                  <span class="mt-1 w-2.5 h-2.5 rounded-full bg-tealx-300"></span>
-                  <div><b>Peoples Natural Gas:</b> Strategy + analysis for hydrogen blending & hyperscale data center positioning.</div>
-                </div>
-                <div class="flex items-start gap-3">
-                  <span class="mt-1 w-2.5 h-2.5 rounded-full bg-goldx-300"></span>
-                  <div><b>DMI:</b> Market research + AI-enabled webpage initiative to improve inquiry efficiency & interest.</div>
-                </div>
-                <div class="flex items-start gap-3">
-                  <span class="mt-1 w-2.5 h-2.5 rounded-full bg-tealx-300"></span>
-                  <div><b>Somani Textile Group:</b> Built brand site + content strategy and “Insights” blog direction.</div>
+
+            <div class="mt-7 flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 rounded-full bg-white border border-ink-900/10 text-xs font-semibold">GA4 + Attribution</span>
+              <span class="px-3 py-1.5 rounded-full bg-white border border-ink-900/10 text-xs font-semibold">SQL + Data modeling</span>
+              <span class="px-3 py-1.5 rounded-full bg-white border border-ink-900/10 text-xs font-semibold">Power BI / Tableau</span>
+              <span class="px-3 py-1.5 rounded-full bg-white border border-ink-900/10 text-xs font-semibold">HubSpot automation</span>
+              <span class="px-3 py-1.5 rounded-full bg-white border border-ink-900/10 text-xs font-semibold">Segmentation + ICP</span>
+              <span class="px-3 py-1.5 rounded-full bg-white border border-ink-900/10 text-xs font-semibold">A/B testing + CRO</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="rounded-[28px] bg-ink-900 text-sand-50 p-7 shadow-card grain relative overflow-hidden">
+            <div class="relative">
+              <div class="text-xs text-sand-50/70">What you’ll get from me</div>
+              <ul class="mt-4 space-y-3 text-sm">
+                <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-ocean-400"></span>Clear dashboards tied to decisions</li>
+                <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-ocean-400"></span>Practical research → sharp positioning</li>
+                <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-ocean-400"></span>Lifecycle flows that improve retention</li>
+                <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-ocean-400"></span>Executive storytelling (slides + memos)</li>
+              </ul>
+              <div class="mt-6 rounded-2xl bg-white/10 border border-white/15 p-4">
+                <div class="text-sm font-semibold">Quick note</div>
+                <div class="mt-1 text-sm text-sand-50/80">
+                  I keep things premium, simple, and measurable — no fluff.
                 </div>
               </div>
-              <div class="mt-6 flex gap-3">
-                <a href="#contact" class="rounded-full bg-white/10 hover:bg-white/15 border border-white/15 px-4 py-2 text-xs font-semibold">Contact</a>
-                <a href="#projects" class="rounded-full bg-white/10 hover:bg-white/15 border border-white/15 px-4 py-2 text-xs font-semibold">Projects</a>
-              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-6">
+            <div class="text-sm font-semibold">Primary industries</div>
+            <div class="mt-2 text-sm text-ink-900/70">
+              Energy & sustainability • B2B industrial • AI & tech • Consumer brands • Textiles
             </div>
           </div>
         </div>
@@ -356,101 +346,87 @@
   </section>
 
   <!-- EXPERIENCE -->
-  <section id="experience" class="bg-ink-950 text-sand-50">
-    <div class="mx-auto container-tight px-4 py-16">
-      <h2 class="underline-accent font-display text-3xl md:text-4xl font-extrabold">Experience</h2>
-      <p class="mt-4 text-sand-100/75 max-w-3xl">
-        A mix of consulting, analytics, and marketing execution — always tied to measurable outcomes.
-      </p>
+  <section id="experience" class="py-16 bg-sand-100">
+    <div class="mx-auto container-tight px-4">
+      <h2 class="font-serif text-3xl md:text-4xl underline-accent">Professional Experience</h2>
 
       <div class="mt-10 grid gap-5">
-        <article class="card-dark rounded-3xl p-7 shadow-soft">
+        <!-- Peoples Natural Gas -->
+        <article class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-7">
           <div class="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <h3 class="text-xl font-semibold">Sustainability & Strategy Consulting</h3>
-              <p class="text-sm text-sand-100/70">Peoples Natural Gas • Pittsburgh, PA • Sep 2024 – Jun 2025</p>
+              <h3 class="text-lg font-semibold">Marketing & Sustainability Consultant • Peoples Natural Gas (Essential Utilities)</h3>
+              <p class="text-sm text-ink-900/60">Pittsburgh, PA • Sep 2024 – Jun 2025</p>
             </div>
-            <span class="px-3 py-1 rounded-full bg-white/10 border border-white/10 text-xs font-semibold">Strategy • Analytics</span>
+            <span class="text-xs font-semibold px-3 py-1.5 rounded-full bg-sand-100 border border-ink-900/10">Strategy • Analytics • GTM</span>
           </div>
-          <ul class="mt-4 space-y-2 text-sm text-sand-100/85 tick">
-            <li>Built quantitative models and benchmarks supporting growth strategy across multiple utilities.</li>
-            <li>Supported a data center investment case with infrastructure and rate-structure benchmarking.</li>
-            <li>Created competitive playbooks (Western PA vs. VA) to guide hyperscale attraction messaging.</li>
-            <li>Modeled hydrogen blending and RNG scenarios with partners and academic stakeholders.</li>
+          <ul class="mt-4 text-sm text-ink-900/75 space-y-2">
+            <li>• Competitive benchmarking across 5+ regional utilities; built quantitative models to evaluate market position and growth options.</li>
+            <li>• Supported a $26M data center infrastructure investment with feasibility analysis (energy, capacity, benchmarking, executive story).</li>
+            <li>• Built a playbook comparing Western PA vs Virginia (infrastructure, incentives, energy mix), informing hyperscale attraction strategy.</li>
+            <li>• Translated complex technical topics (hydrogen blending, energy delivery) into executive-ready presentations and messaging.</li>
           </ul>
         </article>
 
-        <article class="card-dark rounded-3xl p-7 shadow-soft">
+        <!-- Ductmate / DMI -->
+        <article class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-7">
           <div class="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <h3 class="text-xl font-semibold">Marketing & Research Consulting Fellow</h3>
-              <p class="text-sm text-sand-100/70">Client: Ductmate Industries (DMI) • Sep 2024 – Nov 2024</p>
+              <h3 class="text-lg font-semibold">Marketing & Research Analyst (Consulting Fellowship) • Ductmate Industries</h3>
+              <p class="text-sm text-ink-900/60">Pittsburgh, PA • Sep 2024 – Nov 2024</p>
             </div>
-            <span class="px-3 py-1 rounded-full bg-white/10 border border-white/10 text-xs font-semibold">Research • Product Marketing</span>
+            <span class="text-xs font-semibold px-3 py-1.5 rounded-full bg-sand-100 border border-ink-900/10">Research • Dashboarding</span>
           </div>
-          <ul class="mt-4 space-y-2 text-sm text-sand-100/85 tick">
-            <li>Executed market research and insights analysis using analytics tools to inform product direction.</li>
-            <li>Supported an AI-enabled webpage initiative improving inquiry efficiency and product interest.</li>
-            <li>Produced demo content and enablement material to strengthen customer engagement.</li>
+          <ul class="mt-4 text-sm text-ink-900/75 space-y-2">
+            <li>• Designed surveys/interviews to capture VOC, product gaps, and regional market needs; synthesized insights into clear recommendations.</li>
+            <li>• Conducted EDA using Tableau/Python/Excel to identify trends and segments; supported positioning and marketing effectiveness.</li>
+            <li>• Produced educational demo content & materials; improved inquiry efficiency and strengthened product interest.</li>
           </ul>
         </article>
 
-        <article class="card-dark rounded-3xl p-7 shadow-soft">
+        <!-- Bridge Program -->
+        <article class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-7">
           <div class="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <h3 class="text-xl font-semibold">Strategy & Sponsorship Consultant</h3>
-              <p class="text-sm text-sand-100/70">University of Pittsburgh – Bridge Program • Jul 2024 – Aug 2024</p>
+              <h3 class="text-lg font-semibold">Marketing & Sponsorship Specialist • University of Pittsburgh (Bridge Program)</h3>
+              <p class="text-sm text-ink-900/60">Pittsburgh, PA • Jul 2024 – Aug 2024</p>
             </div>
-            <span class="px-3 py-1 rounded-full bg-white/10 border border-white/10 text-xs font-semibold">Strategy • Partnerships</span>
+            <span class="text-xs font-semibold px-3 py-1.5 rounded-full bg-sand-100 border border-ink-900/10">Events • Partnerships</span>
           </div>
-          <ul class="mt-4 space-y-2 text-sm text-sand-100/85 tick">
-            <li>Built sponsorship playbooks and financial models supporting new funding opportunities.</li>
-            <li>Designed outreach workflows and promotional campaigns to improve sponsor engagement.</li>
+          <ul class="mt-4 text-sm text-ink-900/75 space-y-2">
+            <li>• Built sponsorship playbook + financial models supporting $50K+ funding opportunity for the Super Analytics Challenge.</li>
+            <li>• Designed sell sheets, flyers, and multi-channel promotions to improve outreach and program visibility.</li>
           </ul>
         </article>
 
-        <article class="card-dark rounded-3xl p-7 shadow-soft">
+        <!-- GuardAI -->
+        <article class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-7">
           <div class="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <h3 class="text-xl font-semibold">Market Research Analyst Intern</h3>
-              <p class="text-sm text-sand-100/70">GuardAI • May 2024 – Aug 2024</p>
+              <h3 class="text-lg font-semibold">Market Research Analyst Intern • GuardAI (Himalayan Quantitative Solutions)</h3>
+              <p class="text-sm text-ink-900/60">Pittsburgh, USA • May 2024 – Aug 2024</p>
             </div>
-            <span class="px-3 py-1 rounded-full bg-white/10 border border-white/10 text-xs font-semibold">Competitive Intel</span>
+            <span class="text-xs font-semibold px-3 py-1.5 rounded-full bg-sand-100 border border-ink-900/10">Competitive Intel</span>
           </div>
-          <ul class="mt-4 space-y-2 text-sm text-sand-100/85 tick">
-            <li>Benchmarked AI startups across personalization, cybersecurity, and trust features.</li>
-            <li>Delivered insights supporting GTM strategy and content direction.</li>
+          <ul class="mt-4 text-sm text-ink-900/75 space-y-2">
+            <li>• Benchmarked 100+ AI startups / GenAI chatbots; analyzed positioning and differentiation to support GTM decisions.</li>
+            <li>• Helped shape LinkedIn thought-leadership content using engagement metrics to improve audience growth.</li>
           </ul>
         </article>
 
-        <article class="card-dark rounded-3xl p-7 shadow-soft">
+        <!-- JaiUdit -->
+        <article class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-7">
           <div class="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <h3 class="text-xl font-semibold">Marketing & CRM Analyst</h3>
-              <p class="text-sm text-sand-100/70">Jai Udit Suitings Pvt Ltd (Somani Textile Group) • Aug 2020 – Jul 2023</p>
+              <h3 class="text-lg font-semibold">Digital Marketing & CRM Analyst • JaiUdit Suitings Pvt. Ltd. (Somani Textile Group)</h3>
+              <p class="text-sm text-ink-900/60">Rajasthan, India • Aug 2020 – Jul 2023</p>
             </div>
-            <span class="px-3 py-1 rounded-full bg-white/10 border border-white/10 text-xs font-semibold">Growth • CRM</span>
+            <span class="text-xs font-semibold px-3 py-1.5 rounded-full bg-sand-100 border border-ink-900/10">Performance • CRM</span>
           </div>
-          <ul class="mt-4 space-y-2 text-sm text-sand-100/85 tick">
-            <li>Managed multi-channel campaigns (Google Ads, CRM workflows), improving acquisition and retention.</li>
-            <li>Built dashboards linking spend to ROI, improving forecasting and decision-making.</li>
-            <li>Improved segmentation and customer communication to lift engagement.</li>
-          </ul>
-        </article>
-
-        <article class="card-dark rounded-3xl p-7 shadow-soft">
-          <div class="flex flex-wrap items-start justify-between gap-3">
-            <div>
-              <h3 class="text-xl font-semibold">Freelance Marketing & Analytics</h3>
-              <p class="text-sm text-sand-100/70">Small businesses • Ongoing</p>
-            </div>
-            <span class="px-3 py-1 rounded-full bg-white/10 border border-white/10 text-xs font-semibold">SEO • Social • Email</span>
-          </div>
-          <ul class="mt-4 space-y-2 text-sm text-sand-100/85 tick">
-            <li>Built social campaign plans, launch calendars, and creative briefs for local brands.</li>
-            <li>Created posters and content packs; wrote SEO blog content and landing copy.</li>
-            <li>Set up email marketing flows (welcome, nurture, reactivation) and basic reporting.</li>
-            <li>Performed lightweight SEO audits (technical + on-page) with prioritized fixes.</li>
+          <ul class="mt-4 text-sm text-ink-900/75 space-y-2">
+            <li>• Ran multi-channel campaigns (SEO, Meta, email); improved customer acquisition and qualified lead generation (40% YoY growth).</li>
+            <li>• Built HubSpot lifecycle workflows (welcome/retention/re-engagement) with behavior triggers; improved retention outcomes.</li>
+            <li>• Used GA4 + dashboarding (Power BI/Excel) to monitor CAC/ROI/CTR and optimize spend & creative performance.</li>
           </ul>
         </article>
       </div>
@@ -458,305 +434,304 @@
   </section>
 
   <!-- PROJECTS -->
-  <section id="projects" class="bg-sand-50">
-    <div class="mx-auto container-tight px-4 py-16">
-      <h2 class="underline-accent font-display text-3xl md:text-4xl font-extrabold">Projects</h2>
-      <p class="mt-4 text-ink-900/70 max-w-3xl">
-        Case-study style work across strategy, analytics, and brand building.
-      </p>
+  <section id="projects" class="py-16">
+    <div class="mx-auto container-tight px-4">
+      <h2 class="font-serif text-3xl md:text-4xl underline-accent">Projects</h2>
 
       <div class="mt-8 grid md:grid-cols-2 gap-5">
-        <article class="card rounded-3xl p-7 shadow-soft hover:-translate-y-0.5 transition">
-          <div class="flex items-start justify-between gap-3">
-            <h3 class="text-xl font-semibold">Somani Textile Group — Brand Website + Content</h3>
-            <span class="px-3 py-1 rounded-full bg-tealx-500/10 border border-tealx-500/20 text-xs font-semibold text-tealx-700">Brand + SEO</span>
-          </div>
-          <p class="mt-3 text-sm text-ink-900/70">
-            Designed and launched the Somani Textile Group website with structured pages, product positioning, and an “Insights” blog to support credibility and lead generation.
+        <article class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-7">
+          <h3 class="font-semibold text-lg">Peoples Natural Gas • Hydrogen Blending & Data Centers</h3>
+          <p class="mt-2 text-sm text-ink-900/70">
+            Scenario modeling, tariff benchmarking, and executive recommendations to support data center strategy and clean energy transition.
           </p>
-          <ul class="mt-4 text-sm text-ink-900/70 tick space-y-2">
-            <li>Information architecture, copy direction, and trust-building design</li>
-            <li>Blog categories + content plan for B2B textile buyers</li>
-            <li>Improved navigation for manufacturing, supply & orders</li>
-          </ul>
-          <a class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-tealx-700 hover:text-tealx-500"
-             target="_blank" rel="noopener"
-             href="https://priyam05somani.wixsite.com/somani-textile-group">
-            Open project site <span>→</span>
+          <div class="mt-4 flex gap-2 flex-wrap">
+            <span class="text-xs font-semibold px-3 py-1.5 rounded-full bg-sand-100 border border-ink-900/10">Pricing</span>
+            <span class="text-xs font-semibold px-3 py-1.5 rounded-full bg-sand-100 border border-ink-900/10">GTM</span>
+            <span class="text-xs font-semibold px-3 py-1.5 rounded-full bg-sand-100 border border-ink-900/10">Analytics</span>
+          </div>
+          <a href="assets/Peoples%20Natural%20Gas%20-%20Hydrogen%20Bledning%20%26%20Data%20Centers.pptx"
+             class="mt-5 inline-flex font-semibold text-sm text-ocean-700 hover:text-ocean-600">
+            Open deck →
           </a>
         </article>
 
-        <article class="card rounded-3xl p-7 shadow-soft hover:-translate-y-0.5 transition">
-          <div class="flex items-start justify-between gap-3">
-            <h3 class="text-xl font-semibold">Peoples Natural Gas — Hydrogen & Data Centers</h3>
-            <span class="px-3 py-1 rounded-full bg-goldx-300/15 border border-goldx-300/25 text-xs font-semibold text-ink-900/80">Strategy</span>
-          </div>
-          <p class="mt-3 text-sm text-ink-900/70">
-            Assessed hydrogen blending feasibility and tariff benchmarks; built scenarios for hyperscale loads and produced executive recommendations.
+        <article class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-7">
+          <h3 class="font-semibold text-lg">Ductmate Industries • Market Research & Strategy</h3>
+          <p class="mt-2 text-sm text-ink-900/70">
+            VOC research, competitive insights, segmentation, and dashboarding to align roadmap and improve marketing effectiveness.
           </p>
-          <div class="mt-5 flex flex-wrap gap-2">
-            <span class="chip rounded-full px-3 py-1 text-xs font-semibold text-ink-900/70">Benchmarking</span>
-            <span class="chip rounded-full px-3 py-1 text-xs font-semibold text-ink-900/70">Modeling</span>
-            <span class="chip rounded-full px-3 py-1 text-xs font-semibold text-ink-900/70">Executive Story</span>
+          <div class="mt-4 flex gap-2 flex-wrap">
+            <span class="text-xs font-semibold px-3 py-1.5 rounded-full bg-sand-100 border border-ink-900/10">VOC</span>
+            <span class="text-xs font-semibold px-3 py-1.5 rounded-full bg-sand-100 border border-ink-900/10">Positioning</span>
+            <span class="text-xs font-semibold px-3 py-1.5 rounded-full bg-sand-100 border border-ink-900/10">Power BI</span>
           </div>
-          <!-- If you have a deck/pdf, put it in assets and link it here -->
-          <a class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-tealx-700 hover:text-tealx-500"
-             href="assets/Peoples%20Natural%20Gas%20-%20Hydrogen%20Bledning%20%26%20Data%20Centers.pptx">
-            Open deck <span>→</span>
+          <a href="assets/Market%20Research%20and%20Strategy%20for%20DMI.pptx"
+             class="mt-5 inline-flex font-semibold text-sm text-ocean-700 hover:text-ocean-600">
+            Open deck →
           </a>
         </article>
 
-        <article class="card rounded-3xl p-7 shadow-soft hover:-translate-y-0.5 transition">
-          <div class="flex items-start justify-between gap-3">
-            <h3 class="text-xl font-semibold">DMI — Market Research & Product Strategy</h3>
-            <span class="px-3 py-1 rounded-full bg-tealx-500/10 border border-tealx-500/20 text-xs font-semibold text-tealx-700">Research</span>
+        <article class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-7 md:col-span-2">
+          <div class="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <h3 class="font-semibold text-lg">Somani Textile Group • Brand Website + Content Engine (Wix)</h3>
+              <p class="mt-2 text-sm text-ink-900/70">
+                Built the brand website and blog content to support B2B discovery, credibility, and inbound interest for suitings & woven fabrics.
+              </p>
+            </div>
+            <a target="_blank" rel="noopener"
+               href="https://priyam05somani.wixsite.com/somani-textile-group"
+               class="text-xs font-semibold px-4 py-2 rounded-full bg-ink-900 text-sand-50 hover:bg-ink-800">
+              Open website
+            </a>
           </div>
-          <p class="mt-3 text-sm text-ink-900/70">
-            Validated roadmap direction through customer insights and competitive analysis; shaped messaging, ICPs, and reporting.
-          </p>
-          <a class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-tealx-700 hover:text-tealx-500"
-             href="assets/Market%20Research%20and%20Strategy%20for%20DMI.pptx">
-            Open deck <span>→</span>
-          </a>
-        </article>
 
-        <article class="card rounded-3xl p-7 shadow-soft hover:-translate-y-0.5 transition">
-          <div class="flex items-start justify-between gap-3">
-            <h3 class="text-xl font-semibold">Applied Simulation — Pizza Romano</h3>
-            <span class="px-3 py-1 rounded-full bg-goldx-300/15 border border-goldx-300/25 text-xs font-semibold text-ink-900/80">Analytics</span>
+          <div class="mt-5 grid sm:grid-cols-3 gap-4">
+            <div class="rounded-2xl bg-sand-100 border border-ink-900/10 p-4">
+              <div class="text-xs text-ink-900/60">Work</div>
+              <div class="mt-1 font-semibold">Website IA + design</div>
+            </div>
+            <div class="rounded-2xl bg-sand-100 border border-ink-900/10 p-4">
+              <div class="text-xs text-ink-900/60">Work</div>
+              <div class="mt-1 font-semibold">Blog strategy + writing</div>
+            </div>
+            <div class="rounded-2xl bg-sand-100 border border-ink-900/10 p-4">
+              <div class="text-xs text-ink-900/60">Work</div>
+              <div class="mt-1 font-semibold">SEO foundations</div>
+            </div>
           </div>
-          <p class="mt-3 text-sm text-ink-900/70">
-            Built a SIMIO discrete-event model to test staffing and throughput improvements during peak hours.
-          </p>
-          <a class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-tealx-700 hover:text-tealx-500"
-             href="assets/Applied%20Simulation%20-%20Pizza%20Romano.pdf">
-            Download PDF <span>→</span>
-          </a>
+
+          <div class="mt-5 text-sm text-ink-900/70">
+            Blog hub:
+            <a target="_blank" rel="noopener" class="font-semibold text-ocean-700 hover:text-ocean-600"
+               href="https://priyam05somani.wixsite.com/somani-textile-group/blog">Open blog →</a>
+          </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- INSIGHTS / BLOG -->
-  <section id="insights" class="bg-sand-100">
-    <div class="mx-auto container-tight px-4 py-16">
-      <h2 class="underline-accent font-display text-3xl md:text-4xl font-extrabold">Insights</h2>
-      <p class="mt-4 text-ink-900/70 max-w-3xl">
-        Short, practical writing on marketing, textiles, strategy, and analytics. (You can link these to your Wix blog posts.)
+  <!-- BLOGS -->
+  <section id="blogs" class="py-16 bg-sand-100">
+    <div class="mx-auto container-tight px-4">
+      <h2 class="font-serif text-3xl md:text-4xl underline-accent">Featured Blogs</h2>
+      <p class="mt-4 text-sm text-ink-900/70 max-w-2xl">
+        A few pieces from Somani Textile Group — focused on B2B relevance, trends, and sustainability.
       </p>
 
       <div class="mt-8 grid md:grid-cols-3 gap-5">
-        <a href="#" class="card rounded-3xl p-6 shadow-soft hover:-translate-y-0.5 transition">
-          <div class="text-xs font-semibold text-ink-900/60 mono">Textiles • B2B</div>
-          <div class="mt-2 font-semibold text-lg">Innovative Textile Solutions for B2B Buyers</div>
-          <div class="mt-2 text-sm text-ink-900/70">Trends shaping suiting fabrics, sourcing, and value-added finishing.</div>
-          <div class="mt-4 text-sm font-semibold text-tealx-700">Read post →</div>
+        <a target="_blank" rel="noopener"
+           href="https://priyam05somani.wixsite.com/somani-textile-group/post/innovative-textile-solutions-for-b2b-partnerships"
+           class="group rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-6 hover:shadow-card transition">
+          <div class="text-xs text-ink-900/60">B2B Partnerships</div>
+          <div class="mt-2 font-semibold">Innovative Textile Solutions for B2B Partnerships</div>
+          <div class="mt-3 text-sm text-ink-900/70">Practical ways to position textiles for long-term business value and repeat orders.</div>
+          <div class="mt-5 text-sm font-semibold text-ocean-700 group-hover:text-ocean-600">Read →</div>
         </a>
 
-        <a href="#" class="card rounded-3xl p-6 shadow-soft hover:-translate-y-0.5 transition">
-          <div class="text-xs font-semibold text-ink-900/60 mono">Brand • Growth</div>
-          <div class="mt-2 font-semibold text-lg">The Future of Suitings: Trends & Insights</div>
-          <div class="mt-2 text-sm text-ink-900/70">A buyer-friendly way to position quality, trust, and consistency.</div>
-          <div class="mt-4 text-sm font-semibold text-tealx-700">Read post →</div>
+        <a target="_blank" rel="noopener"
+           href="https://priyam05somani.wixsite.com/somani-textile-group/post/the-future-of-suitings-trends-and-insights"
+           class="group rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-6 hover:shadow-card transition">
+          <div class="text-xs text-ink-900/60">Trends</div>
+          <div class="mt-2 font-semibold">The Future of Suitings: Trends and Insights</div>
+          <div class="mt-3 text-sm text-ink-900/70">A market-facing view on product evolution, buyer preferences, and what’s next.</div>
+          <div class="mt-5 text-sm font-semibold text-ocean-700 group-hover:text-ocean-600">Read →</div>
         </a>
 
-        <a href="#" class="card rounded-3xl p-6 shadow-soft hover:-translate-y-0.5 transition">
-          <div class="text-xs font-semibold text-ink-900/60 mono">Sustainability</div>
-          <div class="mt-2 font-semibold text-lg">Exploring Sustainable Practices in Textiles</div>
-          <div class="mt-2 text-sm text-ink-900/70">Practical sustainability without greenwashing — for manufacturers.</div>
-          <div class="mt-4 text-sm font-semibold text-tealx-700">Read post →</div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CERTIFICATES -->
-  <section id="certs" class="bg-ink-950 text-sand-50">
-    <div class="mx-auto container-tight px-4 py-16">
-      <h2 class="underline-accent font-display text-3xl md:text-4xl font-extrabold">Professional Certificates</h2>
-
-      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        <a class="card-dark rounded-3xl p-6 shadow-soft hover:-translate-y-0.5 transition" href="assets/Google%20Analytics.pdf">
-          <div class="font-semibold text-lg">Google Analytics (GA4)</div>
-          <div class="text-sm text-sand-100/70 mt-1">Google • Completed Sep 2025</div>
-          <div class="mt-4 text-sm font-semibold text-tealx-300">View certificate →</div>
-        </a>
-
-        <a class="card-dark rounded-3xl p-6 shadow-soft hover:-translate-y-0.5 transition" href="assets/Facebook-Instagram-Advertising-Workshop.pdf">
-          <div class="font-semibold text-lg">Facebook & Instagram Advertising</div>
-          <div class="text-sm text-sand-100/70 mt-1">Workshop</div>
-          <div class="mt-4 text-sm font-semibold text-tealx-300">View certificate →</div>
-        </a>
-
-        <a class="card-dark rounded-3xl p-6 shadow-soft hover:-translate-y-0.5 transition" href="assets/Generative-AI-for-Digital-Marketers.pdf">
-          <div class="font-semibold text-lg">Generative AI for Digital Marketers</div>
-          <div class="text-sm text-sand-100/70 mt-1">2025</div>
-          <div class="mt-4 text-sm font-semibold text-tealx-300">View certificate →</div>
-        </a>
-
-        <a class="card-dark rounded-3xl p-6 shadow-soft hover:-translate-y-0.5 transition" href="assets/Excel-with-Copilot-AI-Driven-Data-Analysis.pdf">
-          <div class="font-semibold text-lg">Excel with Copilot — AI-Driven Data Analysis</div>
-          <div class="text-sm text-sand-100/70 mt-1">2025</div>
-          <div class="mt-4 text-sm font-semibold text-tealx-300">View certificate →</div>
-        </a>
-
-        <a class="card-dark rounded-3xl p-6 shadow-soft hover:-translate-y-0.5 transition" href="assets/AI-for-Google-Analytics.pdf">
-          <div class="font-semibold text-lg">AI for Google Analytics</div>
-          <div class="text-sm text-sand-100/70 mt-1">2025</div>
-          <div class="mt-4 text-sm font-semibold text-tealx-300">View certificate →</div>
-        </a>
-
-        <a class="card-dark rounded-3xl p-6 shadow-soft hover:-translate-y-0.5 transition" href="assets/Scenario-Analysis-Certificate.pdf">
-          <div class="font-semibold text-lg">Scenario Analysis</div>
-          <div class="text-sm text-sand-100/70 mt-1">Certificate</div>
-          <div class="mt-4 text-sm font-semibold text-tealx-300">View certificate →</div>
+        <a target="_blank" rel="noopener"
+           href="https://priyam05somani.wixsite.com/somani-textile-group/post/exploring-sustainable-practices-in-textile-manufacturing"
+           class="group rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-6 hover:shadow-card transition">
+          <div class="text-xs text-ink-900/60">Sustainability</div>
+          <div class="mt-2 font-semibold">Exploring Sustainable Practices in Textile Manufacturing</div>
+          <div class="mt-3 text-sm text-ink-900/70">Operational + brand credibility levers for responsible textile manufacturing.</div>
+          <div class="mt-5 text-sm font-semibold text-ocean-700 group-hover:text-ocean-600">Read →</div>
         </a>
       </div>
     </div>
   </section>
 
   <!-- SKILLS -->
-  <section id="skills" class="bg-sand-50">
-    <div class="mx-auto container-tight px-4 py-16">
-      <h2 class="underline-accent font-display text-3xl md:text-4xl font-extrabold">Skills & Tools</h2>
+  <section id="skills" class="py-16">
+    <div class="mx-auto container-tight px-4">
+      <h2 class="font-serif text-3xl md:text-4xl underline-accent">Skills & Tools</h2>
 
-      <div class="mt-8 grid lg:grid-cols-3 gap-6">
-        <div class="card rounded-3xl p-7 shadow-soft">
-          <div class="text-xs font-semibold text-ink-900/60 mono">Analytics</div>
-          <div class="mt-2 font-semibold text-lg">Technical & Data</div>
-          <ul class="mt-4 space-y-2 text-sm text-ink-900/70 tick">
-            <li>Excel (advanced), SQL, Python, R</li>
-            <li>Tableau, Power BI, dashboards & executive reporting</li>
-            <li>Forecasting, segmentation, performance analytics</li>
-            <li>Simulation (SIMIO) and scenario modeling</li>
+      <div class="mt-8 grid lg:grid-cols-3 gap-5">
+        <div class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-7">
+          <h3 class="font-semibold">Analytics & Technical</h3>
+          <ul class="mt-4 text-sm text-ink-900/75 space-y-2">
+            <li>• GA4, attribution, funnel analysis, KPI reporting</li>
+            <li>• SQL, Excel, Power BI, Tableau</li>
+            <li>• Python / R (EDA, automation, analysis)</li>
+            <li>• Forecasting, optimization, simulation (SIMIO)</li>
           </ul>
         </div>
 
-        <div class="card rounded-3xl p-7 shadow-soft">
-          <div class="text-xs font-semibold text-ink-900/60 mono">Marketing</div>
-          <div class="mt-2 font-semibold text-lg">Growth & Digital</div>
-          <ul class="mt-4 space-y-2 text-sm text-ink-900/70 tick">
-            <li>SEO / SEM, performance marketing basics</li>
-            <li>GA4 measurement & reporting</li>
-            <li>Email marketing flows (welcome, nurture, reactivation)</li>
-            <li>Copywriting, content strategy, social campaigns</li>
+        <div class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-7">
+          <h3 class="font-semibold">Marketing & Growth</h3>
+          <ul class="mt-4 text-sm text-ink-900/75 space-y-2">
+            <li>• Market research, VOC, segmentation, ICP</li>
+            <li>• Positioning, messaging, GTM planning</li>
+            <li>• Email marketing, lifecycle automation (HubSpot)</li>
+            <li>• A/B testing, CRO, retention strategy</li>
           </ul>
         </div>
 
-        <div class="card rounded-3xl p-7 shadow-soft">
-          <div class="text-xs font-semibold text-ink-900/60 mono">Strategy</div>
-          <div class="mt-2 font-semibold text-lg">Consulting & Business</div>
-          <ul class="mt-4 space-y-2 text-sm text-ink-900/70 tick">
-            <li>Market research, VOC, competitive intelligence</li>
-            <li>Pricing, benchmarking, GTM strategy</li>
-            <li>Stakeholder management & leadership storytelling</li>
-            <li>Structured problem solving and decision frameworks</li>
+        <div class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-7">
+          <h3 class="font-semibold">Creative Execution</h3>
+          <ul class="mt-4 text-sm text-ink-900/75 space-y-2">
+            <li>• Social content + poster creatives</li>
+            <li>• Blog strategy + writing</li>
+            <li>• SEO audits + on-page fixes</li>
+            <li>• Executive storytelling (slides / docs)</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- EDUCATION + VOLUNTEERING -->
-  <section id="education" class="bg-sand-100">
-    <div class="mx-auto container-tight px-4 py-16 grid lg:grid-cols-12 gap-6">
-      <div class="lg:col-span-7">
-        <h2 class="underline-accent font-display text-3xl md:text-4xl font-extrabold">Education</h2>
+  <!-- CERTIFICATES -->
+  <section id="certs" class="py-16 bg-sand-100">
+    <div class="mx-auto container-tight px-4">
+      <h2 class="font-serif text-3xl md:text-4xl underline-accent">Professional Certificates</h2>
 
-        <div class="mt-8 grid gap-5">
-          <div class="card rounded-3xl p-7 shadow-soft">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <div class="font-semibold text-lg">University of Pittsburgh — Katz Graduate School of Business</div>
-                <div class="text-sm text-ink-900/65">M.S. Marketing & Business Analytics • 2025 • GPA 3.78/4.00</div>
-              </div>
-              <a href="assets/Transcript-Pitt-Spring-2025.pdf"
-                 class="px-3 py-2 rounded-xl border border-ink-900/15 hover:bg-white/70 text-xs font-semibold">
-                Transcript →
-              </a>
-            </div>
-            <ul class="mt-4 space-y-2 text-sm text-ink-900/70 tick">
-              <li>Coursework: analytics, market research, data visualization, marketing management, DBMS</li>
-              <li>Student Executive Board member (2 years)</li>
-            </ul>
-          </div>
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-6">
+          <div class="font-semibold">Google Analytics (GA4)</div>
+          <div class="text-sm text-ink-900/60 mt-1">Google • Completed Sep 2025</div>
+          <a href="assets/Google%20Analytics.pdf" class="mt-4 inline-flex text-sm font-semibold text-ocean-700 hover:text-ocean-600">View →</a>
+        </div>
 
-          <div class="card rounded-3xl p-7 shadow-soft">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <div class="font-semibold text-lg">Christ University (Deemed)</div>
-                <div class="text-sm text-ink-900/65">BBA Business Analytics • 2020 • GPA 3.45/4.00</div>
-              </div>
-              <!-- Add your bachelor's transcript pdf to assets and update filename -->
-              <a href="assets/Transcript-Christ-University.pdf"
-                 class="px-3 py-2 rounded-xl border border-ink-900/15 hover:bg-white/70 text-xs font-semibold">
-                Transcript →
-              </a>
-            </div>
-            <ul class="mt-4 space-y-2 text-sm text-ink-900/70 tick">
-              <li>Coursework: SQL, R, Python, Tableau, Excel, SPSS, Power BI, predictive modeling</li>
-              <li>Capstones in forecasting & optimization</li>
-            </ul>
-          </div>
+        <div class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-6">
+          <div class="font-semibold">Facebook & Instagram Advertising</div>
+          <div class="text-sm text-ink-900/60 mt-1">Workshop</div>
+          <a href="assets/Facebook-Instagram-Advertising-Workshop.pdf" class="mt-4 inline-flex text-sm font-semibold text-ocean-700 hover:text-ocean-600">View →</a>
+        </div>
+
+        <div class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-6">
+          <div class="font-semibold">Generative AI for Digital Marketers</div>
+          <div class="text-sm text-ink-900/60 mt-1">2025</div>
+          <a href="assets/Generative-AI-for-Digital-Marketers.pdf" class="mt-4 inline-flex text-sm font-semibold text-ocean-700 hover:text-ocean-600">View →</a>
+        </div>
+
+        <div class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-6">
+          <div class="font-semibold">Excel with Copilot — AI-Driven Data Analysis</div>
+          <div class="text-sm text-ink-900/60 mt-1">2025</div>
+          <a href="assets/Excel-with-Copilot-AI-Driven-Data-Analysis.pdf" class="mt-4 inline-flex text-sm font-semibold text-ocean-700 hover:text-ocean-600">View →</a>
+        </div>
+
+        <div class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-6">
+          <div class="font-semibold">AI for Google Analytics</div>
+          <div class="text-sm text-ink-900/60 mt-1">2025</div>
+          <a href="assets/AI-for-Google-Analytics.pdf" class="mt-4 inline-flex text-sm font-semibold text-ocean-700 hover:text-ocean-600">View →</a>
+        </div>
+
+        <div class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-6">
+          <div class="font-semibold">Scenario Analysis</div>
+          <div class="text-sm text-ink-900/60 mt-1">Certificate</div>
+          <a href="assets/Scenario-Analysis-Certificate.pdf" class="mt-4 inline-flex text-sm font-semibold text-ocean-700 hover:text-ocean-600">View →</a>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="lg:col-span-5" id="volunteering">
-        <h2 class="underline-accent font-display text-3xl md:text-4xl font-extrabold">Volunteering</h2>
+  <!-- VOLUNTEERING -->
+  <section id="volunteering" class="py-16">
+    <div class="mx-auto container-tight px-4">
+      <h2 class="font-serif text-3xl md:text-4xl underline-accent">Volunteering & Freelance</h2>
 
-        <div class="mt-8 card rounded-3xl p-7 shadow-soft">
-          <div class="flex items-baseline justify-between gap-3">
-            <div class="font-semibold text-lg">Giving Joy — Market Research Volunteer</div>
-            <div class="text-sm text-ink-900/60">Jun 2025 – Present</div>
-          </div>
-          <ul class="mt-4 space-y-2 text-sm text-ink-900/70 tick">
-            <li>Mapped women-owned businesses across NY, MA, and Philadelphia (PA), starting with key metro clusters.</li>
-            <li>Built lead lists via directories (WBENC, NAWBO, WOSB/SBA) and LinkedIn discovery workflows.</li>
-            <li>Tracked industry clusters (apparel, wellness, women’s health, sustainable consumer brands).</li>
+      <div class="mt-8 grid lg:grid-cols-2 gap-5">
+        <div class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-7">
+          <h3 class="font-semibold text-lg">Giving Joy • Market Research Volunteer</h3>
+          <p class="mt-1 text-sm text-ink-900/60">June 2025 – Present</p>
+          <ul class="mt-4 text-sm text-ink-900/75 space-y-2">
+            <li>• Map women-owned businesses across New York, Massachusetts, and Philadelphia (PA).</li>
+            <li>• Prioritize industries: apparel/fashion, beauty & wellness, women’s health, sustainable consumer products.</li>
+            <li>• Build directories using WBENC/NAWBO/WOSB/SBA lists + LinkedIn discovery and social signals.</li>
           </ul>
+        </div>
+
+        <div class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-7">
+          <h3 class="font-semibold text-lg">Freelance • Digital Marketing & Content</h3>
+          <p class="mt-1 text-sm text-ink-900/60">Available for small businesses / local brands</p>
+          <ul class="mt-4 text-sm text-ink-900/75 space-y-2">
+            <li>• Social media campaign launch (content plan + creatives + posting schedule)</li>
+            <li>• Posters / promo creatives (Canva) for events and offers</li>
+            <li>• Blog content strategy + writing (SEO-first)</li>
+            <li>• Email marketing flows (welcome, retention, re-engagement)</li>
+            <li>• SEO audits (on-page, technical basics, keyword + content gaps)</li>
+          </ul>
+          <a href="#contact" class="mt-5 inline-flex text-sm font-semibold text-ocean-700 hover:text-ocean-600">Work with me →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="py-16 bg-sand-100">
+    <div class="mx-auto container-tight px-4">
+      <h2 class="font-serif text-3xl md:text-4xl underline-accent">Education</h2>
+
+      <div class="mt-8 grid gap-5">
+        <div class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-7">
+          <div class="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <h3 class="font-semibold text-lg">University of Pittsburgh — Joseph M. Katz Graduate School of Business</h3>
+              <p class="text-sm text-ink-900/60">M.S. Marketing Science & Business Analytics • GPA 3.779 • Apr 2025</p>
+            </div>
+            <a href="assets/University Transcript.pdf" class="text-xs font-semibold px-4 py-2 rounded-full bg-ink-900 text-sand-50 hover:bg-ink-800">Transcript</a>
+          </div>
+          <p class="mt-4 text-sm text-ink-900/70">
+            Coursework highlights: Marketing Research, Social Media Analytics, Database Management, Data Mining, Applied Simulation & Optimization.
+          </p>
+        </div>
+
+        <div class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-7">
+          <div class="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <h3 class="font-semibold text-lg">Christ University (Deemed)</h3>
+              <p class="text-sm text-ink-900/60">BBA • Business Analytics • GPA 3.45 • Jul 2020</p>
+            </div>
+            <a href="assets/Priyam somani transcript - 1.pdf" class="text-xs font-semibold px-4 py-2 rounded-full bg-ink-900 text-sand-50 hover:bg-ink-800">Transcript</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="bg-ink-950 text-sand-50">
-    <div class="mx-auto container-tight px-4 py-16">
-      <h2 class="underline-accent font-display text-3xl md:text-4xl font-extrabold">Contact</h2>
+  <section id="contact" class="py-16">
+    <div class="mx-auto container-tight px-4">
+      <h2 class="font-serif text-3xl md:text-4xl underline-accent">Contact</h2>
 
-      <div class="mt-8 grid md:grid-cols-2 gap-8 items-start">
-        <form action="https://formspree.io/f/xaylpnrg" method="POST" class="card-dark rounded-3xl p-7 shadow-soft">
+      <div class="mt-8 grid lg:grid-cols-2 gap-6 items-start">
+        <form action="https://formspree.io/f/xaylpnrg" method="POST"
+              class="rounded-[28px] bg-white border border-ink-900/10 shadow-soft p-7">
           <div class="grid gap-3">
-            <input required name="name" placeholder="Your name"
-              class="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-sand-50 placeholder:text-sand-100/50" />
-            <input required name="email" type="email" placeholder="Email address"
-              class="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-sand-50 placeholder:text-sand-100/50" />
-            <textarea required name="message" placeholder="Message" rows="4"
-              class="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-sand-50 placeholder:text-sand-100/50"></textarea>
-            <button class="rounded-full bg-tealx-500 hover:bg-tealx-700 text-white px-5 py-3 text-sm font-semibold">
+            <input required name="name" placeholder="Your name" class="w-full rounded-2xl border border-ink-900/15 bg-white px-4 py-3" />
+            <input required name="email" type="email" placeholder="Email address" class="w-full rounded-2xl border border-ink-900/15 bg-white px-4 py-3" />
+            <textarea required name="message" placeholder="Message" rows="5" class="w-full rounded-2xl border border-ink-900/15 bg-white px-4 py-3"></textarea>
+            <button class="rounded-full bg-ink-900 hover:bg-ink-800 text-sand-50 px-6 py-3 text-sm font-semibold shadow-soft">
               Send message
             </button>
           </div>
         </form>
 
-        <div class="card-dark rounded-3xl p-7 shadow-soft">
-          <div class="text-sm text-sand-100/70 mono">Direct</div>
-          <ul class="mt-4 grid gap-2 text-sm">
-            <li><span class="font-semibold">Email:</span> <a class="text-tealx-300 hover:underline" href="mailto:priyam05somani@gmail.com">priyam05somani@gmail.com</a></li>
-            <li><span class="font-semibold">Phone:</span> <a class="text-tealx-300 hover:underline" href="tel:+14124302670">+1 (412) 430-2670</a></li>
-            <li><span class="font-semibold">LinkedIn:</span> <a class="text-tealx-300 hover:underline" target="_blank" rel="noopener" href="https://www.linkedin.com/in/priyam-somani/">/in/priyam-somani</a></li>
-            <li><span class="font-semibold">Location:</span> Boston / Cambridge, MA</li>
-          </ul>
-
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a class="px-4 py-2 rounded-xl border border-white/15 hover:border-tealx-300 text-sm font-semibold"
-               href="assets/Priyam_Somani_Resume_Z.pdf">Resume (PDF)</a>
-            <a class="px-4 py-2 rounded-xl border border-white/15 hover:border-tealx-300 text-sm font-semibold"
-               href="assets/Portfolio-Slides.pdf">Portfolio Slides</a>
+        <div class="rounded-[28px] bg-ink-900 text-sand-50 shadow-card p-7">
+          <div class="text-sm text-sand-50/70">Reach me directly</div>
+          <div class="mt-4 grid gap-2 text-sm">
+            <div><span class="text-sand-50/70">Email:</span> <a class="font-semibold hover:underline" href="mailto:priyam05somani@gmail.com">priyam05somani@gmail.com</a></div>
+            <div><span class="text-sand-50/70">Phone:</span> <a class="font-semibold hover:underline" href="tel:+14124302670">+1 (412) 430-2670</a></div>
+            <div><span class="text-sand-50/70">LinkedIn:</span> <a class="font-semibold hover:underline" target="_blank" rel="noopener" href="https://www.linkedin.com/in/priyam-somani/">/in/priyam-somani</a></div>
+            <div><span class="text-sand-50/70">Location:</span> Cambridge, MA, USA</div>
           </div>
 
-          <div class="mt-6 text-xs text-sand-100/60">
-            Tip: if a file link doesn’t open, rename it to remove spaces (example: <span class="mono">Priyam_Somani_Resume_Z.pdf</span>).
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a class="px-4 py-2 rounded-full bg-white/10 border border-white/15 hover:bg-white/15 font-semibold text-sm"
+               href="assets/Resume - Priyam Somani.pdf">Resume</a>
+            <a class="px-4 py-2 rounded-full bg-white/10 border border-white/15 hover:bg-white/15 font-semibold text-sm"
+               href="assets/University Transcript.pdf">Pitt Transcript</a>
+            <a class="px-4 py-2 rounded-full bg-white/10 border border-white/15 hover:bg-white/15 font-semibold text-sm"
+               href="assets/Priyam somani transcript - 1.pdf">Christ Transcript</a>
           </div>
         </div>
       </div>
@@ -765,49 +740,49 @@
 
   <!-- FOOTER -->
   <footer class="bg-ink-900 text-sand-50">
-    <div class="mx-auto container-tight px-4 py-10">
-      <div class="grid md:grid-cols-3 gap-6 items-start">
+    <div class="mx-auto container-tight px-4 py-12">
+      <div class="grid lg:grid-cols-3 gap-8">
         <div>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-white/10 grid place-items-center font-extrabold">PS</div>
+          <div class="flex items-center gap-2">
+            <span class="inline-flex h-10 w-10 rounded-xl bg-white/10 items-center justify-center font-black">PS</span>
             <div>
               <div class="font-semibold">Priyam Somani</div>
-              <div class="text-xs text-sand-100/70 mono">Marketing • Analytics • Strategy</div>
+              <div class="text-sm text-sand-50/70">Marketing & Business Analytics</div>
             </div>
           </div>
-          <p class="mt-4 text-sm text-sand-100/75 max-w-sm">
-            Building measurable growth systems and strategy narratives that decision-makers can act on.
+          <p class="mt-4 text-sm text-sand-50/70 max-w-sm">
+            Creative strategy + measurable execution: research, dashboards, CRM flows, and growth experiments.
           </p>
         </div>
 
-        <div class="md:justify-self-center">
-          <div class="text-xs text-sand-100/70 mono">Navigate</div>
-          <div class="mt-3 grid grid-cols-2 gap-x-8 gap-y-2 text-sm font-semibold">
-            <a class="hover:underline" href="#about">About</a>
-            <a class="hover:underline" href="#experience">Experience</a>
-            <a class="hover:underline" href="#projects">Projects</a>
-            <a class="hover:underline" href="#insights">Insights</a>
-            <a class="hover:underline" href="#certs">Certificates</a>
-            <a class="hover:underline" href="#contact">Contact</a>
+        <div class="lg:col-span-2 grid sm:grid-cols-2 gap-6">
+          <div>
+            <div class="text-sm font-semibold">Navigate</div>
+            <div class="mt-3 grid gap-2 text-sm text-sand-50/75">
+              <a href="#about" class="hover:text-white">About</a>
+              <a href="#experience" class="hover:text-white">Experience</a>
+              <a href="#projects" class="hover:text-white">Projects</a>
+              <a href="#blogs" class="hover:text-white">Blogs</a>
+            </div>
           </div>
-        </div>
-
-        <div class="md:justify-self-end">
-          <div class="text-xs text-sand-100/70 mono">Links</div>
-          <div class="mt-3 flex flex-wrap gap-3">
-            <a class="px-4 py-2 rounded-xl border border-white/15 hover:border-tealx-300 text-sm font-semibold"
-               target="_blank" rel="noopener" href="https://www.linkedin.com/in/priyam-somani/">LinkedIn</a>
-            <a class="px-4 py-2 rounded-xl border border-white/15 hover:border-tealx-300 text-sm font-semibold"
-               target="_blank" rel="noopener" href="https://github.com/priyam05somani">GitHub</a>
-            <a class="px-4 py-2 rounded-xl border border-white/15 hover:border-tealx-300 text-sm font-semibold"
-               href="assets/Priyam_Somani_Resume_Z.pdf">Resume</a>
+          <div>
+            <div class="text-sm font-semibold">Connect</div>
+            <div class="mt-3 grid gap-2 text-sm text-sand-50/75">
+              <a href="mailto:priyam05somani@gmail.com" class="hover:text-white">Email</a>
+              <a href="tel:+14124302670" class="hover:text-white">Phone</a>
+              <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/priyam-somani/" class="hover:text-white">LinkedIn</a>
+              <a target="_blank" rel="noopener" href="https://github.com/priyam05somani" class="hover:text-white">GitHub</a>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="mt-8 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3">
-        <div class="text-xs text-sand-100/70">© <span id="year"></span> Priyam Somani. All rights reserved.</div>
-        <div class="text-xs text-sand-100/70 mono">Built with HTML + Tailwind • Hosted on GitHub Pages</div>
+      <div class="mt-10 pt-6 border-t border-white/15 flex flex-col md:flex-row gap-3 items-center justify-between text-sm text-sand-50/70">
+        <div>© <span id="year"></span> Priyam Somani. All rights reserved.</div>
+        <div class="flex gap-4">
+          <a href="#home" class="hover:text-white">Top</a>
+          <a href="#contact" class="hover:text-white">Contact</a>
+        </div>
       </div>
     </div>
   </footer>
@@ -818,7 +793,6 @@
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     menuBtn?.addEventListener('click',()=> mobileMenu.classList.toggle('hidden'));
-
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
@@ -837,8 +811,61 @@
   </script>
 
   <!-- ========== Nexora Chatbot (Chatbase + Quick Links) ========== -->
-  <div class="nx-fixed nx-backdrop" id="nxBackdrop" aria-hidden="true"></div>
+  <div id="nx-chat-root"></div>
+  <style>
+    :root{
+      --nx-accent:#06b6d4; /* ocean */
+      --nx-accent2:#f59e0b; /* amber */
+      --nx-dark:#0b1220; --nx-panel:#0b1220; --nx-text:#f6efe1;
+      --nx-shadow:0 20px 50px rgba(15, 23, 42, .35);
+    }
+    .nx-fixed{position:fixed;z-index:9999}
+    .nx-launch{
+      right:18px; bottom:18px; width:62px; height:62px; border-radius:50%;
+      background: radial-gradient(100% 100% at 30% 20%, rgba(34,211,238,.95) 0%, var(--nx-accent) 55%, rgba(245,158,11,.55) 110%);
+      box-shadow: var(--nx-shadow); border:none; outline:none; cursor:pointer; display:grid; place-items:center;
+    }
+    .nx-launch svg{width:34px;height:34px;filter: drop-shadow(0 3px 10px rgba(6,182,212,.35));}
+    .nx-backdrop{inset:0; background:rgba(2,6,23,.45); backdrop-filter: blur(4px); display:none}
+    .nx-panel{
+      right:16px; bottom:96px; width:min(420px, calc(100vw - 32px));
+      height:min(660px, calc(100vh - 120px));
+      border-radius:18px; overflow:hidden; background:var(--nx-panel); color:var(--nx-text);
+      display:none; box-shadow: var(--nx-shadow);
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .nx-header{
+      height:56px; display:flex; align-items:center; gap:.75rem; padding:0 .9rem;
+      background:#0b1220; border-bottom:1px solid rgba(255,255,255,.12);
+    }
+    .nx-avatar{
+      width:30px;height:30px;border-radius:10px;display:grid;place-items:center;
+      background: linear-gradient(135deg, rgba(6,182,212,.95), rgba(245,158,11,.55));
+    }
+    .nx-title{font:800 15px/1 Inter,system-ui;color:#f6efe1}
+    .nx-esc{margin-left:auto;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.10);color:#f6efe1;
+      border-radius:10px;padding:.35rem .55rem;font:700 12px/1 Inter,system-ui;cursor:pointer}
+    .nx-body{position:relative; height:calc(100% - 56px); display:flex; flex-direction:column}
+    .nx-greet{padding:.6rem .9rem; font:600 13px/1.4 Inter,system-ui; color:rgba(246,239,225,.80); border-bottom:1px solid rgba(255,255,255,.12)}
+    .nx-links{
+      display:flex; gap:.5rem; overflow:auto; padding:.6rem .9rem; border-bottom:1px solid rgba(255,255,255,.12);
+    }
+    .nx-chip{
+      white-space:nowrap; padding:.4rem .65rem; border-radius:999px; font:700 12px/1 Inter,system-ui;
+      border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.08); color:#f6efe1;
+    }
+    .nx-chip:hover{border-color:var(--nx-accent); box-shadow:0 0 0 6px rgba(6,182,212,.12)}
+    .nx-iframe{width:100%;height:100%;border:0;display:block; background:#0b1220}
+    .nx-loading{position:absolute;inset:0;display:grid;place-items:center;gap:.5rem;color:rgba(246,239,225,.85)}
+    .nx-spinner{width:28px;height:28px;border:3px solid rgba(255,255,255,.25);border-top-color:var(--nx-accent);
+      border-radius:50%;animation:nx-spin .9s linear infinite}
+    @keyframes nx-spin{to{transform:rotate(360deg)}}
+    .nx-error{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:1rem}
+    .nx-error a{color:#67e8f9;text-decoration:underline}
+    .nx-show{display:block}
+  </style>
 
+  <div class="nx-fixed nx-backdrop" id="nxBackdrop" aria-hidden="true"></div>
   <button class="nx-fixed nx-launch" id="nxLauncher" aria-label="Open Nexora chatbot">
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <circle cx="12" cy="12" r="10" fill="#fff" opacity=".06"/>
@@ -851,32 +878,27 @@
 
   <section class="nx-fixed nx-panel" id="nxPanel" role="dialog" aria-modal="true" aria-label="Nexora chatbot">
     <header class="nx-header">
-      <span class="nx-avatar" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M6.8 10a5.2 5.2 0 0110.4 0v2.1H6.8V10Z" fill="#fff"/>
-          <rect x="5.8" y="11.7" width="12.4" height="6.3" rx="2.4" fill="#fff"/>
-        </svg>
-      </span>
+      <span class="nx-avatar" aria-hidden="true"></span>
       <span class="nx-title">Nexora</span>
       <button class="nx-esc" id="nxClose" aria-label="Close (Esc)">Esc</button>
     </header>
 
     <div class="nx-body">
-      <div class="nx-greet">👋 Hi! I’m Nexora—ask for the resume, transcripts, certificates, or jump to a section below.</div>
+      <div class="nx-greet">👋 Hi! I’m Nexora — ask for the resume, transcripts, certificates, or jump to a section.</div>
 
       <div class="nx-links">
-        <a class="nx-chip" href="assets/Priyam_Somani_Resume_Z.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+        <a class="nx-chip" href="assets/Resume - Priyam Somani.pdf" target="_blank" rel="noopener">Resume</a>
         <a class="nx-chip" data-go="#experience" href="#experience">Experience</a>
         <a class="nx-chip" data-go="#projects" href="#projects">Projects</a>
-        <a class="nx-chip" data-go="#education" href="#education">Education</a>
+        <a class="nx-chip" data-go="#blogs" href="#blogs">Blogs</a>
         <a class="nx-chip" data-go="#certs" href="#certs">Certificates</a>
-        <a class="nx-chip" data-go="#skills" href="#skills">Skills</a>
+        <a class="nx-chip" data-go="#education" href="#education">Education</a>
         <a class="nx-chip" data-go="#contact" href="#contact">Contact</a>
       </div>
 
       <div class="nx-loading" id="nxLoading">
         <div class="nx-spinner"></div>
-        <div style="font:600 12px/1 Inter,system-ui;opacity:.8">Loading Nexora…</div>
+        <div style="font:700 12px/1 Inter,system-ui;opacity:.85">Loading Nexora…</div>
       </div>
 
       <iframe
@@ -888,8 +910,8 @@
       ></iframe>
 
       <div class="nx-error" id="nxError" style="display:none">
-        <div style="max-width: 320px; color:#e5e7eb; font:500 14px/1.45 Inter,system-ui">
-          <div style="font-weight:700; margin-bottom:.25rem; color:#66c2b7">Not available</div>
+        <div style="max-width: 320px; color:#f6efe1; font:600 14px/1.45 Inter,system-ui">
+          <div style="font-weight:800; margin-bottom:.25rem; color:#67e8f9">Not available</div>
           This bot is private or the domain isn’t allowed.
           In Chatbase set it to <b>Public</b> and allow your domain, or
           <a href="https://www.chatbase.co/chatbot-iframe/FGIwdqgBOp1V3vEUZFBPj" target="_blank" rel="noopener">open in a new tab</a>.
@@ -926,9 +948,10 @@
 
       let loaded = false;
       iframe.addEventListener('load', ()=>{ loaded = true; spnr.style.display='none'; });
-      setTimeout(()=>{ if(!loaded){ spnr.style.display='none'; err.style.display='grid'; }}, 6000);
+      setTimeout(()=>{ if(!loaded){ spnr.style.display='none'; err.style.display='grid'; }}, 6500);
     })();
   </script>
   <!-- ========== /Nexora Chatbot ========== -->
+
 </body>
 </html>
