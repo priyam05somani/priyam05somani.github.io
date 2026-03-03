@@ -1,11 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Priyam Somani • Marketing & Business Analytics</title>
-  <meta name="description" content="Priyam Somani — Marketing & Business Analytics portfolio. Growth, market research, dashboards, CRM automation, and strategy." />
-  <meta name="keywords" content="Priyam Somani, Marketing Analytics, Business Analytics, Market Research, Strategy, Power BI, SQL, GA4, Tableau, HubSpot" />
+  <meta name="description" content="Priyam Somani — Marketing & Business Analytics. Market research, dashboards, pricing & GTM strategy, and data-driven growth." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,19 +15,39 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
-          fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'], display:['Poppins','Inter','ui-sans-serif'] },
-          colors: {
-            ink: { 950:'#070A12', 900:'#0B1020', 850:'#0F1730', 800:'#121B36' },
-            rose: { 300:'#fb7185', 400:'#f43f5e', 500:'#e11d48' },
-            cyan: { 300:'#67e8f9', 400:'#22d3ee' },
-            lime: { 300:'#bef264', 400:'#a3e635' }
+          fontFamily: {
+            sans: ['Inter','ui-sans-serif','system-ui'],
+            display: ['Poppins','Inter','ui-sans-serif']
           },
-          boxShadow:{
-            soft:'0 10px 30px -18px rgba(0,0,0,.55)',
-            glow:'0 0 0 1px rgba(255,255,255,.08), 0 20px 60px -40px rgba(244,63,94,.55)'
+          colors: {
+            sand: {
+              50:  '#FFFCF7',
+              100: '#FDF6EC',
+              200: '#F7F1E8',
+              300: '#EFE6DA'
+            },
+            ink: {
+              900:'#111827',
+              800:'#1F2937',
+              700:'#374151'
+            },
+            rose: { 400:'#E88C7D', 500:'#DC6F5E' },
+            navy: { 500:'#355C7D' }
+          },
+          boxShadow: {
+            soft: '0 16px 40px -24px rgba(17,24,39,.28)',
+            card: '0 22px 60px -30px rgba(17,24,39,.30)'
+          },
+          borderRadius: { xl2: '1.25rem' },
+          keyframes: {
+            floaty: { '0%,100%':{ transform:'translateY(0)' }, '50%':{ transform:'translateY(-10px)' } },
+            fadeUp: { from:{ opacity:0, transform:'translateY(14px)' }, to:{ opacity:1, transform:'translateY(0)' } }
+          },
+          animation: {
+            floaty:'floaty 6s ease-in-out infinite',
+            fadeUp:'fadeUp .7s ease-out both'
           }
         }
       }
@@ -38,89 +57,46 @@
   <style>
     html{scroll-behavior:smooth}
     section{scroll-margin-top:92px}
-
-    /* Subtle animated grid */
-    .grid-bg{
-      background-image:
-        radial-gradient(circle at 1px 1px, rgba(255,255,255,.08) 1px, transparent 0);
-      background-size: 22px 22px;
-      mask-image: radial-gradient(ellipse at 50% 30%, #000 55%, transparent 75%);
-    }
-
-    /* Gradient border card */
-    .gcard{
-      position:relative;
-      border-radius: 20px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.08);
-      overflow:hidden;
-    }
-    .gcard:before{
-      content:"";
-      position:absolute; inset:-1px;
-      background: linear-gradient(120deg, rgba(244,63,94,.55), rgba(34,211,238,.35), rgba(190,242,100,.25));
-      opacity:.18;
-      filter: blur(10px);
-      z-index:0;
-    }
-    .gcard > *{position:relative; z-index:1;}
-
-    /* Pill chips */
-    .chip{
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      border-radius: 999px;
-      padding:.42rem .7rem;
-      font-weight: 600;
-      font-size: .82rem;
-      color: rgba(226,232,240,1);
-    }
-    .chip:hover{border-color: rgba(244,63,94,.55)}
-    .mini-link{display:inline-flex; align-items:center; gap:.35rem}
-    .mini-link:after{content:"→"}
-
-    /* Tiny tag */
-    .tag{
-      font-size:.72rem;
-      padding:.22rem .55rem;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      color: rgba(203,213,225,1);
+    .container-tight{max-width:1120px}
+    .underline-accent{position:relative;display:inline-block}
+    .underline-accent::after{
+      content:""; position:absolute; left:0; bottom:-10px;
+      width:72px; height:4px; border-radius:9999px;
+      background:linear-gradient(90deg,#E88C7D,#355C7D);
+      opacity:.95;
     }
   </style>
 </head>
 
-<body class="bg-ink-950 text-slate-100">
+<body class="bg-sand-200 text-ink-900">
   <!-- NAV -->
-  <header class="sticky top-0 z-50 backdrop-blur bg-ink-950/75 border-b border-white/10">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="#home" class="font-display font-extrabold text-2xl tracking-tight">PS</a>
+  <header class="sticky top-0 z-50 bg-sand-200/85 backdrop-blur border-b border-black/5">
+    <div class="mx-auto container-tight px-4 py-4 flex items-center justify-between">
+      <a href="#home" class="font-display font-extrabold text-xl tracking-tight">PS</a>
 
-      <nav class="hidden md:flex items-center gap-7 text-sm text-slate-200">
-        <a href="#work" class="hover:text-rose-300">Work</a>
-        <a href="#projects" class="hover:text-rose-300">Projects</a>
-        <a href="#experience" class="hover:text-rose-300">Experience</a>
-        <a href="#skills" class="hover:text-rose-300">Skills</a>
-        <a href="#contact" class="hover:text-rose-300">Contact</a>
+      <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-ink-700">
+        <a href="#about" class="hover:text-ink-900">About</a>
+        <a href="#projects" class="hover:text-ink-900">Projects</a>
+        <a href="#experience" class="hover:text-ink-900">Experience</a>
+        <a href="#insights" class="hover:text-ink-900">Insights</a>
+        <a href="#contact" class="hover:text-ink-900">Contact</a>
       </nav>
 
       <div class="flex items-center gap-2">
-        <!-- ✅ Rename your file + update this path -->
-        <a href="assets/priyam-somani-resume-z.pdf"
-           class="hidden sm:inline-flex rounded-full bg-rose-400 hover:bg-rose-500 text-white px-4 py-2 text-xs font-semibold shadow-soft">
-          Resume
+        <!-- Replace with your final resume path later -->
+        <a href="#contact" class="hidden sm:inline-flex rounded-full bg-ink-900 text-sand-50 px-4 py-2 text-xs font-bold shadow-soft hover:opacity-95">
+          Let’s connect
         </a>
-        <button id="menuBtn" class="md:hidden rounded-xl border border-white/15 px-3 py-1.5 text-xs">Menu</button>
+        <button id="menuBtn" class="md:hidden rounded-xl border border-black/10 px-3 py-1.5 text-xs font-semibold">Menu</button>
       </div>
     </div>
 
-    <div id="mobileMenu" class="md:hidden hidden border-t border-white/10">
-      <nav class="max-w-6xl mx-auto px-4 py-3 grid gap-2 text-sm text-slate-200">
-        <a href="#work">Work</a>
+    <div id="mobileMenu" class="md:hidden hidden border-t border-black/5 bg-sand-100">
+      <nav class="mx-auto container-tight px-4 py-3 grid gap-2 text-sm font-semibold text-ink-700">
+        <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
+        <a href="#insights">Insights</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -128,430 +104,439 @@
 
   <!-- HERO -->
   <section id="home" class="relative overflow-hidden">
-    <div class="absolute inset-0 grid-bg opacity-70"></div>
+    <!-- soft blobs -->
+    <div class="absolute -top-24 -left-24 h-72 w-72 rounded-full blur-3xl opacity-35"
+         style="background: radial-gradient(circle at 30% 30%, #E88C7D, transparent 60%);"></div>
+    <div class="absolute -bottom-28 -right-20 h-80 w-80 rounded-full blur-3xl opacity-30"
+         style="background: radial-gradient(circle at 30% 30%, #355C7D, transparent 60%);"></div>
 
-    <div class="max-w-6xl mx-auto px-4 pt-14 pb-12 md:pt-20 md:pb-16 relative">
-      <div class="grid lg:grid-cols-2 gap-10 items-start">
-        <!-- Left -->
-        <div>
-          <div class="inline-flex items-center gap-2 tag mb-4">
-            <span class="inline-block h-2 w-2 rounded-full bg-rose-400"></span>
-            Marketing • Analytics • Strategy
+    <div class="mx-auto container-tight px-4 py-16 md:py-20 grid lg:grid-cols-2 gap-10 items-center relative">
+      <div class="animate-fadeUp">
+        <p class="inline-flex items-center gap-2 text-xs font-bold tracking-wide uppercase text-ink-700 bg-sand-100 border border-black/5 px-3 py-1.5 rounded-full">
+          Marketing • Business Analytics • Strategy
+        </p>
+
+        <h1 class="mt-4 font-display text-5xl md:text-6xl font-extrabold leading-[1.02] tracking-tight">
+          Priyam Somani
+        </h1>
+
+        <p class="mt-4 text-lg text-ink-700 max-w-xl">
+          I blend <span class="font-semibold">creative marketing</span> with <span class="font-semibold">analytics</span>—turning research,
+          dashboards, and performance data into clear positioning, smarter funnels, and executive-ready strategy.
+        </p>
+
+        <div class="mt-6 flex flex-wrap gap-2">
+          <span class="px-3 py-1 rounded-full bg-sand-100 border border-black/5 text-sm font-semibold text-ink-700">Market Research</span>
+          <span class="px-3 py-1 rounded-full bg-sand-100 border border-black/5 text-sm font-semibold text-ink-700">Dashboards (Power BI / Tableau)</span>
+          <span class="px-3 py-1 rounded-full bg-sand-100 border border-black/5 text-sm font-semibold text-ink-700">GTM + Positioning</span>
+          <span class="px-3 py-1 rounded-full bg-sand-100 border border-black/5 text-sm font-semibold text-ink-700">CRM + Lifecycle</span>
+        </div>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#projects" class="rounded-full bg-ink-900 text-sand-50 px-6 py-3 text-sm font-bold shadow-card hover:opacity-95">
+            View Projects
+          </a>
+          <a href="#contact" class="rounded-full bg-sand-100 border border-black/10 px-6 py-3 text-sm font-bold hover:bg-sand-50">
+            Contact
+          </a>
+          <!-- Optional resume link later -->
+          <!-- <a href="assets/Priyam%20Somani%20-%20Resume.pdf" class="rounded-full border border-black/10 px-6 py-3 text-sm font-bold hover:bg-sand-50">Resume</a> -->
+        </div>
+
+        <div class="mt-8 grid grid-cols-3 gap-3 max-w-md">
+          <div class="rounded-2xl bg-sand-100 border border-black/5 p-4 shadow-soft">
+            <div class="text-2xl font-extrabold">4+</div>
+            <div class="text-xs font-semibold text-ink-700">Years experience</div>
           </div>
-
-          <h1 class="font-display text-5xl md:text-6xl font-extrabold leading-[1.05] tracking-tight">
-            Priyam <span class="text-rose-300">Somani</span>
-          </h1>
-
-          <p class="mt-4 text-slate-300 text-lg leading-relaxed max-w-xl">
-            I build <span class="text-slate-100 font-semibold">growth stories backed by data</span> —
-            market research, performance marketing, CRM automation, and dashboards that help teams move faster and decide smarter.
-          </p>
-
-          <div class="mt-6 flex flex-wrap gap-2">
-            <span class="chip">GA4 • GTM</span>
-            <span class="chip">SQL</span>
-            <span class="chip">Power BI</span>
-            <span class="chip">Tableau</span>
-            <span class="chip">HubSpot</span>
-            <span class="chip">Python/R</span>
+          <div class="rounded-2xl bg-sand-100 border border-black/5 p-4 shadow-soft">
+            <div class="text-2xl font-extrabold">$26M</div>
+            <div class="text-xs font-semibold text-ink-700">Investment strategy</div>
           </div>
-
-          <div class="mt-8 flex flex-wrap gap-3">
-            <a href="#projects" class="rounded-full bg-rose-400 hover:bg-rose-500 text-white px-5 py-2.5 text-sm font-semibold shadow-soft">
-              View Projects
-            </a>
-            <a href="#experience" class="rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold">
-              Experience
-            </a>
-            <a href="assets/priyam-somani-resume-z.pdf" class="rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold">
-              Download Resume
-            </a>
+          <div class="rounded-2xl bg-sand-100 border border-black/5 p-4 shadow-soft">
+            <div class="text-2xl font-extrabold">100+</div>
+            <div class="text-xs font-semibold text-ink-700">Competitor scans</div>
           </div>
+        </div>
+      </div>
 
-          <!-- Proof points (pulled from your resume metrics) -->
-          <div class="mt-10 grid sm:grid-cols-3 gap-4">
-            <div class="gcard p-4 shadow-glow">
-              <div class="text-2xl font-extrabold text-rose-300">40%</div>
-              <div class="text-xs text-slate-300 mt-1">YoY customer growth</div>
+      <!-- Right: Creative + Technical visual panel -->
+      <div class="relative">
+        <div class="rounded-[28px] bg-sand-100 border border-black/5 shadow-card overflow-hidden">
+          <div class="p-6 border-b border-black/5 flex items-center justify-between">
+            <div>
+              <div class="text-sm font-extrabold">Strategy Snapshot</div>
+              <div class="text-xs text-ink-700 font-semibold">How I work (creative → analytical → action)</div>
             </div>
-            <div class="gcard p-4 shadow-glow">
-              <div class="text-2xl font-extrabold text-cyan-300">$26M</div>
-              <div class="text-xs text-slate-300 mt-1">strategy/investment initiative</div>
+            <div class="text-xs font-bold text-ink-700 bg-sand-50 border border-black/5 px-3 py-1 rounded-full">Portfolio</div>
+          </div>
+
+          <div class="p-6 grid gap-4">
+            <div class="rounded-2xl bg-white/70 border border-black/5 p-4">
+              <div class="text-xs font-black uppercase tracking-wide text-ink-700">1) Discover</div>
+              <div class="mt-1 text-sm font-semibold text-ink-800">Research, VOC, segmentation, competitive intelligence</div>
             </div>
-            <div class="gcard p-4 shadow-glow">
-              <div class="text-2xl font-extrabold text-lime-300">75%</div>
-              <div class="text-xs text-slate-300 mt-1">retention improvement outcome</div>
+            <div class="rounded-2xl bg-white/70 border border-black/5 p-4">
+              <div class="text-xs font-black uppercase tracking-wide text-ink-700">2) Decide</div>
+              <div class="mt-1 text-sm font-semibold text-ink-800">Dashboards, pricing models, funnel analytics, forecasting</div>
+            </div>
+            <div class="rounded-2xl bg-white/70 border border-black/5 p-4">
+              <div class="text-xs font-black uppercase tracking-wide text-ink-700">3) Deliver</div>
+              <div class="mt-1 text-sm font-semibold text-ink-800">GTM plans, content strategy, stakeholder-ready storytelling</div>
+            </div>
+
+            <!-- Optional: replace with a real image later -->
+            <div class="rounded-2xl border border-black/5 bg-gradient-to-br from-white/80 to-sand-50 p-5">
+              <div class="text-sm font-extrabold">Add a Dashboard Screenshot Here</div>
+              <p class="mt-1 text-sm text-ink-700">
+                Replace this block with an image (Power BI/Tableau) like:
+                <span class="font-semibold">assets/dashboard.png</span>
+              </p>
             </div>
           </div>
         </div>
 
-        <!-- Right: “Creative + Technical” feature panel -->
-        <div class="gcard p-6 shadow-glow">
-          <div class="flex items-start justify-between gap-3">
-            <div>
-              <h2 class="font-display text-2xl font-extrabold">What I do</h2>
-              <p class="text-slate-300 text-sm mt-1">A marketing brain + analytics engine.</p>
-            </div>
-            <span class="tag">Portfolio v2</span>
-          </div>
-
-          <div class="mt-6 grid gap-4">
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <div class="flex items-center justify-between">
-                <div class="font-semibold">Insight → Strategy</div>
-                <span class="tag">Research</span>
-              </div>
-              <p class="text-slate-300 text-sm mt-2">
-                Competitive intelligence, VOC, segmentation, positioning — delivered as crisp, exec-ready narratives.
-              </p>
-            </div>
-
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <div class="flex items-center justify-between">
-                <div class="font-semibold">Strategy → Execution</div>
-                <span class="tag">Growth</span>
-              </div>
-              <p class="text-slate-300 text-sm mt-2">
-                Performance marketing, lifecycle journeys, A/B testing, funnel optimization and attribution.
-              </p>
-            </div>
-
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <div class="flex items-center justify-between">
-                <div class="font-semibold">Execution → Measurement</div>
-                <span class="tag">Analytics</span>
-              </div>
-              <p class="text-slate-300 text-sm mt-2">
-                Dashboards + KPI systems (GA4, BI tools, SQL) to track what matters and scale what works.
-              </p>
-            </div>
-          </div>
-
-          <div class="mt-6 flex flex-wrap gap-2 text-sm">
-            <a class="mini-link text-rose-300 hover:text-rose-200 font-semibold" href="#contact">Let’s collaborate</a>
-            <a class="mini-link text-slate-200 hover:text-white font-semibold" target="_blank" rel="noopener"
-               href="https://www.linkedin.com/in/priyam-somani/">LinkedIn</a>
-            <a class="mini-link text-slate-200 hover:text-white font-semibold" target="_blank" rel="noopener"
-               href="https://github.com/priyam05somani">GitHub</a>
-          </div>
+        <div class="absolute -bottom-5 -left-5 rounded-2xl bg-ink-900 text-sand-50 px-4 py-3 text-xs font-bold shadow-card animate-floaty">
+          Creative + Technical
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WORK / SNAPSHOT -->
-  <section id="work" class="border-t border-white/10 bg-ink-900/30">
-    <div class="max-w-6xl mx-auto px-4 py-14">
-      <h3 class="font-display text-3xl font-extrabold">Work Snapshot</h3>
-      <p class="text-slate-300 mt-2 max-w-2xl">
-        Recent roles span sustainability strategy, market research, growth marketing, and analytics dashboards.
-      </p>
+  <!-- ABOUT -->
+  <section id="about" class="py-16">
+    <div class="mx-auto container-tight px-4">
+      <h2 class="underline-accent font-display text-3xl md:text-4xl font-extrabold">About</h2>
 
-      <div class="mt-8 grid md:grid-cols-3 gap-5">
-        <div class="gcard p-6">
-          <div class="tag mb-2">Strategy</div>
-          <div class="font-semibold text-lg">Peoples Natural Gas</div>
-          <p class="text-sm text-slate-300 mt-2">
-            Competitive benchmarking & executive strategy for infrastructure + hyperscale data center market entry.
-          </p>
+      <div class="mt-8 grid lg:grid-cols-3 gap-8 items-start">
+        <div class="rounded-[28px] bg-sand-100 border border-black/5 shadow-soft p-6">
+          <!-- Replace with your photo -->
+          <div class="aspect-square rounded-2xl bg-white/70 border border-black/5 grid place-items-center text-ink-700 font-bold">
+            Add Profile Photo<br/><span class="text-xs font-semibold">(assets/Profile%20Picture.jpg)</span>
+          </div>
+          <div class="mt-4 text-sm text-ink-700">
+            Based in <span class="font-semibold">Cambridge, MA</span>. Open to roles in marketing analytics, strategy, growth, and product insights.
+          </div>
         </div>
 
-        <div class="gcard p-6">
-          <div class="tag mb-2">Research</div>
-          <div class="font-semibold text-lg">Ductmate (Consulting)</div>
-          <p class="text-sm text-slate-300 mt-2">
-            Surveys + interviews + analysis to shape messaging, positioning, and product strategy.
+        <div class="lg:col-span-2 rounded-[28px] bg-sand-100 border border-black/5 shadow-soft p-7">
+          <p class="text-ink-700 leading-relaxed">
+            I’m a marketing and analytics professional with experience spanning <span class="font-semibold">energy, AI, and consumer businesses</span>.
+            I specialize in translating messy data into <span class="font-semibold">clear decisions</span>—through research, dashboards,
+            performance metrics, and executive storytelling.
           </p>
-        </div>
 
-        <div class="gcard p-6">
-          <div class="tag mb-2">Growth</div>
-          <div class="font-semibold text-lg">JaiUdit Suitings</div>
-          <p class="text-sm text-slate-300 mt-2">
-            CRM + performance marketing + GA4 measurement to improve acquisition, retention, and efficiency.
-          </p>
+          <div class="mt-6 grid sm:grid-cols-2 gap-4">
+            <div class="rounded-2xl bg-white/70 border border-black/5 p-4">
+              <div class="font-extrabold">What I’m strong at</div>
+              <ul class="mt-2 text-sm text-ink-700 space-y-1.5">
+                <li>• Market research, VOC, segmentation</li>
+                <li>• GTM strategy, positioning, messaging</li>
+                <li>• CRM automation + lifecycle journeys</li>
+                <li>• Dashboards + KPI storytelling</li>
+              </ul>
+            </div>
+            <div class="rounded-2xl bg-white/70 border border-black/5 p-4">
+              <div class="font-extrabold">Toolbox</div>
+              <div class="mt-2 flex flex-wrap gap-2 text-sm">
+                <span class="px-3 py-1 rounded-full bg-sand-50 border border-black/5 font-semibold">Power BI</span>
+                <span class="px-3 py-1 rounded-full bg-sand-50 border border-black/5 font-semibold">Tableau</span>
+                <span class="px-3 py-1 rounded-full bg-sand-50 border border-black/5 font-semibold">SQL</span>
+                <span class="px-3 py-1 rounded-full bg-sand-50 border border-black/5 font-semibold">Excel</span>
+                <span class="px-3 py-1 rounded-full bg-sand-50 border border-black/5 font-semibold">Python</span>
+                <span class="px-3 py-1 rounded-full bg-sand-50 border border-black/5 font-semibold">GA4</span>
+                <span class="px-3 py-1 rounded-full bg-sand-50 border border-black/5 font-semibold">HubSpot</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 rounded-2xl border border-black/5 bg-gradient-to-r from-white/70 to-sand-50 p-5">
+            <div class="font-extrabold">Signature style</div>
+            <p class="mt-1 text-sm text-ink-700">
+              “Creative enough to build the story. Technical enough to prove it with data.”
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- PROJECTS -->
-  <section id="projects" class="border-t border-white/10">
-    <div class="max-w-6xl mx-auto px-4 py-14">
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-        <div>
-          <h3 class="font-display text-3xl font-extrabold">Projects</h3>
-          <p class="text-slate-300 mt-2">A mix of analytics, strategy, and real-world execution.</p>
-        </div>
-
-        <!-- Filter -->
-        <div class="flex flex-wrap gap-2">
-          <button class="chip" data-filter="all">All</button>
-          <button class="chip" data-filter="analytics">Analytics</button>
-          <button class="chip" data-filter="growth">Growth</button>
-          <button class="chip" data-filter="web">Web / Brand</button>
-          <button class="chip" data-filter="strategy">Strategy</button>
-        </div>
+  <section id="projects" class="py-16 bg-sand-100 border-y border-black/5">
+    <div class="mx-auto container-tight px-4">
+      <div class="flex items-end justify-between gap-4 flex-wrap">
+        <h2 class="underline-accent font-display text-3xl md:text-4xl font-extrabold">Featured Projects</h2>
+        <p class="text-sm text-ink-700 font-semibold max-w-xl">
+          Case-study style: goal → what I did → tools → outcomes.
+        </p>
       </div>
 
-      <div class="mt-8 grid md:grid-cols-2 gap-5" id="projectGrid">
-
-        <!-- NEW: Somani Textile Group / JaiUdit -->
-        <article class="gcard p-6 project" data-tags="web,growth,strategy">
+      <div class="mt-8 grid md:grid-cols-2 gap-6">
+        <!-- Project 1 -->
+        <article class="rounded-[28px] bg-white/70 border border-black/5 shadow-card p-7">
           <div class="flex items-start justify-between gap-3">
-            <h4 class="font-semibold text-lg">Somani Textile Group — Brand Website</h4>
-            <span class="tag">Web / Brand</span>
+            <div>
+              <h3 class="text-xl font-extrabold">Peoples Natural Gas — Data Centers & Hydrogen Strategy</h3>
+              <p class="mt-1 text-sm text-ink-700 font-semibold">Strategy • Market sizing • Benchmarking • Executive storytelling</p>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-sand-50 border border-black/5 text-xs font-black text-ink-700">Energy</span>
           </div>
-          <p class="text-sm text-slate-300 mt-2">
-            Built a brand-forward website for JaiUdit Suitings under Somani Textile Group to support credibility, discovery,
-            and customer outreach.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="tag">Brand storytelling</span>
-            <span class="tag">Product pages</span>
-            <span class="tag">Conversion-focused UX</span>
+
+          <div class="mt-5 grid gap-3 text-sm text-ink-700">
+            <div><span class="font-extrabold">Goal:</span> Support growth strategy for hyperscale attraction + clean energy roadmap.</div>
+            <div><span class="font-extrabold">What I did:</span> Competitive intelligence across 5+ utilities, dashboards for pricing/capacity, playbooks for executive decisions.</div>
+            <div><span class="font-extrabold">Tools:</span> Excel, Power BI, research synthesis, deck building</div>
+            <div><span class="font-extrabold">Highlight:</span> Supported an investment strategy tied to a $26M infrastructure initiative.</div>
           </div>
-          <div class="mt-5 flex gap-3 text-sm">
-            <a class="mini-link text-rose-300 hover:text-rose-200 font-semibold" target="_blank" rel="noopener"
-               href="https://priyam05somani.wixsite.com/somani-textile-group">Open website</a>
+
+          <!-- Optional link -->
+          <div class="mt-6 flex gap-3 flex-wrap">
+            <a href="#contact" class="px-4 py-2 rounded-full bg-ink-900 text-sand-50 text-sm font-bold hover:opacity-95">Request details</a>
+            <!-- <a href="assets/Peoples%20Natural%20Gas%20-%20Hydrogen%20Bledning%20%26%20Data%20Centers.pptx" class="px-4 py-2 rounded-full border border-black/10 text-sm font-bold hover:bg-sand-50">View deck</a> -->
           </div>
         </article>
 
-        <article class="gcard p-6 project" data-tags="strategy,analytics">
+        <!-- Project 2 -->
+        <article class="rounded-[28px] bg-white/70 border border-black/5 shadow-card p-7">
           <div class="flex items-start justify-between gap-3">
-            <h4 class="font-semibold text-lg">Peoples Natural Gas — Hydrogen + Data Centers</h4>
-            <span class="tag">Strategy</span>
+            <div>
+              <h3 class="text-xl font-extrabold">Ductmate Industries — Market Research & Dashboarding</h3>
+              <p class="mt-1 text-sm text-ink-700 font-semibold">VOC • Surveys • EDA • Positioning recommendations</p>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-sand-50 border border-black/5 text-xs font-black text-ink-700">B2B</span>
           </div>
-          <p class="text-sm text-slate-300 mt-2">
-            Market entry and infrastructure benchmarking with executive dashboards and strategic playbooks.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="tag">Competitive intelligence</span>
-            <span class="tag">Dashboards</span>
-            <span class="tag">Exec storytelling</span>
+
+          <div class="mt-5 grid gap-3 text-sm text-ink-700">
+            <div><span class="font-extrabold">Goal:</span> Identify customer needs + product gaps across regions.</div>
+            <div><span class="font-extrabold">What I did:</span> Surveys/interviews, analysis, Power BI dashboards for trends + conversion, insights translated to GTM actions.</div>
+            <div><span class="font-extrabold">Tools:</span> Power BI, Excel, Python/Tableau (as needed), research frameworks</div>
+            <div><span class="font-extrabold">Outcome:</span> Data-driven recommendations used for planning and messaging refinement.</div>
           </div>
-          <div class="mt-5 flex gap-3 text-sm">
-            <!-- Replace with your actual deck path if you keep it -->
-            <a class="mini-link text-rose-300 hover:text-rose-200 font-semibold" href="assets/Peoples%20Natural%20Gas%20-%20Hydrogen%20Bledning%20%26%20Data%20Centers.pptx">
-              Open deck
+
+          <div class="mt-6 flex gap-3 flex-wrap">
+            <a href="#contact" class="px-4 py-2 rounded-full bg-ink-900 text-sand-50 text-sm font-bold hover:opacity-95">Request summary</a>
+            <!-- <a href="assets/Market%20Research%20and%20Strategy%20for%20DMI.pptx" class="px-4 py-2 rounded-full border border-black/10 text-sm font-bold hover:bg-sand-50">View deck</a> -->
+          </div>
+        </article>
+
+        <!-- Project 3 (NEW) -->
+        <article class="rounded-[28px] bg-white/70 border border-black/5 shadow-card p-7 md:col-span-2">
+          <div class="flex items-start justify-between gap-3 flex-wrap">
+            <div>
+              <h3 class="text-xl font-extrabold">Somani Textile Group / JaiUdit Suitings — Brand + Website</h3>
+              <p class="mt-1 text-sm text-ink-700 font-semibold">Brand storytelling • Web build • Growth foundations</p>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-sand-50 border border-black/5 text-xs font-black text-ink-700">Textiles</span>
+          </div>
+
+          <div class="mt-5 grid md:grid-cols-2 gap-4 text-sm text-ink-700">
+            <div class="rounded-2xl bg-sand-50 border border-black/5 p-4">
+              <div class="font-extrabold">What I built</div>
+              <ul class="mt-2 space-y-1.5">
+                <li>• Brand website structure + navigation</li>
+                <li>• Product/category storytelling for B2B</li>
+                <li>• Content + “Insights/Blog” style pages</li>
+              </ul>
+            </div>
+            <div class="rounded-2xl bg-sand-50 border border-black/5 p-4">
+              <div class="font-extrabold">Make this stronger (add your data)</div>
+              <ul class="mt-2 space-y-1.5">
+                <li>• Traffic (GA4), inquiries, lead sources</li>
+                <li>• SEO improvements, rankings, engagement</li>
+                <li>• Any conversion/WhatsApp inquiry metrics</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-6 flex gap-3 flex-wrap">
+            <a href="https://priyam05somani.wixsite.com/somani-textile-group" target="_blank" rel="noopener"
+               class="px-4 py-2 rounded-full bg-ink-900 text-sand-50 text-sm font-bold hover:opacity-95">
+              View website
+            </a>
+            <a href="#insights" class="px-4 py-2 rounded-full border border-black/10 text-sm font-bold hover:bg-sand-50">
+              See Insights layout
             </a>
           </div>
         </article>
-
-        <article class="gcard p-6 project" data-tags="analytics,strategy">
-          <div class="flex items-start justify-between gap-3">
-            <h4 class="font-semibold text-lg">Ductmate — Market Research & Insights</h4>
-            <span class="tag">Analytics</span>
-          </div>
-          <p class="text-sm text-slate-300 mt-2">
-            Survey + interview research, EDA, segmentation, and insight synthesis to inform positioning and decisions.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="tag">VOC</span>
-            <span class="tag">EDA</span>
-            <span class="tag">Tableau / Excel</span>
-          </div>
-          <div class="mt-5 flex gap-3 text-sm">
-            <a class="mini-link text-rose-300 hover:text-rose-200 font-semibold" href="assets/Market%20Research%20and%20Strategy%20for%20DMI.pptx">
-              Open deck
-            </a>
-          </div>
-        </article>
-
-        <article class="gcard p-6 project" data-tags="analytics">
-          <div class="flex items-start justify-between gap-3">
-            <h4 class="font-semibold text-lg">Analytics Toolkit — Dashboards & KPI Systems</h4>
-            <span class="tag">Analytics</span>
-          </div>
-          <p class="text-sm text-slate-300 mt-2">
-            KPI design and reporting systems (Power BI / Tableau / Excel) that connect spend, funnel performance, and outcomes.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="tag">KPI design</span>
-            <span class="tag">Attribution</span>
-            <span class="tag">Forecasts</span>
-          </div>
-          <div class="mt-5 text-sm text-slate-300">
-            Tip: Add screenshots in <code>assets/projects/</code> and I’ll style them into this card.
-          </div>
-        </article>
-
       </div>
     </div>
   </section>
 
   <!-- EXPERIENCE -->
-  <section id="experience" class="border-t border-white/10 bg-ink-900/30">
-    <div class="max-w-6xl mx-auto px-4 py-14">
-      <h3 class="font-display text-3xl font-extrabold">Experience</h3>
-      <p class="text-slate-300 mt-2 max-w-2xl">
-        Highlights below are tuned for marketing + analytics roles (growth, product, strategy, research).
-      </p>
+  <section id="experience" class="py-16">
+    <div class="mx-auto container-tight px-4">
+      <h2 class="underline-accent font-display text-3xl md:text-4xl font-extrabold">Experience</h2>
 
-      <div class="mt-8 grid gap-5">
-        <div class="gcard p-6">
+      <div class="mt-8 grid gap-4">
+        <div class="rounded-[28px] bg-sand-100 border border-black/5 shadow-soft p-6">
           <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <div class="font-semibold text-lg">Peoples Natural Gas — Sustainability & Strategy Consulting</div>
-            <div class="text-sm text-slate-300">Sep 2024 – Jun 2025</div>
+            <div class="text-lg font-extrabold">Peoples Natural Gas — Marketing & Sustainability Consultant</div>
+            <div class="text-sm font-bold text-ink-700">Sep 2024 – Jun 2025</div>
           </div>
-          <ul class="mt-3 text-sm text-slate-200 space-y-2 list-disc pl-5">
-            <li>Competitive benchmarking across 5+ utilities; modeled market position and growth recommendations.</li>
-            <li>Supported a $26M infrastructure initiative with strategy, value proposition, and executive reporting.</li>
-            <li>Built executive dashboards for forecasts, capacity, and pricing structures.</li>
+          <ul class="mt-3 text-sm text-ink-700 space-y-2">
+            <li>• Competitive intelligence + positioning across 5+ utilities; built executive dashboards for pricing/capacity decisions.</li>
+            <li>• Translated technical infrastructure + regulatory context into leadership-ready strategy narratives.</li>
           </ul>
         </div>
 
-        <div class="gcard p-6">
+        <div class="rounded-[28px] bg-sand-100 border border-black/5 shadow-soft p-6">
           <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <div class="font-semibold text-lg">Ductmate Industries — Marketing & Research (Consulting Fellowship)</div>
-            <div class="text-sm text-slate-300">Sep 2024 – Nov 2024</div>
+            <div class="text-lg font-extrabold">Ductmate Industries — Marketing & Research Consulting Fellow</div>
+            <div class="text-sm font-bold text-ink-700">Sep 2024 – Nov 2024</div>
           </div>
-          <ul class="mt-3 text-sm text-slate-200 space-y-2 list-disc pl-5">
-            <li>Designed and conducted surveys/interviews to identify customer needs, product gaps, and regional insights.</li>
-            <li>Synthesized qualitative + quantitative findings into structured recommendations for positioning and GTM.</li>
-            <li>Developed dashboards for campaign performance and conversion trends.</li>
+          <ul class="mt-3 text-sm text-ink-700 space-y-2">
+            <li>• Conducted surveys/interviews; synthesized VOC into data-driven GTM recommendations.</li>
+            <li>• Built dashboards to convert research findings into action for stakeholders.</li>
           </ul>
         </div>
 
-        <div class="gcard p-6">
+        <div class="rounded-[28px] bg-sand-100 border border-black/5 shadow-soft p-6">
           <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <div class="font-semibold text-lg">JaiUdit Suitings Pvt Ltd — Digital Marketing & CRM Analyst</div>
-            <div class="text-sm text-slate-300">Aug 2020 – Jul 2023</div>
+            <div class="text-lg font-extrabold">JaiUdit Suitings Pvt Ltd — Digital Marketing & CRM Analyst</div>
+            <div class="text-sm font-bold text-ink-700">Aug 2020 – Jul 2023</div>
           </div>
-          <ul class="mt-3 text-sm text-slate-200 space-y-2 list-disc pl-5">
-            <li>Executed multi-channel marketing (SEO/SEM, Google Ads, HubSpot) driving ~40% YoY growth in new customers.</li>
-            <li>Improved measurement and user experience via GA/Tag Manager; reported retention and conversion performance.</li>
-            <li>Owned KPI reporting (CTR, CAC, ROI) and dashboarding (Power BI / Tableau / Excel) for budget optimization.</li>
+          <ul class="mt-3 text-sm text-ink-700 space-y-2">
+            <li>• Performance marketing + CRM automation (HubSpot), lifecycle campaigns, GA analytics and attribution.</li>
+            <li>• Built KPI dashboards to connect spend → outcomes and improve decision-making.</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SKILLS -->
-  <section id="skills" class="border-t border-white/10">
-    <div class="max-w-6xl mx-auto px-4 py-14">
-      <h3 class="font-display text-3xl font-extrabold">Skills</h3>
-
-      <div class="mt-8 grid lg:grid-cols-3 gap-5">
-        <div class="gcard p-6">
-          <h4 class="font-semibold">Analytics</h4>
-          <ul class="mt-3 text-sm text-slate-300 space-y-2">
-            <li>Dashboards: Power BI, Tableau, Excel</li>
-            <li>SQL • Data modeling • Reporting</li>
-            <li>GA4 • Attribution • Funnel analytics</li>
-            <li>Forecasting • KPI systems</li>
-          </ul>
-        </div>
-
-        <div class="gcard p-6">
-          <h4 class="font-semibold">Growth & CRM</h4>
-          <ul class="mt-3 text-sm text-slate-300 space-y-2">
-            <li>Performance marketing (Google/Meta)</li>
-            <li>Lifecycle automation (HubSpot)</li>
-            <li>A/B testing • CRO • Landing pages</li>
-            <li>Segmentation • Retention</li>
-          </ul>
-        </div>
-
-        <div class="gcard p-6">
-          <h4 class="font-semibold">Strategy</h4>
-          <ul class="mt-3 text-sm text-slate-300 space-y-2">
-            <li>Market research • VOC • Competitive intel</li>
-            <li>Positioning • Messaging • GTM support</li>
-            <li>Executive storytelling • Stakeholders</li>
-            <li>Business cases • Decision frameworks</li>
-          </ul>
-        </div>
+  <!-- INSIGHTS / BLOG -->
+  <section id="insights" class="py-16 bg-sand-100 border-y border-black/5">
+    <div class="mx-auto container-tight px-4">
+      <div class="flex items-end justify-between gap-4 flex-wrap">
+        <h2 class="underline-accent font-display text-3xl md:text-4xl font-extrabold">Insights</h2>
+        <p class="text-sm text-ink-700 font-semibold max-w-xl">
+          A clean, premium blog grid like your Wix screenshots—just more modern and easier to scan.
+        </p>
       </div>
 
-      <div class="mt-8 flex flex-wrap gap-2">
-        <span class="chip">Google Analytics (GA4)</span>
-        <span class="chip">Google Tag Manager</span>
-        <span class="chip">HubSpot</span>
-        <span class="chip">Power BI</span>
-        <span class="chip">Tableau</span>
-        <span class="chip">SQL</span>
-        <span class="chip">Python</span>
-        <span class="chip">R</span>
+      <div class="mt-8 grid md:grid-cols-3 gap-5">
+        <!-- Card -->
+        <article class="rounded-[24px] bg-white/70 border border-black/5 shadow-soft overflow-hidden">
+          <div class="h-40 bg-gradient-to-br from-sand-50 to-sand-300 border-b border-black/5 grid place-items-center text-ink-700 font-bold">
+            Add Blog Cover Image
+          </div>
+          <div class="p-5">
+            <div class="text-xs font-black uppercase tracking-wide text-ink-700">Textiles • B2B</div>
+            <h3 class="mt-2 font-extrabold">Innovative Textile Solutions for B2B</h3>
+            <p class="mt-2 text-sm text-ink-700">Short excerpt goes here. Keep it 1–2 lines for a premium look.</p>
+            <div class="mt-4 flex items-center justify-between text-xs font-bold text-ink-700">
+              <span>5 min read</span>
+              <a class="underline" href="#" target="_blank" rel="noopener">Read →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="rounded-[24px] bg-white/70 border border-black/5 shadow-soft overflow-hidden">
+          <div class="h-40 bg-gradient-to-br from-sand-50 to-sand-300 border-b border-black/5 grid place-items-center text-ink-700 font-bold">
+            Add Blog Cover Image
+          </div>
+          <div class="p-5">
+            <div class="text-xs font-black uppercase tracking-wide text-ink-700">Marketing</div>
+            <h3 class="mt-2 font-extrabold">The Future of Suitings: Trends & Insights</h3>
+            <p class="mt-2 text-sm text-ink-700">Short excerpt goes here. Keep it consistent for a clean grid.</p>
+            <div class="mt-4 flex items-center justify-between text-xs font-bold text-ink-700">
+              <span>4 min read</span>
+              <a class="underline" href="#" target="_blank" rel="noopener">Read →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="rounded-[24px] bg-white/70 border border-black/5 shadow-soft overflow-hidden">
+          <div class="h-40 bg-gradient-to-br from-sand-50 to-sand-300 border-b border-black/5 grid place-items-center text-ink-700 font-bold">
+            Add Blog Cover Image
+          </div>
+          <div class="p-5">
+            <div class="text-xs font-black uppercase tracking-wide text-ink-700">Sustainability</div>
+            <h3 class="mt-2 font-extrabold">Sustainable Practices in Textile Manufacturing</h3>
+            <p class="mt-2 text-sm text-ink-700">Short excerpt goes here. You can link to Wix posts too.</p>
+            <div class="mt-4 flex items-center justify-between text-xs font-bold text-ink-700">
+              <span>4 min read</span>
+              <a class="underline" href="#" target="_blank" rel="noopener">Read →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="mt-8">
+        <a href="https://priyam05somani.wixsite.com/somani-textile-group/blog" target="_blank" rel="noopener"
+           class="inline-flex rounded-full bg-ink-900 text-sand-50 px-6 py-3 text-sm font-bold shadow-soft hover:opacity-95">
+          View all posts
+        </a>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="border-t border-white/10 bg-ink-900/30">
-    <div class="max-w-6xl mx-auto px-4 py-14">
-      <h3 class="font-display text-3xl font-extrabold">Contact</h3>
-      <p class="text-slate-300 mt-2 max-w-2xl">
-        Want to talk marketing analytics, strategy, dashboards, or a brand/growth project? I’m easy to reach.
-      </p>
+  <section id="contact" class="py-16">
+    <div class="mx-auto container-tight px-4">
+      <h2 class="underline-accent font-display text-3xl md:text-4xl font-extrabold">Contact</h2>
 
       <div class="mt-8 grid md:grid-cols-2 gap-6 items-start">
-        <form action="https://formspree.io/f/xaylpnrg" method="POST" class="gcard p-6">
+        <form action="https://formspree.io/f/xaylpnrg" method="POST"
+              class="rounded-[28px] bg-sand-100 border border-black/5 shadow-soft p-6">
           <div class="grid gap-3">
-            <input required name="name" placeholder="Your name" class="w-full rounded-xl border border-white/15 bg-transparent px-3 py-2" />
-            <input required name="email" type="email" placeholder="Email address" class="w-full rounded-xl border border-white/15 bg-transparent px-3 py-2" />
-            <textarea required name="message" placeholder="Message" rows="4" class="w-full rounded-xl border border-white/15 bg-transparent px-3 py-2"></textarea>
-            <button class="rounded-full bg-rose-400 hover:bg-rose-500 text-white px-5 py-2.5 text-sm font-semibold">
+            <input required name="name" placeholder="Your name"
+                   class="w-full rounded-xl border border-black/10 bg-white/70 px-3 py-2.5" />
+            <input required name="email" type="email" placeholder="Email address"
+                   class="w-full rounded-xl border border-black/10 bg-white/70 px-3 py-2.5" />
+            <textarea required name="message" placeholder="Message" rows="5"
+                      class="w-full rounded-xl border border-black/10 bg-white/70 px-3 py-2.5"></textarea>
+            <button class="rounded-full bg-ink-900 text-sand-50 px-6 py-3 text-sm font-bold shadow-soft hover:opacity-95">
               Send
             </button>
           </div>
         </form>
 
-        <div class="gcard p-6">
-          <ul class="grid gap-2 text-sm text-slate-200">
-            <li><span class="font-medium">Email:</span> <a class="text-rose-300 hover:text-rose-200" href="mailto:priyam05somani@gmail.com">priyam05somani@gmail.com</a></li>
-            <li><span class="font-medium">Phone:</span> <a class="text-rose-300 hover:text-rose-200" href="tel:+14124302670">+1 (412) 430-2670</a></li>
-            <li><span class="font-medium">LinkedIn:</span> <a class="text-rose-300 hover:text-rose-200" target="_blank" rel="noopener"
-              href="https://www.linkedin.com/in/priyam-somani/">/in/priyam-somani</a></li>
-            <li><span class="font-medium">Location:</span> Cambridge / Boston, MA (Open to relocate)</li>
+        <div class="rounded-[28px] bg-sand-100 border border-black/5 shadow-soft p-6">
+          <div class="text-lg font-extrabold">Let’s build something impactful.</div>
+          <p class="mt-2 text-sm text-ink-700">
+            I’m open to Marketing Analytics, Strategy, Growth, and Product Insights roles.
+          </p>
+
+          <ul class="mt-5 grid gap-2 text-sm font-semibold text-ink-700">
+            <li><span class="font-extrabold">Email:</span> <a class="underline" href="mailto:priyam05somani@gmail.com">priyam05somani@gmail.com</a></li>
+            <li><span class="font-extrabold">Phone:</span> <a class="underline" href="tel:+14124302670">+1 (412) 430-2670</a></li>
+            <li><span class="font-extrabold">LinkedIn:</span> <a class="underline" target="_blank" rel="noopener" href="https://www.linkedin.com/in/priyam-somani/">/in/priyam-somani</a></li>
+            <li><span class="font-extrabold">Location:</span> Cambridge, MA, USA</li>
           </ul>
 
-          <div class="mt-5 flex flex-wrap gap-3">
-            <a class="px-3 py-2 rounded-xl border border-white/15 hover:border-rose-400"
-               href="assets/priyam-somani-resume-z.pdf">Resume (PDF)</a>
-            <a class="px-3 py-2 rounded-xl border border-white/15 hover:border-rose-400"
-               href="assets/Portfolio-Slides.pdf">Portfolio Slides</a>
+          <div class="mt-6 flex gap-3 flex-wrap">
+            <a class="px-4 py-2 rounded-full border border-black/10 bg-white/60 hover:bg-white text-sm font-bold"
+               target="_blank" rel="noopener" href="https://github.com/priyam05somani">GitHub</a>
+            <a class="px-4 py-2 rounded-full border border-black/10 bg-white/60 hover:bg-white text-sm font-bold"
+               target="_blank" rel="noopener" href="https://priyam05somani.wixsite.com/somani-textile-group">Somani Textile</a>
+            <!-- Resume link later -->
+            <!-- <a class="px-4 py-2 rounded-full bg-ink-900 text-sand-50 text-sm font-bold" href="assets/Priyam%20Somani%20-%20Resume.pdf">Resume</a> -->
           </div>
         </div>
       </div>
-
-      <div class="mt-10 text-center text-xs text-slate-400">
-        © <span id="year"></span> Priyam Somani • Built with clarity, curiosity, and data.
-      </div>
     </div>
   </section>
+
+  <!-- FOOTER -->
+  <footer class="py-10 border-t border-black/5 bg-sand-100">
+    <div class="mx-auto container-tight px-4 flex flex-col md:flex-row items-center justify-between gap-3 text-sm font-semibold text-ink-700">
+      <div>© <span id="year"></span> Priyam Somani</div>
+      <div class="flex gap-5">
+        <a class="hover:underline" href="#projects">Projects</a>
+        <a class="hover:underline" href="#insights">Insights</a>
+        <a class="hover:underline" href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
 
   <script>
     // Mobile menu
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     menuBtn?.addEventListener('click',()=> mobileMenu.classList.toggle('hidden'));
+
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Project filter
-    const buttons = document.querySelectorAll('[data-filter]');
-    const cards = document.querySelectorAll('.project');
-
-    function setActive(btn){
-      buttons.forEach(b=>b.classList.remove('ring-2','ring-rose-400'));
-      btn.classList.add('ring-2','ring-rose-400');
-    }
-    buttons.forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const f = btn.getAttribute('data-filter');
-        setActive(btn);
-        cards.forEach(c=>{
-          const tags = (c.getAttribute('data-tags') || '').split(',').map(s=>s.trim());
-          const show = (f === 'all') || tags.includes(f);
-          c.style.display = show ? '' : 'none';
-        });
-      })
-    });
-    // default highlight
-    const first = document.querySelector('[data-filter="all"]');
-    if(first) setActive(first);
   </script>
 </body>
 </html>
